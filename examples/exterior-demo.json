@@ -1,0 +1,135 @@
+{
+  "template": "client",
+  "name": "Exterior cleaning demo",
+  "origin": "https://exterior-demo.test",
+  "mode": "demo",
+  "productionApproved": false,
+  "email": "contact@example.invalid",
+  "phone": "",
+  "theme": {
+    "ink": "#14362E",
+    "accent": "#126C53",
+    "surface": "#F2F7F3",
+    "text": "#15362D"
+  },
+  "hero": {
+    "eyebrow": "Fictional service example",
+    "title": "Care for the outside of your property.",
+    "description": "This configuration demonstrates a local-service website. It contains sample information, not facts about a real prospect.",
+    "primary": "Ask about the work",
+    "secondary": "Explore sample services"
+  },
+  "services": [
+    {
+      "id": "exterior",
+      "title": "Exterior surfaces",
+      "summary": "A sample service description to replace with verified client details."
+    },
+    {
+      "id": "driveway",
+      "title": "Driveways and paths",
+      "summary": "A sample service category, not a verified operating claim."
+    },
+    {
+      "id": "property",
+      "title": "Property care",
+      "summary": "A configurable enquiry category for the demonstration."
+    }
+  ],
+  "pages": [
+    {
+      "slug": "",
+      "title": "Exterior care demonstration",
+      "heading": "Care for the outside of your property.",
+      "description": "A fictional exterior-care client configuration demonstrating reusable pages, service categories and accessible enquiry handling.",
+      "sections": [
+        {
+          "title": "A clear place to begin.",
+          "text": "Replace these sample descriptions with the client's approved services, area and contact information.",
+          "items": [
+            {
+              "title": "Understand the service",
+              "text": "Explain the work and what information customers should provide."
+            },
+            {
+              "title": "Choose the next step",
+              "text": "Use a simple enquiry path with the right service categories."
+            },
+            {
+              "title": "Keep details current",
+              "text": "Refresh offers and service information as needed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "services",
+      "title": "Sample exterior services",
+      "heading": "Services made easy to understand.",
+      "description": "Review fictional exterior service categories showing how the starter adapts to an approved client scope without component changes.",
+      "sections": [
+        {
+          "title": "Sample service categories",
+          "items": [
+            {
+              "title": "Exterior surfaces",
+              "text": "Sample service copy; replace before client release."
+            },
+            {
+              "title": "Driveways and paths",
+              "text": "Sample service copy; replace before client release."
+            },
+            {
+              "title": "Property care",
+              "text": "Sample service copy; replace before client release."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "approach",
+      "title": "Sample service approach",
+      "heading": "A clear next step.",
+      "description": "A fictional local-service process showing reusable section content and honest customer enquiry messaging in a client website.",
+      "sections": [
+        {
+          "title": "How an enquiry can work",
+          "items": [
+            {
+              "title": "Describe the property",
+              "text": "Tell the business what needs attention."
+            },
+            {
+              "title": "Agree the work",
+              "text": "Confirm the actual service, price and schedule with the business."
+            },
+            {
+              "title": "Review the result",
+              "text": "Use the client's real process, with no invented guarantees."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "contact",
+      "title": "Sample service enquiry",
+      "description": "Try a private synthetic enquiry with the client-specific service options; this example sends no external email.",
+      "heading": "Tell us what needs attention.",
+      "intro": "Try a sample property enquiry. No email is sent.",
+      "asideTitle": "Plan the property work.",
+      "asideText": "Describe the surfaces and service you want to discuss."
+    },
+    {
+      "slug": "privacy",
+      "title": "Sample demonstration privacy",
+      "description": "Read how the private demonstration handles synthetic enquiry data locally and what the client must approve before release."
+    }
+  ],
+  "contact": {
+    "messageLabel": "Tell us about the property",
+    "submitLabel": "Send sample service enquiry"
+  }
+}

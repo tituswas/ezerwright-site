@@ -25,7 +25,7 @@
       const data=await result.json();
       if(!result.ok||data.ok!==true){showErrors(data.message||'The enquiry was not submitted. Please try again.',data.errors);return;}
       status.textContent=data.message;form.reset();status.focus();
-    }catch{showErrors('The enquiry was not submitted. Check the connection, retry, or use the contact details on this site.');}
+    }catch{showErrors('We could not confirm whether your enquiry was submitted. Your details are still here. Use the email address on this page before retrying to avoid a duplicate enquiry.');}
     finally{delete form.dataset.sending;button.disabled=false;button.textContent=normalLabel;if(window.turnstile){try{window.turnstile.reset();}catch{}}}
   });
 })();

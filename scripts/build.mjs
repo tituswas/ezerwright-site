@@ -1,6 +1,8 @@
 import {spawnSync} from 'node:child_process';
-import {mkdir,writeFile,rm} from 'node:fs/promises';
+import {mkdir,writeFile,rm,readFile,readdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
 import {site} from '../src/config/site.mjs';
+if(process.env.CF_PAGES==='1'&&site.mode!=='production')throw Error('Cloudflare Pages requires the production configuration. Set SITE_CONFIG=src/config/production.json, a real TURNSTILE_SITE_KEY and approved privacy settings.');
 await rm('dist',{recursive:true,force:true});
 const child=spawnSync(process.execPath,['node_modules/astro/bin/astro.mjs','build'],{stdio:'inherit',env:{...process.env,ASTRO_TELEMETRY_DISABLED:'1'}});
 if(child.status!==0)process.exit(child.status||1);
@@ -10,3 +12,9 @@ await writeFile('dist/robots.txt',site.mode==='demo'?'User-agent: *\nDisallow: /
 await mkdir('worker',{recursive:true});
 await writeFile('worker/generated-config.json',JSON.stringify({origin:site.origin,mode:site.mode,services:[...site.services.map(s=>s.id),'other']},null,2)+'\n');
 await writeFile('dist/og-card.svg',`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630"><rect width="1200" height="630" fill="${site.theme.ink}"/><rect x="80" y="90" width="70" height="7" fill="white"/><text x="80" y="270" font-family="sans-serif" font-size="54" fill="white">${escape(site.name)}</text><text x="80" y="350" font-family="sans-serif" font-size="30" fill="white">${site.mode==='demo'?'Private demonstration':'A useful next step.'}</text></svg>`);
+const hashes=new Set();
+async function inlineHashes(dir){for(const entry of await readdir(dir,{withFileTypes:true})){const path=`${dir}/${entry.name}`;if(entry.isDirectory())await inlineHashes(path);else if(path.endsWith('.html'))for(const match of (await readFile(path,'utf8')).matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g))if(match[1])hashes.add(`'sha256-${createHash('sha256').update(match[1]).digest('base64')}'`);}}
+await inlineHashes('dist');
+const csp=`default-src 'self'; script-src 'self' https://challenges.cloudflare.com ${[...hashes].join(' ')}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests`;
+await writeFile('dist/_headers',`/*\n  Content-Security-Policy: ${csp}\n  X-Frame-Options: DENY\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n  Strict-Transport-Security: max-age=31536000\n/_astro/*\n  Cache-Control: public, max-age=31536000, immutable\n/fonts/*\n  Cache-Control: public, max-age=31536000, immutable\n/ui.js\n  Cache-Control: no-cache\n`);
+if(site.mode==='production'&&new URL(site.origin).hostname==='ezerwright.com')await writeFile('dist/_redirects',`https://www.ezerwright.com/* ${site.origin}/:splat 301\nhttps://ezerwright-site.pages.dev/* ${site.origin}/:splat 301\n`);

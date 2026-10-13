@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import '../styles/site.css';
 const {page}=Astro.props;
 const canonical=new URL(page.slug?`/${page.slug}/`:'/',site.origin).href;
-const title=`${page.title} | ${site.name}`;
+const title=page.title.includes(site.name)?page.title:`${page.title} | ${site.name}`;
 const theme=['ink','accent','surface','text'].map(k=>`--${k}:${site.theme[k]}`).join(';');
 const schema={ '@context':'https://schema.org','@type':'WebSite',name:site.name,url:site.origin};
 ---

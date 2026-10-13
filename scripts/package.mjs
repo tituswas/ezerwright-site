@@ -14,6 +14,7 @@ export async function packageHandoff(destination){
   for(const entry of await readdir(root)){const file=resolve(root,entry);if(filter(file))await cp(file,resolve(target,'source',entry),{recursive:true,filter});}
   await cp(resolve(root,'dist'),resolve(target,'site'),{recursive:true});
   const files={};async function walk(dir){for(const entry of (await readdir(dir,{withFileTypes:true})).sort((a,b)=>a.name.localeCompare(b.name))){const file=resolve(dir,entry.name);if(entry.isDirectory())await walk(file);else{const bytes=await readFile(file);files[relative(target,file).split(sep).join('/')]= {bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex')};}}}await walk(target);
-  await writeFile(resolve(target,'MANIFEST.json'),JSON.stringify({version:'0.1.0',files},null,2)+'\n');return target;
+  const {version}=JSON.parse(await readFile(resolve(root,'package.json'),'utf8'));
+  await writeFile(resolve(target,'MANIFEST.json'),JSON.stringify({version,files},null,2)+'\n');return target;
 }
-if(import.meta.url===pathToFileURL(process.argv[1]||'').href){const check=spawnSync(process.execPath,['scripts/build.mjs'],{stdio:'inherit'});if(check.status!==0)process.exit(check.status||1);const tests=spawnSync(process.execPath,['--test','test/*.test.mjs'],{stdio:'inherit'});if(tests.status!==0)process.exit(tests.status||1);console.log(await packageHandoff(process.argv[2]||'handoff/v0.1.0'));}
+if(import.meta.url===pathToFileURL(process.argv[1]||'').href){const check=spawnSync(process.execPath,['scripts/build.mjs'],{stdio:'inherit'});if(check.status!==0)process.exit(check.status||1);const tests=spawnSync(process.execPath,['--test','test/*.test.mjs'],{stdio:'inherit'});if(tests.status!==0)process.exit(tests.status||1);const {version}=JSON.parse(await readFile(new URL('../package.json',import.meta.url),'utf8'));console.log(await packageHandoff(process.argv[2]||`handoff/v${version}`));}

@@ -13,14 +13,20 @@
     "test": "node --test test/*.test.mjs",
     "qa": "npm run build && npm test",
     "package": "node scripts/package.mjs",
-    "cloudflare:check": "wrangler deploy --dry-run --outdir .wrangler/dry-run"
+    "cloudflare:check": "wrangler deploy --dry-run --outdir .wrangler/dry-run",
+    "contact:prepare": "node scripts/prepare-contact-config.mjs",
+    "contact:check": "wrangler deploy --config wrangler.contact.jsonc --dry-run --outdir .wrangler/contact-dry-run",
+    "contact:deploy": "npm run contact:prepare && wrangler deploy --config .wrangler/contact-deploy.json"
   },
   "dependencies": {
     "astro": "7.3.8"
   },
+  "overrides": {
+    "esbuild": "0.28.1"
+  },
   "devDependencies": {
-    "jsdom": "29.0.0",
     "axe-core": "4.11.0",
-    "wrangler": "4.76.0"
+    "jsdom": "29.0.0",
+    "wrangler": "4.150.0"
   }
 }
