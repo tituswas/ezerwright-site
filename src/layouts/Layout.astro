@@ -1,0 +1,12 @@
+---
+import {site} from '../config/site.mjs';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/site.css';
+const {page}=Astro.props;
+const canonical=new URL(page.slug?`/${page.slug}/`:'/',site.origin).href;
+const title=`${page.title} | ${site.name}`;
+const theme=['ink','accent','surface','text'].map(k=>`--${k}:${site.theme[k]}`).join(';');
+const schema={ '@context':'https://schema.org','@type':'WebSite',name:site.name,url:site.origin};
+---
+<!doctype html><html lang="en" style={theme}><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>{title}</title><meta name="description" content={page.description}/><meta name="robots" content={site.mode==='demo'?'noindex, nofollow':'index, follow'}/><meta name="color-scheme" content="light"/><link rel="canonical" href={canonical}/><meta property="og:type" content="website"/><meta property="og:title" content={title}/><meta property="og:description" content={page.description}/><meta property="og:url" content={canonical}/><meta property="og:image" content={new URL('/og-card.svg',site.origin).href}/><link rel="icon" href="/favicon.svg" type="image/svg+xml"/><link rel="preload" href="/fonts/manrope.woff" as="font" type="font/woff" crossorigin/><script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g,'\u003c')}></script><script src="/ui.js" defer></script>{site.mode==='production'&&<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}</head><body><Header current={page.slug}/><main id="main" tabindex="-1"><slot/></main><Footer/></body></html>

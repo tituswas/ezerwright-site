@@ -1,0 +1,5 @@
+---
+import Card from './Card.astro';
+const {sections=[]}=Astro.props;
+---
+{sections.map(section=><section class="container section top-tight"><h2>{section.title}</h2>{section.text&&<p class="section-description">{section.text}</p>}{section.items&&<div class="card-grid">{section.items.map((item,i)=><Card number={`0${i+1}`} title={item.title} description={item.text}/>)}</div>}</section>)}

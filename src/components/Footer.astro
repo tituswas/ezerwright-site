@@ -1,0 +1,5 @@
+---
+import {site} from '../config/site.mjs';
+const links=site.pages.filter(p=>p.slug&&p.slug!=='privacy').map(p=>[p.slug,p.navLabel||p.slug.charAt(0).toUpperCase()+p.slug.slice(1)]);
+---
+<footer class="site-footer"><div class="container footer-main"><div><a href="/" class="identity">{site.name}</a><p>A useful foundation. Room to grow.</p></div><nav aria-label="Footer navigation">{links.map(([slug,label])=><a href={`/${slug}/`}>{label}</a>)}<a href="/privacy/">Privacy</a></nav></div><div class="container footer-note"><p>{site.mode==='demo'?'Private demonstration only · Not a live business enquiry page.':`© ${site.name}`}</p><span>Client-owned. Portable.</span></div></footer>

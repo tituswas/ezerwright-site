@@ -1,0 +1,26 @@
+{
+  "name": "neutral-website-production-mvp",
+  "version": "0.1.2",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "astro dev --host 127.0.0.1",
+    "demo": "node scripts/demo-server.mjs",
+    "test": "node --test test/*.test.mjs",
+    "qa": "npm run build && npm test",
+    "package": "node scripts/package.mjs",
+    "cloudflare:check": "wrangler deploy --dry-run --outdir .wrangler/dry-run"
+  },
+  "dependencies": {
+    "astro": "7.3.8"
+  },
+  "devDependencies": {
+    "jsdom": "29.0.0",
+    "axe-core": "4.11.0",
+    "wrangler": "4.76.0"
+  }
+}

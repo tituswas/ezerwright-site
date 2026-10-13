@@ -1,0 +1,1 @@
+export const offer = Object.freeze({totalUSD:500,depositUSD:250,balanceUSD:250,marketingPages:5,revisionRounds:2,editsPerRound:10,words:1500,services:8,images:12,formFields:6,firstReviewBusinessDays:5,defectDays:14,cancellationHourlyUSD:30,cancellationCapUSD:250,refundBusinessDays:10,pauseBusinessDays:5,inactiveDays:30});

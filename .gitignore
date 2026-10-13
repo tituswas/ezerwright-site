@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.astro/
+.wrangler/
+.runtime/
+.env*
+!.env.example
+handoff/
+worker/generated-config.json

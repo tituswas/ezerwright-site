@@ -1,0 +1,8 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile,mkdtemp,rm,symlink} from 'node:fs/promises';
+import {join,resolve} from 'node:path';
+import {tmpdir} from 'node:os';
+import {spawnSync} from 'node:child_process';
+import {adaptClient} from '../scripts/adapt.mjs';
+test('client contact heading and enquiry labels come from configuration',async()=>{const fixture=JSON.parse(await readFile('examples/exterior-demo.json','utf8'));const page=fixture.pages.find(p=>p.slug==='contact');page.heading='Tell us what needs attention.';page.intro='Describe the property and the service you need.';page.asideTitle='Plan the property work.';page.asideText='Sample service enquiry, not a website build.';fixture.contact={messageLabel:'Tell us about the property',submitLabel:'Send sample service enquiry'};const parent=await mkdtemp(join(tmpdir(),'agency-copy-'));try{const target=join(parent,'source');await adaptClient(fixture,target);await symlink(resolve('node_modules'),join(target,'node_modules'),'dir');const build=spawnSync(process.execPath,['scripts/build.mjs'],{cwd:target,encoding:'utf8',env:{...process.env,ASTRO_TELEMETRY_DISABLED:'1'}});assert.equal(build.status,0,build.stdout+build.stderr);const html=await readFile(join(target,'dist/contact/index.html'),'utf8');for(const text of [page.heading,page.intro,page.asideTitle,page.asideText,fixture.contact.messageLabel,fixture.contact.submitLabel])assert.ok(html.includes(text),`configured contact copy missing: ${text}`);assert.doesNotMatch(html,/What would you|A little about the project|commit to an open-ended project/);}finally{await rm(parent,{recursive:true,force:true});}});

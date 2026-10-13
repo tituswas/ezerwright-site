@@ -1,0 +1,9 @@
+---
+const {number,title,description,href,detail}=Astro.props;
+---
+<article class:list={['card',{ 'card-link':href }]}>
+  {number && <span class="card-number" aria-hidden="true">{number}</span>}
+  <h3>{href ? <a href={href}>{title}<span aria-hidden="true"> ↗</span></a> : title}</h3>
+  <p>{description}</p>
+  {detail && <p class="card-detail">{detail}</p>}
+</article>

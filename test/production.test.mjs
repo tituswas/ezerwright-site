@@ -1,0 +1,8 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {mkdtemp,rm,symlink,readFile} from 'node:fs/promises';
+import {join,resolve} from 'node:path';
+import {tmpdir} from 'node:os';
+import {spawnSync} from 'node:child_process';
+import {adaptClient} from '../scripts/adapt.mjs';
+test('approved production fixture passes mode-aware static QA without publication',async()=>{const base=JSON.parse(await readFile('src/config/site.json','utf8'));const fixture={...base,mode:'production',productionApproved:true,privacyApproved:true,origin:'https://client-fixture.com',email:'owner@client-fixture.com',turnstileSiteKey:'0xsyntheticFixtureKey',privacySections:[{title:'Controller',text:'Synthetic test fixture, not a public policy.'},{title:'Processing',text:'Synthetic test fixture, no live data or external request.'},{title:'Contact',text:'Synthetic test fixture, not a verified mailbox.'}]};const parent=await mkdtemp(join(tmpdir(),'agency-prod-'));try{const target=join(parent,'source');await adaptClient(fixture,target);await symlink(resolve('node_modules'),join(target,'node_modules'),'dir');const build=spawnSync(process.execPath,['scripts/build.mjs'],{cwd:target,encoding:'utf8',env:{...process.env,ASTRO_TELEMETRY_DISABLED:'1'}});assert.equal(build.status,0,build.stdout+build.stderr);const html=await readFile(join(target,'dist/index.html'),'utf8');assert.match(html,/content="index, follow"/);const qaEnv={...process.env};delete qaEnv.NODE_TEST_CONTEXT;const qa=spawnSync(process.execPath,['--test','test/static.test.mjs'],{cwd:target,encoding:'utf8',env:qaEnv});assert.equal(qa.status,0,qa.stdout+qa.stderr);assert.match(qa.stdout,/tests 2/);assert.match(qa.stdout,/pass 2/);}finally{await rm(parent,{recursive:true,force:true});}});

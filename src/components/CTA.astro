@@ -1,0 +1,5 @@
+---
+import {site} from '../config/site.mjs';
+const {title='What should work better?',text='Start with a clear goal and a useful next step.'}=Astro.props;
+---
+<section class="container cta-section" aria-label="Next step"><div><p class="eyebrow">A simple place to start</p><h2>{title}</h2><p>{text}</p></div><a class="button" href="/contact/">{site.hero?.primary||'Discuss your project'}<span aria-hidden="true"> ↗</span></a></section>

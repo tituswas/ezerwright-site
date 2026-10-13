@@ -1,0 +1,10 @@
+{
+  "$schema":"node_modules/wrangler/config-schema.json",
+  "name":"neutral-website-mvp",
+  "main":"worker/index.mjs",
+  "compatibility_date":"2026-10-12",
+  "compatibility_flags":["nodejs_compat"],
+  "assets":{"directory":"./dist","binding":"ASSETS","run_worker_first":["/api/*"],"not_found_handling":"404-page"},
+  "send_email":[{"name":"SEND_EMAIL","destination_address":"owner@example.invalid"}],
+  "unsafe":{"bindings":[{"name":"CONTACT_RATE_LIMIT","type":"ratelimit","namespace_id":"1001","simple":{"limit":5,"period":60}}]}
+}

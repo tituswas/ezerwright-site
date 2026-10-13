@@ -1,0 +1,15 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile,rm,mkdtemp} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {spawnSync} from 'node:child_process';
+import {validateConfig} from '../src/config/validate.mjs';
+import {handleContact} from '../lib/contact.mjs';
+import {packageHandoff} from '../scripts/package.mjs';
+const config=JSON.parse(await readFile('src/config/site.json','utf8'));
+test('normalizes accepted origin to browser Origin syntax',()=>{const normalized=validateConfig({...config,origin:'https://EXAMPLE.test/'});assert.equal(normalized.origin,'https://example.test');});
+test('rejects unvalidated extra theme entries',()=>{assert.throws(()=>validateConfig({...config,theme:{...config.theme,asset:'red;background:url(https://tracker.invalid)'}}));});
+test('rejects unreadable heading and muted surface combinations',()=>{assert.throws(()=>validateConfig({...config,theme:{ink:'#102A43',accent:'#767676',surface:'#000000',text:'#767676'}}));});
+test('accepts the promised Unicode message within the bounded encoded budget',async()=>{const origin='http://localhost';const req=new Request(origin+'/api/contact',{method:'POST',headers:{Origin:origin,Accept:'application/json'},body:new URLSearchParams({name:'Sample owner',email:'sample@example.test',business:'',service:'website',message:'文'.repeat(2000),website:''})});let calls=0;const r=await handleContact(req,{origin,mode:'demo',services:['website']},{deliver:async()=>calls++});assert.equal(r.status,200);assert.equal(calls,1);});
+test('default nested handoff path works without copying itself',async()=>{const target=join(process.cwd(),'handoff','regression-'+process.pid);try{await packageHandoff(target);const m=JSON.parse(await readFile(join(target,'MANIFEST.json'),'utf8'));assert.ok(m.files['site/index.html']);assert.ok(m.files['source/package-lock.json']);assert.ok(!Object.keys(m.files).some(n=>n.includes('handoff/')));}finally{await rm(target,{recursive:true,force:true});}});

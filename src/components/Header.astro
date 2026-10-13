@@ -1,0 +1,12 @@
+---
+import {site} from '../config/site.mjs';
+const {current}=Astro.props;
+const links=site.pages.filter(p=>p.slug&&p.slug!=='privacy').map(p=>[p.slug,p.navLabel||p.slug.charAt(0).toUpperCase()+p.slug.slice(1)]);
+---
+<a class="skip-link" href="#main">Skip to content</a>
+{site.mode==='demo' && <div class="demo-banner" role="region" aria-label="Demonstration notice">Private demonstration · EZERWRIGHT launch candidate · Sample information only</div>}
+<header class="site-header"><div class="container header-inner">
+<a href="/" class="identity" aria-label={`${site.name} home`}><span class="identity-symbol" aria-hidden="true">↗</span><span>{site.name}</span></a>
+<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" hidden>Menu <span aria-hidden="true">＋</span></button>
+<nav id="main-navigation" aria-label="Main navigation"><ul>{links.map(([slug,label])=><li><a href={`/${slug}/`} aria-current={current===slug?'page':undefined}>{label}</a></li>)}</ul></nav>
+</div></header>

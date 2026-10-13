@@ -1,0 +1,118 @@
+{
+  "name": "EZERWRIGHT",
+  "origin": "https://ezerwright.test",
+  "mode": "demo",
+  "productionApproved": false,
+  "email": "hello@example.invalid",
+  "phone": "",
+  "theme": {
+    "ink": "#102A43",
+    "accent": "#2455DB",
+    "surface": "#F4F7FC",
+    "text": "#14253D"
+  },
+  "hero": {
+    "eyebrow": "Website development for growing businesses · Private demonstration",
+    "title": "A stronger website.\nA clearer way forward.",
+    "description": "EZERWRIGHT is preparing practical, thoughtfully crafted, responsive websites for small businesses. Inspired by strong help and skilled craftsmanship. This is a private demonstration; public launch and live enquiries are not enabled.",
+    "primary": "Explore a project",
+    "secondary": "See the website scope"
+  },
+  "services": [
+    {
+      "id": "website",
+      "title": "Professional business websites",
+      "summary": "Clear, mobile-ready pages that help customers understand your business and take the next step.",
+      "detail": "The starting offer covers up to five marketing pages, basic on-page SEO, one scoped contact form, two revision rounds, and portable handoff."
+    },
+    {
+      "id": "systems",
+      "title": "Business systems (future)",
+      "summary": "A future service for helpful workflows, data and connected tools.",
+      "detail": "Not included in the initial $500 website package. Offered only after a separate agreement and scope."
+    },
+    {
+      "id": "automation",
+      "title": "Automation & AI (future)",
+      "summary": "Targeted improvements where automation makes practical business sense.",
+      "detail": "Not included in the $500 package. No current promise of implementation or support is made."
+    }
+  ],
+  "approach": {
+    "title": "Useful work. Clear steps.",
+    "intro": "A good project gives the owner something they can review, understand and own. Each step has a clear outcome.",
+    "steps": [
+      {
+        "title": "Define",
+        "text": "Agree the pages, content, contact route and scope in writing."
+      },
+      {
+        "title": "Build",
+        "text": "Create a private review version from accurate, approved information."
+      },
+      {
+        "title": "Review",
+        "text": "Resolve two consolidated revision rounds and obtain explicit staging acceptance."
+      },
+      {
+        "title": "Hand over",
+        "text": "Receive the cleared balance, deliver portable files and launch only with client approval."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "question": "What is included in the $500 website?",
+      "answer": "Up to five marketing pages, one form with up to six fields, basic on-page SEO, two revision rounds and portable handover. A short client-approved privacy utility page is included beyond the marketing pages."
+    },
+    {
+      "question": "When is payment due?",
+      "answer": "$250 after written scope approval to begin. $250 after explicit final staging acceptance, before handover or deployment. Silence is not acceptance."
+    },
+    {
+      "question": "Can the site change after launch?",
+      "answer": "Yes. Content updates, seasonal changes, integrations and ongoing maintenance can be agreed separately. The website is not tied to compulsory maintenance."
+    },
+    {
+      "question": "Are leads or rankings guaranteed?",
+      "answer": "No. The work is a defined website deliverable, with practical quality checks and no ranking, lead or sales guarantee."
+    }
+  ],
+  "living": {
+    "title": "Built to remain useful.",
+    "description": "Clear contact routes, content that can be updated, and client-owned portable files. Later improvements can be agreed separately—never implied as part of the starter package."
+  },
+  "pages": [
+    {
+      "slug": "",
+      "title": "EZERWRIGHT | Practical websites for growing businesses",
+      "description": "Private EZERWRIGHT agency demonstration: professional mobile-friendly website delivery, clear scope, and practical client-owned handoff."
+    },
+    {
+      "slug": "services",
+      "title": "EZERWRIGHT | Website services and scope",
+      "description": "Explore the EZERWRIGHT proposed $500 five-page marketing website package, two revisions and separately scoped future services."
+    },
+    {
+      "slug": "approach",
+      "title": "EZERWRIGHT | Our delivery approach",
+      "description": "A defined process for scope, private staging, two revisions, explicit acceptance and portable client-owned handoff."
+    },
+    {
+      "slug": "living",
+      "navLabel": "Living websites",
+      "title": "EZERWRIGHT | What makes websites useful over time",
+      "description": "Explore the EZERWRIGHT philosophy for websites that support enquiries, useful updates, thoughtful interactions and client ownership."
+    },
+    {
+      "slug": "contact",
+      "title": "EZERWRIGHT | Private contact-form demonstration",
+      "description": "Demo-only contact form for synthetic test submissions. No real email delivery, commercial inquiry intake or public deployment."
+    },
+    {
+      "slug": "privacy",
+      "title": "EZERWRIGHT | Demo privacy notice",
+      "description": "Private EZERWRIGHT demonstration privacy information for synthetic test enquiries only; public policy requires approved business details."
+    }
+  ]
+}
