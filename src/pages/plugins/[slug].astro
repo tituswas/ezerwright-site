@@ -1,0 +1,18 @@
+---
+import PluginsLayout from '../../layouts/PluginsLayout.astro';
+import {site} from '../../config/site.mjs';
+import {publishedPlugins} from '../../config/plugins.mjs';
+export function getStaticPaths(){return site.template==='client'?[]:publishedPlugins.map(plugin=>({params:{slug:plugin.slug},props:{plugin}}));}
+const {plugin}=Astro.props;
+---
+<PluginsLayout title={`${plugin.name} | EZERWRIGHT Plugins`} description={plugin.summary} slug={`plugins/${plugin.slug}`}>
+  <section class="container plugin-services-intro"><a class="text-link" href="/plugins/">← All plugins</a><h1>{plugin.name}</h1><p class="plugin-lead">{plugin.summary}</p><div class="actions"><a class="button" href={plugin.links.install}>Installation source <span aria-hidden="true">↗</span></a><a class="text-link" href={plugin.links.docs}>Read documentation</a></div><p class="small-copy">Review requirements, permissions and data practices before installing.</p></section>
+  <div class="container plugin-detail"><aside aria-label="Release information"><dl><dt>Version</dt><dd>{plugin.version}</dd><dt>Released</dt><dd><time datetime={plugin.releaseDate}>{plugin.releaseDate}</time></dd><dt>License</dt><dd>{plugin.license}</dd><dt>Source</dt><dd><a href={plugin.links.source}>View source</a></dd></dl></aside><div>
+    <section><h2>Compatibility</h2><ul>{plugin.platforms.map(item=><li>{item}</li>)}</ul></section>
+    <section><h2>Before you install</h2><ul>{plugin.prerequisites.map(item=><li>{item}</li>)}</ul></section>
+    <section><h2>Permissions</h2><ul>{plugin.permissions.map(item=><li>{item}</li>)}</ul></section>
+    <section><h2>Data & security</h2><p>{plugin.dataPractices}</p></section>
+    <section><h2>Installation</h2><ol>{plugin.installation.map(item=><li>{item}</li>)}</ol></section>
+    <section><h2>Need a hand?</h2><p>Installation assistance and support are separately scoped. <a href="/plugins/services/">Explore integration services</a> or <a href="/contact/">discuss what you need</a>.</p></section>
+  </div></div>
+</PluginsLayout>

@@ -1,0 +1,147 @@
+[
+  {
+    "route": "plugins",
+    "width": 320,
+    "overflow": false,
+    "axe": [],
+    "skip": true,
+    "mainFocus": true,
+    "menu": true,
+    "motion": {
+      "transition": "0s",
+      "animation": "none"
+    },
+    "errors": []
+  },
+  {
+    "route": "plugins",
+    "width": 390,
+    "overflow": false,
+    "axe": [],
+    "skip": true,
+    "mainFocus": true,
+    "menu": true,
+    "motion": {
+      "transition": "0s",
+      "animation": "none"
+    },
+    "errors": []
+  },
+  {
+    "route": "plugins",
+    "width": 768,
+    "overflow": false,
+    "axe": [],
+    "skip": true,
+    "mainFocus": true,
+    "menu": true,
+    "motion": {
+      "transition": "0s",
+      "animation": "none"
+    },
+    "errors": []
+  },
+  {
+    "route": "plugins",
+    "width": 1024,
+    "overflow": false,
+    "axe": [],
+    "skip": true,
+    "mainFocus": true,
+    "menu": true,
+    "motion": {
+      "transition": "0s",
+      "animation": "none"
+    },
+    "errors": []
+  },
+  {
+    "route": "plugins",
+    "width": 1440,
+    "overflow": false,
+    "axe": [],
+    "skip": true,
+    "mainFocus": true,
+    "menu": true,
+    "motion": {
+      "transition": "0s",
+      "animation": "none"
+    },
+    "errors": []
+  },
+  {
+    "route": "plugins/services",
+    "width": 320,
+    "overflow": false,
+    "axe": [],
+    "skip": true,
+    "mainFocus": true,
+    "menu": true,
+    "motion": {
+      "transition": "0s",
+      "animation": "none"
+    },
+    "errors": []
+  },
+  {
+    "route": "plugins/services",
+    "width": 390,
+    "overflow": false,
+    "axe": [],
+    "skip": true,
+    "mainFocus": true,
+    "menu": true,
+    "motion": {
+      "transition": "0s",
+      "animation": "none"
+    },
+    "errors": []
+  },
+  {
+    "route": "plugins/services",
+    "width": 768,
+    "overflow": false,
+    "axe": [],
+    "skip": true,
+    "mainFocus": true,
+    "menu": true,
+    "motion": {
+      "transition": "0s",
+      "animation": "none"
+    },
+    "errors": []
+  },
+  {
+    "route": "plugins/services",
+    "width": 1024,
+    "overflow": false,
+    "axe": [],
+    "skip": true,
+    "mainFocus": true,
+    "menu": true,
+    "motion": {
+      "transition": "0s",
+      "animation": "none"
+    },
+    "errors": []
+  },
+  {
+    "route": "plugins/services",
+    "width": 1440,
+    "overflow": false,
+    "axe": [],
+    "skip": true,
+    "mainFocus": true,
+    "menu": true,
+    "motion": {
+      "transition": "0s",
+      "animation": "none"
+    },
+    "errors": []
+  },
+  {
+    "noJS": true,
+    "overflow": false,
+    "navigation": true
+  }
+]
