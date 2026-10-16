@@ -6,10 +6,10 @@ Implemented on `feat/plugins-catalog`, based on `c0e81e7`. No merge or deploymen
 
 - Node 24.19.0 satisfies the package engine (`>=22.19.0`).
 - `npm ci --ignore-scripts`: passed, lockfile unchanged.
-- `npm run qa`: **59 passed, 0 failed, 0 skipped**. Includes the existing contact, rate-limit, Turnstile, recipient, release, portability and commercial-contract tests.
+- `npm run qa`: **60 passed, 0 failed, 0 skipped**. Includes the existing contact, rate-limit, Turnstile, recipient, release, portability and commercial-contract tests.
 - New checks cover empty/published/draft manifests, invalid slugs/URLs/dates, required disclosure fields, duplicate and reserved slugs, real Astro detail generation, escaped hostile text, production canonical/indexing/CSP/redirects and client-template route exclusion. Synthetic build fixtures are temporary and deleted.
 - Existing static SEO/link/budget and axe checks now include plugin routes. No production dependencies or additional JavaScript introduced.
-- Chromium with axe-core 4.11.0: both pages at widths 320, 390, 768, 1024 and 1440; **zero violations**, including rendered color contrast, **zero horizontal overflow**, **zero page exceptions**. Skip-link focus, mobile menu/Escape, and reduced-motion checks pass. No-JavaScript navigation is visible and wraps at 320px. See `browser-checks.json`.
+- Production-mode Chromium with axe-core 4.11.0: all eight agency pages at widths 320, 390, 768, 1024 and 1440 (**40 checks**); **zero violations**, including rendered color contrast, **zero horizontal overflow**, **zero page exceptions**. Skip-link focus, menu/Escape and reduced-motion checks pass. All eight pages also pass no-JavaScript navigation and 200% root text-size reflow at 320px. See `browser-checks.json`.
 - `git diff --check`: passed.
 
 ## Impeccable design review and refinement
@@ -28,7 +28,21 @@ Final confirmation: browser/axe checks and full QA passed after fixes. Typograph
 
 ### Screenshots
 
-Demo-mode captures intentionally retain the existing demonstration notice and noindex policy.
+These are **production-mode** captures at 1440px desktop and 390px mobile, using the existing production configuration in a separate local copy with a synthetic public Turnstile key (`0xsyntheticFixtureKey`). No production credential or tracked configuration was changed. The preview is a local static server; external browser requests and every non-GET/HEAD request are blocked. The Turnstile script request was intentionally blocked; no form was submitted, no email was sent, and no deployment occurred. This does not emulate Cloudflare's HTTP-header enforcement or verify a live challenge.
+
+The initial demo screenshots were reviewed and replaced, not retouched or hidden with screenshot-only CSS. Production already conditions out the demonstration banner, sample-information notice and demo-only footer. Tests now verify that on all eight agency pages plus a synthetic published detail fixture; demo tests confirm the same notices and noindex/contact safeguards remain present in demo mode.
+
+Plugins appears once in the header and footer on every agency page. Above 680px, navigation is visible and Menu is hidden; at mobile widths, Menu opens navigation and Escape closes it and restores button focus. The screenshot capture happens before any keyboard test, so it represents the normal unfocused page.
+
+The additional enlarged-text check exposed existing unbreakable headings on the home, services and privacy pages. An agency-only `overflow-wrap:anywhere` heading rule resolves the text overflow and grid min-content expansion without changing normal-size typography, copy, commercial terms, client-template behavior or security settings. The browser verifier failed on this case before the fix and passes after it.
+
+Re-run browser checks against an isolated synthetic production build (requires Python Playwright and `/usr/bin/chromium`):
+
+```sh
+python docs/plugins-review/verify-production.py /path/to/isolated/dist /tmp/ezerwright-review-evidence
+```
+
+The verifier starts and stops its own loopback-only static server. Use the original repository's `node_modules/axe-core`; no browser dependency was added to the product.
 
 | Catalog desktop | Catalog mobile |
 | --- | --- |

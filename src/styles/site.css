@@ -12,3 +12,5 @@
 .agency-footer a:focus-visible{outline-color:white}
 @media(min-width:681px) and (max-width:1080px){.agency-header .header-inner{flex-wrap:wrap;padding-block:16px}.agency-header ul{gap:24px}.agency-header nav{margin-left:auto}}
 @media(max-width:680px){.agency-header.js-menu .menu-toggle{display:inline-flex}.agency-header ul{flex-wrap:wrap;column-gap:22px;row-gap:0}}
+/* Enlarged text must not force agency headings or their grid tracks off-screen. */
+.agency-header + main :is(h1,h2,h3){overflow-wrap:anywhere}

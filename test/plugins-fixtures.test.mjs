@@ -19,6 +19,16 @@ test('published routes escape text, drafts stay private, production SEO and prot
     await writeFile(join(target,'src/config/plugins.json'),JSON.stringify([plugin,{...plugin,status:'draft',slug:'private-draft'}]));
     const build=spawnSync(process.execPath,['scripts/build.mjs'],{cwd:target,encoding:'utf8',env:{...process.env,SITE_CONFIG:'src/config/site.json',TURNSTILE_SITE_KEY:'0xsyntheticFixtureKey',ASTRO_TELEMETRY_DISABLED:'1'}});
     assert.equal(build.status,0,build.stdout+build.stderr);
+    // Production visibility is checked on every agency route, including future details.
+    for(const slug of [...config.pages.map(page=>page.slug),'plugins','plugins/services','plugins/synthetic-only']){
+      const document=new JSDOM(await readFile(join(target,`dist/${slug?slug+'/':''}index.html`),'utf8')).window.document;
+      assert.equal(document.querySelector('.demo-banner'),null,slug);
+      assert.doesNotMatch(document.body.textContent,/private demonstration|sample information only|not a live business enquiry page|synthetic details only|no email is sent/i,slug);
+      assert.equal(document.querySelector('meta[name=robots]').content,'index, follow',slug);
+      assert.equal(document.querySelector('nav[aria-label="Main navigation"] a[href="/plugins/"]').textContent,'Plugins',slug);
+      assert.equal(document.querySelector('nav[aria-label="Footer navigation"] a[href="/plugins/"]').textContent,'Plugins',slug);
+      assert.match(document.querySelector('.footer-note').textContent,/© EZERWRIGHT/,slug);
+    }
     const html=await readFile(join(target,'dist/plugins/synthetic-only/index.html'),'utf8');
     const d=new JSDOM(html).window.document;
     assert.equal(d.querySelector('h1').textContent,plugin.name);

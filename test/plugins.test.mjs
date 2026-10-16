@@ -43,3 +43,19 @@ test('catalog and services are separate static routes with correct SEO and hones
   assert.match(sitemap,/<loc>https:\/\/[^<]+\/plugins\/services\/<\/loc>/);
   assert.equal(site.pages.length,6);
 });
+
+test('demo agency routes retain notices, noindex and demo contact boundaries',async()=>{
+  if(site.mode!=='demo'||site.template==='client')return;
+  for(const slug of [...site.pages.map(page=>page.slug),'plugins','plugins/services']){
+    const d=new JSDOM(await readFile(`dist/${slug?slug+'/':''}index.html`,'utf8')).window.document;
+    assert.match(d.querySelector('.demo-banner').textContent,/Private demonstration.*Sample information only/);
+    assert.match(d.querySelector('.footer-note').textContent,/Private demonstration only/);
+    assert.equal(d.querySelector('meta[name=robots]').content,'noindex, nofollow');
+    assert.equal(d.querySelector('nav[aria-label="Main navigation"] a[href="/plugins/"]').textContent,'Plugins');
+    assert.equal(d.querySelector('nav[aria-label="Footer navigation"] a[href="/plugins/"]').textContent,'Plugins');
+  }
+  const contact=await readFile('dist/contact/index.html','utf8');
+  assert.match(contact,/Use synthetic details only/);
+  assert.match(contact,/captures locally and sends no email/);
+  assert.match(await readFile('dist/robots.txt','utf8'),/Disallow: \//);
+});
