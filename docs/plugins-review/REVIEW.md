@@ -1,12 +1,12 @@
 # EZERWRIGHT Plugins review
 
-Implemented on `feat/plugins-catalog`, based on `c0e81e7`. No merge or deployment authorized or performed.
+Implemented on `feat/plugins-catalog`, based on `c0e81e7`. No merge or manual deployment authorized or performed. **Merge recommendation: hold pending owner review of Cloudflare deployment controls and failed hosted checks; see [deployment assessment](DEPLOYMENT.md).**
 
 ## Verification
 
 - Node 24.19.0 satisfies the package engine (`>=22.19.0`).
 - `npm ci --ignore-scripts`: passed, lockfile unchanged.
-- `npm run qa`: **60 passed, 0 failed, 0 skipped**. Includes the existing contact, rate-limit, Turnstile, recipient, release, portability and commercial-contract tests.
+- `npm run qa`: **61 passed, 0 failed, 0 skipped**. Includes the existing contact, rate-limit, Turnstile, recipient, release, portability and commercial-contract tests.
 - New checks cover empty/published/draft manifests, invalid slugs/URLs/dates, required disclosure fields, duplicate and reserved slugs, real Astro detail generation, escaped hostile text, production canonical/indexing/CSP/redirects and client-template route exclusion. Synthetic build fixtures are temporary and deleted.
 - Existing static SEO/link/budget and axe checks now include plugin routes. No production dependencies or additional JavaScript introduced.
 - Production-mode Chromium with axe-core 4.11.0: all eight agency pages at widths 320, 390, 768, 1024 and 1440 (**40 checks**); **zero violations**, including rendered color contrast, **zero horizontal overflow**, **zero page exceptions**. Skip-link focus, menu/Escape and reduced-motion checks pass. All eight pages also pass no-JavaScript navigation and 200% root text-size reflow at 320px. See `browser-checks.json`.
@@ -51,6 +51,20 @@ The verifier starts and stops its own loopback-only static server. Use the origi
 | Services desktop | Services mobile |
 | --- | --- |
 | ![Services desktop](plugins-services-desktop.png) | ![Services mobile](plugins-services-mobile.png) |
+
+## Final logo and navigation polish
+
+The missing white arrow was confirmed in the earlier captures. The header used the Unicode northeast-arrow character inside the Manrope wordmark link. FontTools inspection showed the bundled Manrope cmap does not contain U+2197; Chromium's platform-font trace attributed the rendered character to Manrope while the mark screenshot showed only the navy square. Inter contains an arrow glyph, but it was not the font selected for this span. Font fallback therefore did not give a reliable mark in this environment.
+
+The fix reuses the existing, unchanged `/favicon.svg` as the decorative image inside the same navy square. The arrow geometry, colors, corner radius and EZERWRIGHT wordmark are preserved. It no longer depends on font coverage. The home link retains its accessible name; the image has empty alt text inside the existing aria-hidden span and adds no keyboard tab stop.
+
+Menu now uses an aria-hidden, nonfocusable 16px vector plus icon, replacing the fullwidth-plus text glyph. Agency-only flex alignment and an explicit 8px gap separate the label from the icon without changing the breakpoint or JavaScript behavior. The unchanged shared UI script still controls expanded state, Escape dismissal and focus restoration; no-JavaScript navigation remains visible.
+
+Final checks: all 40 agency page/width cases pass logo asset loading, visible keyboard focus on the home link, Menu spacing/touch height, navigation, axe, reduced motion and reflow checks. Additional checks pass at exactly 680px (Menu) and 681px (desktop navigation), including following the Plugins link, and the logo loads at desktop/mobile sizes with both webfonts blocked. The regression test for a font-independent existing logo asset failed before the fix and passes after it. All four production screenshots were replaced and visually inspected; the arrow is visible and the mobile control has clear separation.
+
+The full suite passes 61 tests, with no failures or skips. The default demo build still retains its protections. No website-package copy, offer/configuration, plugin manifest/routing, form code, Worker code, font files, favicon artwork, credentials, security headers, privacy content or approval gates changed in this polish pass. No new dependency or JavaScript was introduced.
+
+Local verification supports owner code review, **not an unconditional merge recommendation**. Cloudflare's integration is active and previous main/PR hosted checks failed. Its current production trigger settings and failure logs remain unverified. The review-only commit uses the documented Pages skip prefix; it must not be taken to suppress a future merge deployment.
 
 ## Review and deployment checklist (not executed)
 

@@ -14,3 +14,8 @@
 @media(max-width:680px){.agency-header.js-menu .menu-toggle{display:inline-flex}.agency-header ul{flex-wrap:wrap;column-gap:22px;row-gap:0}}
 /* Enlarged text must not force agency headings or their grid tracks off-screen. */
 .agency-header + main :is(h1,h2,h3){overflow-wrap:anywhere}
+
+/* Keep the existing arrow mark independent of font coverage; align the menu label/icon. */
+.identity-symbol img{width:100%;height:100%}
+.agency-header .menu-toggle{align-items:center;justify-content:center;gap:8px}
+.agency-header .menu-toggle svg{display:block;flex:none}
