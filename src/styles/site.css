@@ -5,3 +5,17 @@
 @media(max-width:920px){.hero{gap:28px;padding-block:70px}.hero h1{font-size:clamp(2.5rem,5.5vw,3.7rem)}.living-grid{gap:40px}.process-grid{grid-template-columns:repeat(2,1fr)}.offer-grid{gap:36px}.contact-grid{gap:32px}.card{padding:24px}.section{padding-block:66px}}
 @media(max-width:680px){.container{width:calc(100% - 36px)}.header-inner{min-height:78px;flex-wrap:wrap;gap:0;padding-block:16px}.identity{font-size:14px;gap:8px}.identity-symbol{width:29px;height:29px;font-size:20px}.menu-toggle{margin-left:auto}.site-header nav{width:100%;margin-top:14px}.site-header ul{gap:22px}.js-menu #main-navigation:not(.is-open){display:none}.hero{grid-template-columns:1fr;padding-block:54px;gap:38px}.hero h1{font-size:clamp(2.4rem,9.7vw,3.5rem);letter-spacing:-.055em}.hero-description{font-size:17px}.hero-visual{max-width:480px;margin:0 auto;width:100%;padding:10px 10px 42px}.hero-note{font-size:11px}.actions{gap:17px}.strip-inner{grid-template-columns:1fr;gap:10px;padding-block:22px}.section-heading{display:block}.section-heading>p{margin-top:24px}.card-grid,.living-grid,.offer-grid,.contact-grid{grid-template-columns:1fr}.card-grid{gap:16px}.section{padding-block:56px}.surface-section{padding-block:52px}.living-grid{gap:28px}.cta-section{padding-block:58px;flex-direction:column;align-items:start;gap:26px}.footer-main{display:block}.footer-main nav{gap:22px;margin-top:20px}.footer-note{display:block}.footer-note span{display:block;margin-top:12px}.page-intro{padding-block:54px 38px}.page-intro h1{font-size:clamp(2.35rem,9.5vw,3.3rem)}.page-intro>p:last-child{font-size:17px}.offer-card{padding:28px}.form-row{grid-template-columns:1fr;gap:0}.contact-grid{padding-bottom:60px;gap:34px}.contact-form{padding:24px 20px}.process-grid{grid-template-columns:1fr}.contact-aside{padding-inline:4px}.top-tight{padding-top:14px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.button:hover,.card-link:hover{transform:none}}
+
+/* Agency navigation accommodates Plugins; client-template styling stays unchanged. */
+.agency-header .menu-toggle{display:none}
+.agency-header nav a[aria-current]{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:7px}
+.agency-footer a:focus-visible{outline-color:white}
+@media(min-width:681px) and (max-width:1080px){.agency-header .header-inner{flex-wrap:wrap;padding-block:16px}.agency-header ul{gap:24px}.agency-header nav{margin-left:auto}}
+@media(max-width:680px){.agency-header.js-menu .menu-toggle{display:inline-flex}.agency-header ul{flex-wrap:wrap;column-gap:22px;row-gap:0}}
+/* Enlarged text must not force agency headings or their grid tracks off-screen. */
+.agency-header + main :is(h1,h2,h3){overflow-wrap:anywhere}
+
+/* Keep the existing arrow mark independent of font coverage; align the menu label/icon. */
+.identity-symbol img{width:100%;height:100%}
+.agency-header .menu-toggle{align-items:center;justify-content:center;gap:8px}
+.agency-header .menu-toggle svg{display:block;flex:none}

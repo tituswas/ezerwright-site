@@ -1,0 +1,8 @@
+---
+import Layout from './Layout.astro';
+import '../styles/plugins.css';
+const {title, description, slug='plugins'}=Astro.props;
+---
+<Layout page={{title, description, slug}}>
+  <div class="plugins"><slot/></div>
+</Layout>

@@ -1,0 +1,60 @@
+{
+  "observedDate": "2026-10-16",
+  "branch": {
+    "name": "main",
+    "sha": "c0e81e7bc677c24e58f3a14e04fc44bca1f31b4f",
+    "protected": false,
+    "protection": {
+      "enabled": false,
+      "required_status_checks": {
+        "enforcement_level": "off",
+        "contexts": [],
+        "checks": []
+      }
+    }
+  },
+  "rulesets": [],
+  "protectionEndpoint": {
+    "status": 403,
+    "message": "Resource not accessible by integration"
+  },
+  "actions": {
+    "trackedWorkflows": false,
+    "remoteWorkflowsDirectoryStatus": 404,
+    "workflowRuns": 0
+  },
+  "prChecks": [
+    {
+      "id": 116989845320,
+      "name": "Cloudflare Pages",
+      "status": "completed",
+      "conclusion": "failure",
+      "head_sha": "21589b375f70c0dfa33fa4f7cc1365d944949fb3",
+      "started_at": "2026-10-16T13:12:25Z",
+      "completed_at": "2026-10-16T13:12:25Z",
+      "html_url": "https://github.com/tituswas/ezerwright-site/runs/116989845320",
+      "details_url": "https://dash.cloudflare.com/?to=/7aa07ab09233695a7ec7d5a991722b3c/pages/view/ezerwright-site/e0a8209d-4db0-495d-9bd7-969b879d2a6c",
+      "summary": "<table><tr><td><strong>Latest commit:</strong> </td><td>\n<code>21589b3</code>\n</td></tr>\n<tr><td><strong>Status:</strong></td><td>🚫&nbsp; Build failed.</td></tr>\n</table>\n\n[View logs](https://dash.cloudflare.com/?to=/7aa07ab09233695a7ec7d5a991722b3c/pages/view/ezerwright-site/e0a8209d-4db0-495d-9bd7-969b879d2a6c)\n",
+      "app": "cloudflare-workers-and-pages"
+    }
+  ],
+  "mainChecks": [
+    {
+      "id": 115422621560,
+      "name": "Cloudflare Pages",
+      "status": "completed",
+      "conclusion": "failure",
+      "head_sha": "c0e81e7bc677c24e58f3a14e04fc44bca1f31b4f",
+      "started_at": "2026-10-13T16:50:56Z",
+      "completed_at": "2026-10-13T16:50:56Z",
+      "html_url": "https://github.com/tituswas/ezerwright-site/runs/115422621560",
+      "details_url": "https://dash.cloudflare.com/?to=/7aa07ab09233695a7ec7d5a991722b3c/pages/view/ezerwright-site/dde5c9ff-146e-41b3-9beb-5021016591a8",
+      "summary": "<table><tr><td><strong>Latest commit:</strong> </td><td>\n<code>c0e81e7</code>\n</td></tr>\n<tr><td><strong>Status:</strong></td><td>🚫&nbsp; Build failed.</td></tr>\n</table>\n\n[View logs](https://dash.cloudflare.com/?to=/7aa07ab09233695a7ec7d5a991722b3c/pages/view/ezerwright-site/dde5c9ff-146e-41b3-9beb-5021016591a8)\n",
+      "app": "cloudflare-workers-and-pages"
+    }
+  ],
+  "cloudflareSettingsAccessible": false,
+  "conclusion": "Git integration is active; exact production branch/automatic-production controls remain unverified. Merging is potentially production-affecting. Hold merge pending owner review of settings and failed hosted checks.",
+  "reviewPush": "Use [CF-Pages-Skip] prefix per Cloudflare Pages documentation to omit this review-only deployment; no setting changes.",
+  "source": "https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/"
+}

@@ -18,7 +18,7 @@ The tests include a temporary production fixture using a synthetic Turnstile key
 
 `src/config/production.json` has the actual origin `https://ezerwright.com`, contact `hello@ezerwright.com`, public copy, and a privacy notice awaiting owner review. Set Pages build variables `SITE_CONFIG=src/config/production.json`, a real `TURNSTILE_SITE_KEY`, and `PRIVACY_APPROVED=true` only after that review. Keep `npm run build` and output `dist`. Without these values the production build stops. Cloudflare Pages also refuses a demo-mode build, so missing release settings cannot silently republish the demonstration. The local default remains available for synthetic QA.
 
-The production build emits canonical URLs, indexable robots/sitemap, CSP with hashes for inline structured data, HSTS, anti-framing and privacy headers. It redirects the main Pages hostname and www hostname to the apex domain. The www redirect also requires a valid configured Pages custom domain/certificate; the file alone does not create it.
+The production build emits canonical URLs, indexable robots/sitemap, CSP with hashes for inline structured data, HSTS, anti-framing and privacy headers. Host redirects are not generated in `_redirects`: Cloudflare Pages accepts source paths only. Account-level rules for www and the Pages hostname require separate owner approval; see [redirect setup and release checklist](docs/CLOUDFLARE_REDIRECTS.md).
 
 ## Contact delivery
 

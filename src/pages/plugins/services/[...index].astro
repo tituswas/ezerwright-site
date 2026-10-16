@@ -1,0 +1,17 @@
+---
+import PluginsLayout from '../../../layouts/PluginsLayout.astro';
+import {site} from '../../../config/site.mjs';
+export function getStaticPaths(){return site.template==='client'?[]:[{params:{index:undefined}}];}
+const services=[
+  ['Installation assistance','Work through plugin or MCP setup, host requirements and permissions. Availability depends on the tools and access involved.'],
+  ['Custom connector work','Discuss a connection between the tools you use, with agreed data flows, access boundaries and a defined deliverable.'],
+  ['Integration audits','Review an existing setup, its permissions and data handling, and identify practical improvements within an agreed review scope.'],
+  ['Support & handover','Agree documentation, troubleshooting and any ongoing support explicitly. Maintenance is scoped separately.']
+];
+---
+<PluginsLayout title="Plugin & integration services | EZERWRIGHT" description="Discuss plugin and MCP installation, custom connectors, integration audits and separately scoped support with EZERWRIGHT." slug="plugins/services">
+  <section class="container plugin-services-intro"><a class="text-link" href="/plugins/">← Back to plugins</a><h1>A connection that fits<br/><span>the way you work.</span></h1><p class="plugin-lead">Tell us what should work better between your tools. We’ll start with the task, understand the access involved and discuss a clear scope.</p><a class="button" href="/contact/">Discuss your integration <span aria-hidden="true">↗</span></a><p class="small-copy">A separate enquiry. Scope, pricing and availability are agreed before work begins.</p></section>
+  <section class="container plugin-service-list" aria-labelledby="services-title"><h2 id="services-title">Where we can start</h2><div>{services.map(([title,description])=><article><h3>{title}</h3><p>{description}</p></article>)}</div></section>
+  <section class="plugin-catalog"><div class="container plugin-enquiry"><div><h2>Bring the task.<br/>We’ll discuss the connection.</h2><p>You don’t need a technical specification to start. A clear example of the work you want to improve is useful.</p></div><div><h3>Helpful details for your enquiry</h3><ul><li>The tools and host applications involved</li><li>What you do today, and what should change</li><li>The data or permissions the connection may need</li><li>Any timing, hosting or support constraints</li></ul><p class="small-copy">Use “Not sure yet” on the contact form. Please don’t send passwords, access tokens or private customer information.</p><a class="text-link" href="/contact/">Start a conversation <span aria-hidden="true">↗</span></a></div></div></section>
+  <section class="container plugin-package"><h2>A separate scope.<br/>The same care.</h2><div><p>Plugin installation, connectors, audits and support are separate from the existing <a href="/services/">$500 website package</a>. They are not included in its price or revision rounds.</p><p>The website offer remains up to five marketing pages, two revision rounds and $250/$250 payments on its existing terms. Integration work, third-party costs and any ongoing support need a separate agreement.</p><a class="text-link" href="/services/">See the website scope <span aria-hidden="true">↗</span></a></div></section>
+</PluginsLayout>
