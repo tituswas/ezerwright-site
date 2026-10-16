@@ -41,7 +41,7 @@ test('published routes escape text, drafts stay private, production SEO and prot
     await assert.rejects(access(join(target,'dist/plugins/private-draft/index.html')));
     const sitemap=await readFile(join(target,'dist/sitemap.xml'),'utf8');assert.match(sitemap,/plugins\/synthetic-only\//);assert.doesNotMatch(sitemap,/private-draft/);
     const headers=await readFile(join(target,'dist/_headers'),'utf8');for(const text of ["frame-ancestors 'none'","form-action 'self'",'X-Frame-Options: DENY','Strict-Transport-Security'])assert.ok(headers.includes(text));
-    assert.match(await readFile(join(target,'dist/_redirects'),'utf8'),/https:\/\/www.ezerwright.com/);
+    await assert.rejects(access(join(target,'dist/_redirects')),{code:'ENOENT'},'production plugin routes must not inherit unsupported host redirects');
     const contact=await readFile(join(target,'dist/contact/index.html'),'utf8');assert.match(contact,/cf-turnstile/);assert.match(contact,/action="\/api\/contact"/);
     const services=JSON.parse(await readFile(join(target,'worker/generated-config.json'),'utf8')).services;assert.deepEqual(services,[...config.services.map(s=>s.id),'other']);
   }finally{await rm(parent,{recursive:true,force:true});}

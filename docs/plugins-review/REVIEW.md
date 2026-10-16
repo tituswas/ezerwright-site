@@ -1,6 +1,6 @@
 # EZERWRIGHT Plugins review
 
-Implemented on `feat/plugins-catalog`, based on `c0e81e7`. No merge or manual deployment authorized or performed. **Merge recommendation: hold pending owner review of Cloudflare deployment controls and failed hosted checks; see [deployment assessment](DEPLOYMENT.md).**
+Implemented on `feat/plugins-catalog`, based on `c0e81e7`. No merge or manual deployment authorized or performed. **Current release guidance: the owner confirms production and email delivery work. Preserve that system; see the [redirect repair and release checklist](../CLOUDFLARE_REDIRECTS.md). Local verification is not authorization to merge or deploy.**
 
 ## Verification
 
@@ -64,7 +64,7 @@ Final checks: all 40 agency page/width cases pass logo asset loading, visible ke
 
 The full suite passes 61 tests, with no failures or skips. The default demo build still retains its protections. No website-package copy, offer/configuration, plugin manifest/routing, form code, Worker code, font files, favicon artwork, credentials, security headers, privacy content or approval gates changed in this polish pass. No new dependency or JavaScript was introduced.
 
-Local verification supports owner code review, **not an unconditional merge recommendation**. Cloudflare's integration is active and previous main/PR hosted checks failed. Its current production trigger settings and failure logs remain unverified. The review-only commit uses the documented Pages skip prefix; it must not be taken to suppress a future merge deployment.
+Local verification supports owner code review, **not an unconditional merge recommendation**. Cloudflare integration is active; older failed-check observations preceded the owner’s confirmation of working production/email delivery. Current production trigger settings remain unverified. The review-only commit uses the documented Pages skip prefix; it must not be taken to suppress a future merge deployment.
 
 ## Review and deployment checklist (not executed)
 
@@ -77,3 +77,7 @@ Local verification supports owner code review, **not an unconditional merge reco
 ## Rollback
 
 Revert the feature commit and rebuild through the existing reviewed release process. No database, secret, Worker binding, recipient, API whitelist, DNS or marketplace state changed. Restoring an earlier static artifact should follow the existing owner-controlled release gates. No rollback deployment was executed.
+
+## Redirect repair follow-up
+
+Removed only the unsupported absolute-host `_redirects` generation. No fallback redirect was added. Two production fixtures now assert that `_redirects` is absent; they failed before the correction. The full QA suite and local browser checks are rerun without regenerating screenshots. Existing images remain valid because HTML, CSS, fonts and visual assets are unchanged. Owner-only account Bulk Redirect instructions, DNS/TLS prerequisites, expected path/query preservation, risks and a post-authorization checklist are in [CLOUDFLARE_REDIRECTS.md](../CLOUDFLARE_REDIRECTS.md). No working contact infrastructure or production settings were changed.

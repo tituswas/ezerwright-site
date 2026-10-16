@@ -1,6 +1,8 @@
-# Pre-merge deployment assessment — 16 October 2026
+# Pre-merge deployment assessment — historical 16 October 2026 snapshot
 
-**Recommendation: hold merge.** Local code verification can pass while merging changes the live website. The Cloudflare Git integration is confirmed active; its exact production branch and automatic-production controls cannot be read in this session. Treat merging PR #1 into `main` as potentially production-affecting. No deployment setting was changed.
+**Current update:** the owner subsequently confirmed a successful production deployment and actual form email delivery. The failed-check observations below are historical, not a current outage report. Preserve that working system; use the [current redirect repair and owner release checklist](../CLOUDFLARE_REDIRECTS.md). This task authorizes no production changes.
+
+**Historical recommendation: hold merge.** Local code verification can pass while merging changes the live website. The Cloudflare Git integration is confirmed active; its exact production branch and automatic-production controls cannot be read in this session. Treat merging PR #1 into `main` as potentially production-affecting. No deployment setting was changed.
 
 ## Read-only findings
 

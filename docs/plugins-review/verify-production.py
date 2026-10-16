@@ -1,5 +1,5 @@
 """Local-only browser verification. Requires Python Playwright and system Chromium.
-Usage: python verify-production-preview.py DIST_DIRECTORY EVIDENCE_DIRECTORY
+Usage: python verify-production-preview.py DIST_DIRECTORY EVIDENCE_DIRECTORY [--no-screenshots]
 External requests and all non-GET/HEAD requests are blocked. No forms submitted.
 """
 import functools, http.server, json, re, sys, threading
@@ -51,7 +51,7 @@ try:
     logo_ok=logo.count()==1 and logo.evaluate("e=>e.complete && e.naturalWidth>0 && e.getAttribute('src')==='/favicon.svg' && e.alt==='' && e.getBoundingClientRect().width>=29")
     menu_spacing=desktop or menu.evaluate("e=>getComputedStyle(e).gap==='8px' && getComputedStyle(e).alignItems==='center' && e.getBoundingClientRect().height>=44")
     # Capture a fresh, untouched document before keyboard tests or axe injection.
-    if slug in ['plugins','plugins/services'] and width in [390,1440]:
+    if '--no-screenshots' not in sys.argv[3:] and slug in ['plugins','plugins/services'] and width in [390,1440]:
      page.screenshot(path=str(out/(slug.replace('/','-')+('-mobile' if width==390 else '-desktop')+'.png')),full_page=True)
     page.keyboard.press('Tab');skip=page.evaluate("document.activeElement.textContent==='Skip to content'")
     page.keyboard.press('Enter');main=page.evaluate("document.activeElement.id==='main'")
