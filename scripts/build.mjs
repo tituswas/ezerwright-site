@@ -8,7 +8,7 @@ await rm('dist',{recursive:true,force:true});
 const child=spawnSync(process.execPath,['node_modules/astro/bin/astro.mjs','build'],{stdio:'inherit',env:{...process.env,ASTRO_TELEMETRY_DISABLED:'1'}});
 if(child.status!==0)process.exit(child.status||1);
 const escape=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
-await writeFile('dist/sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+[...site.pages,...pluginRoutes(site).map(slug=>({slug}))].map(p=>`<url><loc>${escape(new URL(p.slug?`/${p.slug}/`:'/',site.origin).href)}</loc></url>`).join('')+'</urlset>\n');
+await writeFile('dist/sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+[...site.pages,...pluginRoutes(site).map(slug=>({slug})),...(site.template==='client'?[]:['showcase/exterior','showcase/pool','showcase/landscape'].map(slug=>({slug})))].map(p=>`<url><loc>${escape(new URL(p.slug?`/${p.slug}/`:'/',site.origin).href)}</loc></url>`).join('')+'</urlset>\n');
 await writeFile('dist/robots.txt',site.mode==='demo'?'User-agent: *\nDisallow: /\n':`User-agent: *\nAllow: /\nSitemap: ${site.origin}/sitemap.xml\n`);
 await mkdir('worker',{recursive:true});
 await writeFile('worker/generated-config.json',JSON.stringify({origin:site.origin,mode:site.mode,services:[...site.services.map(s=>s.id),'other']},null,2)+'\n');
