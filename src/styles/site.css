@@ -19,3 +19,12 @@
 .identity-symbol img{width:100%;height:100%}
 .agency-header .menu-toggle{align-items:center;justify-content:center;gap:8px}
 .agency-header .menu-toggle svg{display:block;flex:none}
+
+/* Homepage-only midnight header to frame the cinematic agency experience. */
+.cinematic-site-header{background:#080f1c;border-bottom:1px solid #7099ac32}
+.cinematic-site-header .identity{color:#edf9f6}
+.cinematic-site-header .site-header nav a,.cinematic-site-header nav a{color:#bbd2d9}
+.cinematic-site-header nav a:hover,.cinematic-site-header nav a[aria-current]{color:#a9f0d7}
+.cinematic-site-header .menu-toggle{background:#142735;color:#e1f8ef;border-color:#6a899b}
+.cinematic-site-header .identity-symbol{background:#163e46}
+.cinematic-site-header .menu-toggle:focus-visible,.cinematic-site-header a:focus-visible{outline-color:#a9f0d7}
