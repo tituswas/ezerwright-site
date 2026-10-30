@@ -56,3 +56,9 @@
 .service-limit{border-left:2px solid #80aaba;padding:0 0 0 18px;margin:38px 0 0;color:#afc4ce;font-size:12px;line-height:1.9}
 @media(max-width:920px){.service-offer-grid{gap:30px}.service-spec-grid,.service-questions-grid{gap:35px}.service-price strong{font-size:clamp(5.2rem,10vw,8rem)}}
 @media(max-width:700px){.service-offer-grid,.service-spec-grid,.service-questions-grid{grid-template-columns:1fr}.service-offer-grid{padding:65px 0}.service-offer-tail{flex-wrap:wrap}.service-offer-intro h2{max-width:450px}.service-price-pane{box-shadow:13px 13px 0 #51747624}.service-spec-note{margin-top:30px}.agency-interior .service-spec,.agency-interior .service-questions{padding:70px 0}.service-rail>span:last-child{display:none}.service-payment{gap:14px}.service-price-head{gap:8px}.service-price strong{font-size:clamp(5.5rem,20vw,8.5rem)}}
+
+/* The closing invitation is a deliberate visual reset, not another dark card. */
+.agency-interior:has(.service-offer) .cta-section{background:#c9e3e8;color:#183a42;border-top:1px solid #9ac1c9}
+.agency-interior:has(.service-offer) .cta-section:after{display:none}
+.agency-interior:has(.service-offer) .cta-section :is(h2,.eyebrow,p){color:#183a42}
+.agency-interior:has(.service-offer) .cta-section .button{background:#153b43;color:#f6fffa}
