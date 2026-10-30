@@ -29,4 +29,9 @@
 @keyframes io-drift-front{to{transform:translateY(-15px) rotateY(-10deg) rotateX(4deg)}}@keyframes io-drift-back{to{transform:translate(-9px,11px) rotateY(-18deg) rotateX(6deg)}}
 @media(max-width:920px){.io-inner{grid-template-columns:1fr;padding-block:66px 12px}.io-scene{width:min(540px,100%);margin:auto}.interior-opening h1{font-size:clamp(3.2rem,8vw,5.5rem)}}
 @media(max-width:620px){.io-inner{padding-top:54px}.interior-opening h1{font-size:clamp(3rem,11vw,4.6rem)}.io-desc{font-size:16px}.io-scene{height:295px;width:145%;transform:scale(.73);transform-origin:0 0;margin:10px 0 -65px}.io-foot{font-size:8px}}
+/* Services only: modestly quicker, clearer layered-card movement. */
+.interior-opening--services .io-panel-front{animation:io-service-front 6s ease-in-out infinite alternate}
+.interior-opening--services .io-panel-back{animation:io-service-back 7s ease-in-out infinite alternate}
+@keyframes io-service-front{to{transform:translateY(-22px) rotateY(-9deg) rotateX(4deg)}}
+@keyframes io-service-back{to{transform:translate(-13px,16px) rotateY(-17deg) rotateX(6deg)}}
 @media(prefers-reduced-motion:reduce){.io-panel{animation:none!important}}
