@@ -32,9 +32,9 @@ test('all three fictional concepts have one H1, usable service selectors, no cap
 });
 
 test('animation sources explicitly respect reduced motion',async()=>{
- const source=await readFile('src/components/CinematicExperience.astro','utf8');
+ const homeCss=await readFile('public/cinematic-home.css','utf8');
  const demo=await readFile('src/pages/showcase/[slug].astro','utf8');
- assert.match(source,/prefers-reduced-motion:reduce/);
+ assert.match(homeCss,/prefers-reduced-motion:reduce/);
  assert.match(demo,/prefers-reduced-motion:reduce/);
 });
 
