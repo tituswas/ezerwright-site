@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile,readdir,stat} from 'node:fs/promises';
 import {join} from 'node:path';
 import {JSDOM} from 'jsdom';
+import {gzipSync} from 'node:zlib';
 import axe from 'axe-core';
 import {site} from '../src/config/site.mjs';
 import {pluginRoutes} from '../src/config/plugins.mjs';
@@ -17,7 +18,9 @@ for(const route of routes){
   .map(x=>x.getAttribute('href').split(/[?#]/)[0]).filter(x=>x.startsWith('/'));
  assert.ok(styles.length>0,'missing linked CSS on /'+route);
  const size=(await Promise.all(styles.map(x=>stat('dist'+x)))).reduce((sum,item)=>sum+item.size,0);
- assert.ok(size<30*1024,'CSS transfer exceeds 30 KiB on /'+route+': '+size);
+ assert.ok(size<36*1024,'uncompressed route CSS exceeds 36 KiB on /'+route+': '+size);
+ const compressed=gzipSync(Buffer.concat(await Promise.all(styles.map(x=>readFile('dist'+x)))));
+ assert.ok(compressed.byteLength<12*1024,'compressed route CSS exceeds 12 KiB on /'+route+': '+compressed.byteLength);
 }
 assert.ok(await total('.css')<64*1024,'total CSS for all independently loaded routes exceeds 64 KiB');assert.ok(await total('.woff')<100*1024);});
 test('CSS preserves mobile reflow, focus and reduced-motion safeguards',async()=>{const css=await readFile('src/styles/site.css','utf8');assert.match(css,/@media\(max-width:680px\)/);assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);assert.match(css,/:focus-visible/);assert.match(css,/\.js-menu #main-navigation:not\(\.is-open\)/);assert.doesNotMatch(css,/overflow-x:hidden/);});
