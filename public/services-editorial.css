@@ -62,3 +62,10 @@
 .agency-interior:has(.service-offer) .cta-section:after{display:none}
 .agency-interior:has(.service-offer) .cta-section :is(h2,.eyebrow,p){color:#183a42}
 .agency-interior:has(.service-offer) .cta-section .button{background:#153b43;color:#f6fffa}
+
+/* Dark FAQ must override the generic light interior FAQ at every state. */
+.agency-interior .service-questions .faq summary{color:#f3fafb}
+.agency-interior .service-questions .faq summary>span{color:#a5e3d9}
+.agency-interior .service-questions .faq details[open]{background:#263b4c}
+.agency-interior .service-questions .faq details p{color:#d4e5eb}
+.agency-interior .service-questions .faq summary:focus-visible{outline:3px solid #b9f7e3;outline-offset:4px}
