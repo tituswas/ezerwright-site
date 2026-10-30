@@ -8,7 +8,7 @@ const concepts = {
 };
 export function getStaticPaths(){
   if(site.template==='client')return [];
-  return Object.keys(concepts).map(slug=>({params:{slug}}));
+  return ['exterior','pool','landscape'].map(slug=>({params:{slug}}));
 }
 const {slug}=Astro.params;
 const concept=concepts[slug];
