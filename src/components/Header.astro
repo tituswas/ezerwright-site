@@ -6,7 +6,7 @@ if(site.template!=='client')links.splice(links.length-1,0,['plugins','Plugins'])
 ---
 <a class="skip-link" href="#main">Skip to content</a>
 {site.mode==='demo' && <div class="demo-banner" role="region" aria-label="Demonstration notice">Private demonstration · EZERWRIGHT launch candidate · Sample information only</div>}
-<header class:list={["site-header",{"agency-header":site.template!=="client"}]}><div class="container header-inner">
+<header class:list={["site-header",{"agency-header":site.template!=="client","cinematic-site-header":site.template!=="client"&&current===""}]}><div class="container header-inner">
 <a href="/" class="identity" aria-label={`${site.name} home`}><span class="identity-symbol" aria-hidden="true"><img src="/favicon.svg" alt="" width="34" height="34"/></span><span>{site.name}</span></a>
 <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" hidden>Menu <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
 <nav id="main-navigation" aria-label="Main navigation"><ul>{links.map(([slug,label])=><li><a href={`/${slug}/`} aria-current={(current===slug||(slug==='plugins'&&current?.startsWith('plugins/')))?'page':undefined}>{label}</a></li>)}</ul></nav>
