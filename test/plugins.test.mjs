@@ -59,3 +59,17 @@ test('demo agency routes retain notices, noindex and demo contact boundaries',as
   assert.match(contact,/captures locally and sends no email/);
   assert.match(await readFile('dist/robots.txt','utf8'),/Disallow: \//);
 });
+
+test('plugin catalog cross-links match the cinematic teal identity, not default blue',async()=>{
+ if(site.template==='client')return;
+ const html=await readFile('dist/plugins/index.html','utf8');
+ const d=new JSDOM(html).window.document;
+ const links=[...d.querySelectorAll('.plugin-crosslinks a')];
+ assert.equal(links.length,2);
+ assert.equal(links[0].getAttribute('href'),'/services/');
+ assert.equal(links[1].getAttribute('href'),'/contact/');
+ const css=await readFile('src/styles/plugins.css','utf8');
+ assert.match(css,/\.plugins \.plugin-crosslinks a\{color:#145448/);
+ assert.match(css,/\.plugins \.plugin-crosslinks a:hover\{color:#08715b/);
+ assert.match(css,/\.plugins \.plugin-crosslinks a:focus-visible\{outline:3px solid #147c65/);
+});
