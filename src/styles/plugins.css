@@ -60,3 +60,45 @@
 @media(min-width:681px) and (max-width:1080px){.plugin-hero{gap:36px}.plugin-explainer,.plugin-enquiry,.plugin-package{gap:48px}.plugin-service-list{gap:40px}.plugin-next{align-items:start;flex-direction:column;gap:24px}}
 @media(max-width:680px){.plugin-hero{grid-template-columns:1fr;gap:36px;padding-block:52px}.plugin-hero h1{font-size:clamp(2.4rem,9vw,3.4rem)}.plugin-lead{font-size:17px}.plugin-principle{padding:28px}.plugin-principle svg{max-width:260px;margin-bottom:24px}.plugin-principle p{font-size:22px}.plugin-catalog{padding-block:40px}.plugin-section-heading{display:block}.plugin-section-heading p{margin-top:12px}.plugin-empty{padding:28px 24px}.plugin-explainer,.plugin-enquiry,.plugin-package,.plugin-service-list,.plugin-detail{grid-template-columns:1fr;gap:32px}.plugin-explainer,.plugin-package{padding-block:56px}.plugin-next{flex-direction:column;align-items:start;gap:24px;padding-block:40px}.plugin-next h2{font-size:27px}.plugin-crosslinks{display:block;padding-bottom:40px}.plugin-crosslinks>a{display:inline-block;margin-top:16px}.plugin-services-intro{padding-block:30px 48px}.plugin-services-intro>.text-link{margin-bottom:28px}.plugin-service-list{padding-bottom:52px}.plugin-service-list article{grid-template-columns:1fr;gap:12px}.plugin-list{grid-template-columns:1fr}.plugin-detail{padding-bottom:48px}.plugin-detail aside dl{display:grid;grid-template-columns:1fr 2fr;gap:12px}.plugin-detail dd{margin:0}}
 @media(prefers-reduced-motion:reduce){.plugins .text-link:hover span{transform:none}}
+
+/* Cinematic plugin experience: same studio voice, honest release status. */
+.plugins{position:relative;isolation:isolate;background:#f3f5ed;overflow:hidden}
+.plugins:before{content:"";position:absolute;left:0;right:0;top:0;height:720px;z-index:-1;background:radial-gradient(circle at 78% 37%,#1a655f92,transparent 39%),linear-gradient(135deg,#080f1c,#112b38)}
+.plugins:after{content:"";position:absolute;inset:0 0 auto;height:690px;z-index:-1;opacity:.2;pointer-events:none;background-image:linear-gradient(#b3e6d92d 1px,transparent 1px),linear-gradient(90deg,#b3e6d92d 1px,transparent 1px);background-size:78px 78px;mask-image:linear-gradient(#000,transparent)}
+.plugin-hero{min-height:690px;padding-block:100px;gap:50px}
+.plugins .plugin-hero h1,.plugins .plugin-services-intro h1{font-size:clamp(3.6rem,6.7vw,6.6rem);line-height:1.04;letter-spacing:-.08em;color:#f3fff7}
+.plugins :is(.plugin-hero,.plugin-services-intro) h1 span{background:linear-gradient(120deg,#9ff1d4,#aec8fc);-webkit-background-clip:text;background-clip:text;color:transparent}
+.plugins .plugin-hero .plugin-lead,.plugins .plugin-services-intro .plugin-lead{color:#c1d6d6;font-size:17px;line-height:1.8}
+.plugins .plugin-hero .button,.plugins .plugin-services-intro .button{background:#aaf0d8;color:#15372f}
+.plugins .plugin-hero .text-link,.plugins .plugin-services-intro .text-link{color:#b2f7df}
+.plugin-principle{position:relative;overflow:hidden;background:linear-gradient(130deg,#1d5056ad,#11283cd9);border:1px solid #9df4d66b;box-shadow:0 30px 90px #0007;border-radius:13px;padding:45px}
+.plugin-principle:before{content:"";position:absolute;width:310px;height:310px;right:-100px;top:-120px;border:1px solid #abf7e27e;border-radius:50%;box-shadow:0 0 0 35px #9af8d40d,0 0 0 70px #9af8d409;animation:plugin-orbit 7s ease-in-out infinite alternate}
+.plugin-principle svg{color:#9aefdc;position:relative;filter:drop-shadow(0 0 20px #7be6df55)}
+.plugin-principle p{font-size:clamp(1.7rem,2.5vw,2.4rem);letter-spacing:-.06em}
+.plugin-principle small{color:#aed6d1}
+.plugin-catalog{background:#eaf0e8;padding-block:90px}
+.plugin-section-heading h2{color:#1c4137;font-size:clamp(2.5rem,4vw,4rem);letter-spacing:-.07em}
+.plugin-empty{background:linear-gradient(135deg,#12433d,#0d2633);border:1px solid #76bca985;border-radius:10px;box-shadow:0 28px 80px #123e352e;padding:55px;color:#c8e8de}
+.plugin-empty .plugin-status{color:#b4f4d8}.plugin-empty .plugin-status:before{border-color:#b4f4d8}
+.plugin-empty h3{color:white;font-size:clamp(2.1rem,3.3vw,3.4rem);letter-spacing:-.06em}
+.plugin-empty p{color:#c6dfd8}.plugin-empty .text-link{color:#b3f6d7}
+.plugin-list article{background:#fff;border:1px solid #b5cbbb;box-shadow:0 12px 45px #1f463222;border-radius:10px}
+.plugin-list article h3{letter-spacing:-.05em}
+.plugin-explainer{padding-block:105px}.plugin-explainer h2{font-size:clamp(2.5rem,4vw,4rem);letter-spacing:-.075em}
+.plugin-disclosures>div{border-color:#abbeae}.plugin-disclosures dt{color:#285744}
+.plugin-next{background:#102936;color:#cde5dc;max-width:none;width:100%;padding:75px max(24px,calc((100% - 1160px)/2));border:0}
+.plugin-next h2{color:white;font-size:clamp(2.3rem,3.7vw,3.8rem)}.plugin-next p{color:#c6d9d1}.plugin-next .button{background:#b3f4db;color:#153d33}
+.plugin-crosslinks{padding-top:40px}
+.plugins:has(.plugin-services-intro):before{height:560px}
+.plugins:has(.plugin-services-intro):after{height:540px}
+.plugin-services-intro{min-height:530px;padding-block:55px 92px;position:relative}
+.plugin-services-intro>.small-copy{color:#9fbbb8}
+.plugin-service-list{padding-block:100px}.plugin-service-list h2{font-size:clamp(2.3rem,3.7vw,3.6rem)}
+.plugin-service-list article{border-color:#b3cabb;padding-block:30px}
+.plugin-service-list article h3{color:#23533f;font-size:22px;letter-spacing:-.05em}
+.plugin-enquiry,.plugin-package{align-items:start}.plugin-enquiry h2,.plugin-package h2{font-size:clamp(2.4rem,3.8vw,3.8rem);letter-spacing:-.07em}
+.plugin-package{padding-block:100px}
+.plugin-detail{padding-block:75px}.plugin-detail section{border-color:#b3c7b9}.plugin-detail section h2{color:#24523f}
+@keyframes plugin-orbit{to{transform:translate(-15px,12px)}}
+@media(max-width:680px){.plugin-hero{min-height:0;padding-block:65px}.plugins:before{height:950px}.plugins:after{height:900px}.plugin-principle{padding:26px}.plugin-catalog{padding-block:65px}.plugin-services-intro{min-height:0;padding-bottom:80px}.plugins:has(.plugin-services-intro):before{height:650px}.plugin-explainer,.plugin-package{padding-block:65px}.plugin-service-list{padding-block:65px}.plugin-next{padding:65px 20px}.plugin-empty{padding:30px}.plugin-detail{padding-block:55px}}
+@media(prefers-reduced-motion:reduce){.plugin-principle:before{animation:none!important}}
