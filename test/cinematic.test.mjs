@@ -64,3 +64,26 @@ test('all agency interior routes sustain the cinematic visual system without cha
  assert.ok(plugins.querySelector('.plugin-hero'),'plugin route retained');
  assert.ok(plugins.querySelector('.cinematic-site-header'),'plugin route retains dark brand navigation');
 });
+
+test('Services has a distinctive editorial progression, not a repeated stock-card grid',async()=>{
+ if(site.template==='client')return;
+ const home=new JSDOM(await readFile('dist/index.html','utf8')).window.document;
+ const services=new JSDOM(await readFile('dist/services/index.html','utf8')).window.document;
+ assert.ok(home.querySelector('link[href="/cinematic-home.css"]'),'homepage loads its own visual CSS');
+ assert.equal(services.querySelectorAll('link[href="/cinematic-home.css"]').length,0,'interior route must not load homepage art');
+ assert.ok(services.querySelector('link[href="/services-editorial.css"]'));
+ assert.equal(services.querySelectorAll('h1').length,1);
+ for(const selector of ['.service-offer','.service-price-pane','.service-spec','.service-ledger','.service-questions','.faq']){
+  assert.ok(services.querySelector(selector),'missing editorial section '+selector);
+ }
+ assert.equal(services.querySelectorAll('.service-offer .service-price strong').length,1);
+ assert.match(services.querySelector('.service-price').textContent,/US\$\s*500/);
+ assert.equal(services.querySelectorAll('.service-payment strong').length,2);
+ assert.match(services.querySelector('.service-ledger-note').textContent,/separately scoped/i);
+ assert.equal(services.querySelectorAll('section.service-spec .card').length,0,'no repeated stock cards');
+ assert.ok(services.querySelector('a[href="/contact/?service=website"]'),'existing intake link');
+ const css=await readFile('public/services-editorial.css','utf8');
+ assert.match(css,/background:#e7eef1/);
+ assert.match(css,/background:#1b2937/);
+ assert.doesNotMatch(css,/#f4f5ee/);
+});
