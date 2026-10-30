@@ -3,7 +3,16 @@ import {mkdir,writeFile,rm,readFile,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {site} from '../src/config/site.mjs';
 import {pluginRoutes} from '../src/config/plugins.mjs';
-if(process.env.CF_PAGES==='1'&&site.mode!=='production')throw Error('Cloudflare Pages requires the production configuration. Set SITE_CONFIG=src/config/production.json, a real TURNSTILE_SITE_KEY and approved privacy settings.');
+if(process.env.CF_PAGES==='1'){
+  const branch=process.env.CF_PAGES_BRANCH||'';
+  if(branch!=='main'&&branch!==''&&site.preview===true&&site.mode==='demo'){
+    // Preview: non-indexed, no contact form, no email provider, no Turnstile.
+  }else if(branch==='main'&&site.mode==='production'&&site.preview!==true){
+    // Production: validateConfig already requires approved privacy and Turnstile.
+  }else{
+    throw Error('Cloudflare Pages requires the production configuration for main or an explicitly identified safe preview branch. Set SITE_CONFIG=src/config/production.json, a real TURNSTILE_SITE_KEY and approved privacy settings for production.');
+  }
+}
 await rm('dist',{recursive:true,force:true});
 const child=spawnSync(process.execPath,['node_modules/astro/bin/astro.mjs','build'],{stdio:'inherit',env:{...process.env,ASTRO_TELEMETRY_DISABLED:'1'}});
 if(child.status!==0)process.exit(child.status||1);
