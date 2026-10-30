@@ -1,0 +1,74 @@
+/* Premium agency interiors. Scoped to the agency-only page frame so the client starter keeps its original theme. */
+.agency-interior{background:#f4f5ee;color:#203f37;overflow:clip}
+.agency-interior .eyebrow{color:#31826d;letter-spacing:.16em}
+.agency-interior :is(h2,h3){color:#203d36;letter-spacing:-.06em;text-wrap:balance}
+.agency-interior h2{font-size:clamp(2.35rem,4.1vw,4rem);line-height:1.07}
+.agency-interior p{line-height:1.8}
+.agency-interior>.offer-grid{padding-block:104px 112px;gap:65px}
+.agency-interior .offer-card{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(circle at 95% 10%,#19736580,transparent 50%),linear-gradient(150deg,#173b41,#091c2e);border:1px solid #66b5a464;border-radius:12px;padding:44px;box-shadow:0 30px 80px #123e3a26}
+.agency-interior .offer-card:before{content:"";position:absolute;width:280px;height:280px;right:-155px;top:-120px;border:1px solid #a2f4d966;border-radius:50%;box-shadow:0 0 0 34px #95e3d009,0 0 0 70px #95e3d00c;pointer-events:none}
+.agency-interior .offer-card .eyebrow{color:#a7f1d4}
+.agency-interior .offer-card .price{font-size:clamp(5.2rem,9vw,8.3rem);letter-spacing:-.09em;color:#f5fff7}
+.agency-interior .offer-card .price span{color:#b1ebd9;letter-spacing:-.04em}
+.agency-interior .offer-card>p:not(.eyebrow){color:#d0e5e1}
+.agency-interior .offer-card .button{background:#abf2d8;color:#10362b}
+.agency-interior .payment-split{border-color:#9ccfc17c}
+.agency-interior .payment-split strong{color:#adf0d5}
+.agency-interior .scope-copy{padding-block:20px}.agency-interior .scope-copy h2{max-width:450px}
+.agency-interior .scope-copy .check-list{margin-top:25px}
+.agency-interior .scope-copy .check-list li{border-bottom:1px solid #b2c9bc;padding-bottom:16px;font-size:16px}
+.agency-interior .check-list li:before{color:#16785f}
+.agency-interior .text-link{color:#195d4e}
+.agency-interior>.section{padding-block:105px}
+.agency-interior .section-heading{align-items:end}
+.agency-interior .section-heading h2{font-size:clamp(2.6rem,4.5vw,4.4rem)}
+.agency-interior .section-heading>p{color:#65786f}
+.agency-interior .card-grid{gap:15px}
+.agency-interior .card{background:#e4eae0;border:1px solid #b2c6bb;border-radius:9px;padding:36px;position:relative;transition:transform .2s,background .2s;overflow:hidden}
+.agency-interior .card:before{content:"";position:absolute;width:120px;height:120px;border:1px solid #a0c3b4;border-radius:50%;right:-70px;top:-70px}
+.agency-interior .card:hover{transform:translateY(-4px);background:#ecf4ea}
+.agency-interior .card-number{font-size:12px;color:#337f65}
+.agency-interior .card h3{font-size:clamp(1.4rem,2vw,1.9rem);line-height:1.12}
+.agency-interior .card p{color:#5a7367;font-size:15px}
+.agency-interior .surface-section{background:radial-gradient(circle at 80% 10%,#165f596b,transparent 38%),#0c2230;color:#c7e1da;padding-block:110px}
+.agency-interior .surface-section :is(h2,h3){color:#f4fff7}
+.agency-interior .surface-section .eyebrow{color:#a5f1d5}
+.agency-interior .surface-section .living-grid>div>p{color:#b8d3d1}
+.agency-interior .surface-section .text-link{color:#a9f4d6}
+.agency-interior .living-panel,.agency-interior .ownership-panel{background:#173b43;border:1px solid #87c0b77a;box-shadow:0 28px 85px #0004;border-radius:11px;padding:36px}
+.agency-interior .living-panel .panel-label{color:#accfca;border-color:#85b7a059}
+.agency-interior .living-panel li{color:#f7fffa}
+.agency-interior .living-panel li>span{background:#24564f;color:#baf4d9}
+.agency-interior .living-panel p,.agency-interior .ownership-panel li{color:#bbd7d1}
+.agency-interior .ownership-panel .check-list li:before{color:#baf4d9}
+.agency-interior .process-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.agency-interior .process-grid .card{min-height:250px;background:#e1e9df;padding:42px}
+.agency-interior .process-grid .card-number{font-size:15px;letter-spacing:.16em;margin-bottom:55px}
+.agency-interior .process-grid .card h3{font-size:2rem}
+.agency-interior .section.narrow{max-width:850px}
+.agency-interior .section.narrow h2:not(:first-child){padding-top:22px;border-top:1px solid #b5c9ba;margin-top:42px}
+.agency-interior .faq{border-top:1px solid #9fbaa8}
+.agency-interior .faq details{border-color:#9fbaa8;padding:12px 8px}
+.agency-interior .faq summary{font-size:17px;min-height:59px;color:#213f33}
+.agency-interior .faq details[open]{background:#e7eee4}
+.agency-interior .faq summary>span{color:#24775b}
+.agency-interior>.contact-grid{padding-top:95px;padding-bottom:120px;gap:55px}
+.agency-interior .contact-form{background:#fff;border:1px solid #aac6b8;border-radius:12px;padding:43px;box-shadow:0 18px 75px #214f3d1a}
+.agency-interior .contact-form h2{font-size:clamp(1.9rem,3vw,2.7rem)}
+.agency-interior .contact-form input,.agency-interior .contact-form select,.agency-interior .contact-form textarea{border-radius:5px;background:#f7faf7;border-color:#7d998f}
+.agency-interior .contact-form .button{background:#125446;color:white}
+.agency-interior .contact-aside{padding:35px 0 35px 35px;border-left:1px solid #9ebbb0;align-self:start}
+.agency-interior .contact-aside h2{font-size:clamp(2rem,3.1vw,3rem)}
+.agency-interior .contact-aside p{color:#5f756e}
+.agency-interior .contact-detail{padding-block:12px;border-bottom:1px solid #c4d4c7}
+.agency-interior .contact-detail a{color:#17634e;font-weight:700}
+.agency-interior .cta-section{position:relative;isolation:isolate;max-width:none;width:100%;background:#0c222f;color:#c5e1d7;padding:100px max(24px,calc((100% - 1160px)/2));overflow:hidden}
+.agency-interior .cta-section:after{content:"";position:absolute;right:-90px;top:-200px;width:480px;height:480px;border:1px solid #8edab866;border-radius:50%;box-shadow:0 0 0 65px #82dcb80b,0 0 0 130px #82dcb808;z-index:-1}
+.agency-interior .cta-section .eyebrow{color:#a5eecf}
+.agency-interior .cta-section h2{color:#fbfff9;max-width:780px}
+.agency-interior .cta-section p{color:#b9d1ca}
+.agency-interior .cta-section .button{background:#b1f2d9;color:#16382f;flex-shrink:0}
+.agency-interior .section.top-tight{padding-top:95px}
+@media(max-width:920px){.agency-interior>.offer-grid{gap:30px;padding-block:70px}.agency-interior .process-grid{grid-template-columns:1fr 1fr}.agency-interior .surface-section{padding-block:70px}.agency-interior>.contact-grid{gap:30px}}
+@media(max-width:680px){.agency-interior>.offer-grid{padding-block:60px}.agency-interior .offer-card,.agency-interior .contact-form{padding:26px}.agency-interior .card-grid,.agency-interior .process-grid{grid-template-columns:1fr}.agency-interior .card,.agency-interior .process-grid .card{padding:27px;min-height:0}.agency-interior .process-grid .card-number{margin-bottom:20px}.agency-interior .cta-section{padding:70px 20px}.agency-interior .contact-aside{padding:20px 0 20px 25px}.agency-interior>.contact-grid{padding-top:60px}.agency-interior>.section{padding-block:60px}}
+@media(prefers-reduced-motion:reduce){.agency-interior .card:hover{transform:none}}
