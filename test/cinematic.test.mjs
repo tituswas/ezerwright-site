@@ -63,6 +63,7 @@ test('all agency interior routes sustain the cinematic visual system without cha
  const plugins=new JSDOM(await readFile('dist/plugins/index.html','utf8')).window.document;
  assert.ok(plugins.querySelector('.plugin-hero'),'plugin route retained');
  assert.ok(plugins.querySelector('.cinematic-site-header'),'plugin route retains dark brand navigation');
+ assert.equal(plugins.querySelectorAll('link[href="/agency-interiors.css"],link[href="/interior-opening.css"]').length,0,'Plugins must not load unrelated interior animation CSS');
 });
 
 test('Services has a distinctive editorial progression, not a repeated stock-card grid',async()=>{
