@@ -110,3 +110,13 @@ test('Services moving price label stays contained and dark FAQ remains legible',
  assert.ok(sheets.indexOf('/services-editorial.css')>sheets.indexOf('/agency-interiors.css'),'page-specific contrast CSS must override shared interior CSS');
  assert.ok(doc.querySelectorAll('.service-questions summary').length>2,'full FAQ preserved');
 });
+
+test('privacy preview links inherit approved deep-teal brand styles',async()=>{
+ const page=await readFile('src/pages/[...page].astro','utf8');
+ const styles=await readFile('public/agency-interiors.css','utf8');
+ assert.match(page,/preview-privacy-content/);
+ assert.match(page,/live EZERWRIGHT contact page/);
+ assert.match(styles,/preview-privacy-content a\{color:#145448/);
+ assert.match(styles,/preview-privacy-content a:hover\{color:#08715b/);
+ assert.match(styles,/preview-privacy-content a:focus-visible\{outline:3px solid #147c65/);
+});
