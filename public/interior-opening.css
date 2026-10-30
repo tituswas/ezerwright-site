@@ -29,6 +29,18 @@
 @keyframes io-drift-front{to{transform:translateY(-15px) rotateY(-10deg) rotateX(4deg)}}@keyframes io-drift-back{to{transform:translate(-9px,11px) rotateY(-18deg) rotateX(6deg)}}
 @media(max-width:920px){.io-inner{grid-template-columns:1fr;padding-block:66px 12px}.io-scene{width:min(540px,100%);margin:auto}.interior-opening h1{font-size:clamp(3.2rem,8vw,5.5rem)}}
 @media(max-width:620px){.io-inner{padding-top:54px}.interior-opening h1{font-size:clamp(3rem,11vw,4.6rem)}.io-desc{font-size:16px}.io-scene{height:295px;width:145%;transform:scale(.73);transform-origin:0 0;margin:10px 0 -65px}.io-foot{font-size:8px}}
+/* Keep the moving US$500 label completely inside its 3D panel at every width.
+   Preserve the approved 6s/7s motion durations. */
+.interior-opening--services .io-panel-front{box-sizing:border-box;overflow:hidden;min-width:0}
+.interior-opening--services .io-panel-front strong{
+  display:block;align-self:flex-start;max-width:100%;
+  font:800 clamp(2.25rem,3.8vw,3.65rem)/1 Manrope,system-ui,sans-serif;
+  letter-spacing:-.085em;white-space:nowrap;font-variant-numeric:tabular-nums
+}
+@media(max-width:620px){
+  .interior-opening--services .io-panel-front strong{font-size:clamp(2.1rem,7.5vw,2.8rem)}
+}
+
 /* Services only: modestly quicker, clearer layered-card movement. */
 .interior-opening--services .io-panel-front{animation:io-service-front 6s ease-in-out infinite alternate}
 .interior-opening--services .io-panel-back{animation:io-service-back 7s ease-in-out infinite alternate}
