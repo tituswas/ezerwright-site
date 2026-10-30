@@ -1,0 +1,58 @@
+/* The services experience is an editorial sequence, never a repeating card grid. */
+.agency-interior .service-offer{background:#102530;color:#e7f1f1;position:relative;overflow:hidden}
+.service-offer:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#e0f8f112 1px,transparent 1px);background-size:calc(100% / 12) 100%;opacity:.4;pointer-events:none}
+.service-offer>.container{position:relative}
+.service-rail,.service-offer-tail{display:flex;justify-content:space-between;gap:22px;border-bottom:1px solid #c7e8df47;padding:25px 0;font-size:10px;font-weight:800;letter-spacing:.16em;color:#a5cbc8}
+.service-offer-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(30px,7vw,110px);padding:95px 0 102px}
+.service-eyebrow{font-size:10px;letter-spacing:.2em;font-weight:800;color:#a4e5d6;margin:0 0 22px}
+.agency-interior .service-offer-intro h2{font-size:clamp(3.2rem,5.25vw,5.8rem);letter-spacing:-.085em;line-height:1.04;color:#fff;margin:0 0 31px;max-width:720px}
+.service-offer-intro h2 em,.service-spec-intro h2 em,.service-questions-intro h2 em{font:italic 500 1em Georgia,serif;letter-spacing:-.055em}
+.service-offer-intro h2 em{color:#a6d9ca}
+.service-offer-intro>p:not(.service-eyebrow){font-size:17px;max-width:460px;color:#b4d0ce;line-height:1.75}
+.service-text-link{display:inline-flex;gap:30px;align-items:center;margin-top:24px;color:#b8f5e1;border-bottom:1px solid #7cb8ad;padding-bottom:12px;text-decoration:none;font-weight:750;font-size:13px}
+.service-price-pane{background:#eff5f3;color:#17332f;padding:36px clamp(24px,3vw,48px) 38px;position:relative;isolation:isolate;border:1px solid #f8fffb;box-shadow:25px 30px 0 #51747624}
+.service-price-pane:after{content:"";position:absolute;top:0;right:0;width:0;height:0;border-left:36px solid transparent;border-top:36px solid #102530}
+.service-price-head{display:flex;justify-content:space-between;gap:14px;color:#346455;font-size:9px;letter-spacing:.12em;font-weight:800;padding-bottom:42px;border-bottom:1px solid #9dbab0}
+.service-price{display:flex;align-items:flex-start;gap:10px;padding-top:32px}
+.service-price span{font-size:24px;font-weight:800;letter-spacing:-.07em;margin-top:18px}
+.service-price strong{font:800 clamp(6rem,10.7vw,11.5rem)/.9 Manrope,system-ui,sans-serif;letter-spacing:-.115em;color:#143c34}
+.service-price-caption{color:#49665d;font-size:13px;margin:18px 0 38px}
+.service-payment{display:grid;grid-template-columns:1fr 1fr;gap:24px;border-top:1px solid #9dbab0;padding-top:22px}
+.service-payment>div>span{font-size:9px;color:#526e66;letter-spacing:.13em;font-weight:800}
+.service-payment strong{display:block;color:#17483c;font:800 28px Manrope,sans-serif;letter-spacing:-.07em;margin:9px 0}
+.service-payment p{font-size:12px;color:#60786f;line-height:1.5}
+.service-price-action{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 20px;background:#173b36;color:#f4fff9;text-decoration:none;font-size:14px;font-weight:800;margin-top:25px}
+.service-price-action:hover{background:#0e6051}
+.service-offer-tail{border-top:1px solid #c7e8df47;border-bottom:0;padding-block:26px 32px}
+.agency-interior .service-spec{background:#e7eef1;color:#1c3540;padding:110px 0 120px}
+.service-spec-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:clamp(35px,8vw,140px)}
+.service-spec-intro{padding-top:8px;position:relative}
+.service-spec-intro .service-eyebrow{color:#416e7a}
+.agency-interior .service-spec-intro h2{font-size:clamp(3rem,5vw,5rem);color:#193442;margin:0 0 26px}
+.service-spec-intro h2 em{color:#598495}
+.service-spec-intro>p:not(.service-eyebrow){max-width:380px;color:#566d77;font-size:16px}
+.service-spec-note{border-left:3px solid #3d8592;padding:4px 0 5px 18px;margin-top:70px;max-width:375px}
+.service-spec-note>span{display:block;color:#507b87;font-size:10px;font-weight:800;letter-spacing:.15em;margin-bottom:11px}
+.service-spec-note strong{font-size:14px;line-height:1.7;font-weight:650}
+.service-ledger{border-top:1px solid #8aa3a9}
+.service-ledger-item{display:grid;grid-template-columns:44px 1fr 20px;gap:16px;align-items:start;padding:30px 0;border-bottom:1px solid #9db0b5}
+.service-ledger-number{color:#577f88;font-size:12px;font-weight:800;margin-top:7px}
+.agency-interior .service-ledger-item h3{color:#1c3d49;font:800 clamp(1.55rem,2.25vw,2.3rem)/1.15 Manrope,system-ui,sans-serif;letter-spacing:-.045em;margin:0 0 9px}
+.service-ledger-item p{margin:0;color:#54717b;font-size:14px;max-width:520px}
+.service-ledger-arrow{font-size:19px;color:#4c858a}
+.service-ledger-note{color:#587681;font-size:12px;max-width:500px;margin:25px 0 0}
+.agency-interior .service-questions{background:#1b2937;color:#d6e0e6;padding:110px 0 120px}
+.service-questions-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(40px,8vw,130px)}
+.agency-interior .service-questions-intro h2{color:#f2f7fc;font-size:clamp(3rem,4.7vw,5rem);margin:0 0 28px}
+.service-questions-intro h2 em{color:#adc6d4}
+.service-questions-intro>p:not(.service-eyebrow){font-size:15px;color:#afc3cc;max-width:420px}
+.service-questions .service-eyebrow{color:#b4d7de}
+.service-questions-body .faq{border-top:1px solid #65808c}
+.service-questions-body .faq details{border-bottom:1px solid #65808c;padding:12px 0;margin:0}
+.service-questions-body .faq summary{font-size:16px;font-weight:700;color:#f3fafb;min-height:62px}
+.service-questions-body .faq summary span{color:#a5e3d9}
+.service-questions-body .faq details[open]{background:#2a3b4b}
+.service-questions-body .faq details p{color:#c3d4dd;padding:10px 12px 9px;font-size:14px}
+.service-limit{border-left:2px solid #80aaba;padding:0 0 0 18px;margin:38px 0 0;color:#afc4ce;font-size:12px;line-height:1.9}
+@media(max-width:920px){.service-offer-grid{gap:30px}.service-spec-grid,.service-questions-grid{gap:35px}.service-price strong{font-size:clamp(5.2rem,10vw,8rem)}}
+@media(max-width:700px){.service-offer-grid,.service-spec-grid,.service-questions-grid{grid-template-columns:1fr}.service-offer-grid{padding:65px 0}.service-offer-tail{flex-wrap:wrap}.service-offer-intro h2{max-width:450px}.service-price-pane{box-shadow:13px 13px 0 #51747624}.service-spec-note{margin-top:30px}.agency-interior .service-spec,.agency-interior .service-questions{padding:70px 0}.service-rail>span:last-child{display:none}.service-payment{gap:14px}.service-price-head{gap:8px}.service-price strong{font-size:clamp(5.5rem,20vw,8.5rem)}}
