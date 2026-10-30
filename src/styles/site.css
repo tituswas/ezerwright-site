@@ -28,3 +28,14 @@
 .cinematic-site-header .menu-toggle{background:#142735;color:#e1f8ef;border-color:#6a899b}
 .cinematic-site-header .identity-symbol{background:#163e46}
 .cinematic-site-header .menu-toggle:focus-visible,.cinematic-site-header a:focus-visible{outline-color:#a9f0d7}
+
+/* One brand environment across agency navigation and footer on all routes. */
+.agency-footer{background:radial-gradient(circle at 85% 0%,#164d4a50,transparent 34%),#080f1c;border-top:1px solid #8adfce40}
+.agency-footer .footer-main{padding-block:20px 37px}
+.agency-footer .identity{font-size:clamp(1.6rem,2.3vw,2.3rem);letter-spacing:-.055em}
+.agency-footer .footer-main p{color:#aacac4}
+.agency-footer nav a:hover{color:#9ef2d2}
+.agency-footer .footer-note{border-color:#6fa39b50}
+.agency-footer .footer-note span{color:#b2dfce}
+.cinematic-site-header .site-header nav a,.cinematic-site-header nav a{color:#d2e5e0}
+.cinematic-site-header .identity-symbol{background:#153d45}
