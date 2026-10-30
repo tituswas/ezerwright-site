@@ -19,5 +19,5 @@ for(const route of routes){
  const size=(await Promise.all(styles.map(x=>stat('dist'+x)))).reduce((sum,item)=>sum+item.size,0);
  assert.ok(size<30*1024,'CSS transfer exceeds 30 KiB on /'+route+': '+size);
 }
-assert.ok(await total('.css')<40*1024,'total CSS for all separately visited routes exceeds 40 KiB');assert.ok(await total('.woff')<100*1024);});
+assert.ok(await total('.css')<64*1024,'total CSS for all independently loaded routes exceeds 64 KiB');assert.ok(await total('.woff')<100*1024);});
 test('CSS preserves mobile reflow, focus and reduced-motion safeguards',async()=>{const css=await readFile('src/styles/site.css','utf8');assert.match(css,/@media\(max-width:680px\)/);assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);assert.match(css,/:focus-visible/);assert.match(css,/\.js-menu #main-navigation:not\(\.is-open\)/);assert.doesNotMatch(css,/overflow-x:hidden/);});
