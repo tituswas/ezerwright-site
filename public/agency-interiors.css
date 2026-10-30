@@ -71,4 +71,8 @@
 .agency-interior .section.top-tight{padding-top:95px}
 @media(max-width:920px){.agency-interior>.offer-grid{gap:30px;padding-block:70px}.agency-interior .process-grid{grid-template-columns:1fr 1fr}.agency-interior .surface-section{padding-block:70px}.agency-interior>.contact-grid{gap:30px}}
 @media(max-width:680px){.agency-interior>.offer-grid{padding-block:60px}.agency-interior .offer-card,.agency-interior .contact-form{padding:26px}.agency-interior .card-grid,.agency-interior .process-grid{grid-template-columns:1fr}.agency-interior .card,.agency-interior .process-grid .card{padding:27px;min-height:0}.agency-interior .process-grid .card-number{margin-bottom:20px}.agency-interior .cta-section{padding:70px 20px}.agency-interior .contact-aside{padding:20px 0 20px 25px}.agency-interior>.contact-grid{padding-top:60px}.agency-interior>.section{padding-block:60px}}
+/* Privacy notice links use the same deep-teal language as Plugins. */
+.agency-interior .preview-privacy-content a{color:#145448;font-weight:750;text-decoration-color:#67bda1;text-decoration-thickness:1.5px;text-underline-offset:4px}
+.agency-interior .preview-privacy-content a:hover{color:#08715b;text-decoration-color:#2ca882}
+.agency-interior .preview-privacy-content a:focus-visible{outline:3px solid #147c65;outline-offset:4px}
 @media(prefers-reduced-motion:reduce){.agency-interior .card:hover{transform:none}}
