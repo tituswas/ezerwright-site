@@ -87,3 +87,25 @@ test('Services has a distinctive editorial progression, not a repeated stock-car
  assert.match(css,/background:#1b2937/);
  assert.doesNotMatch(css,/#f4f5ee/);
 });
+
+test('Services moving price label stays contained and dark FAQ remains legible',async()=>{
+ if(site.template==='client')return;
+ const html=await readFile('dist/services/index.html','utf8');
+ const doc=new JSDOM(html).window.document;
+ const scene=doc.querySelector('.interior-opening--services .io-panel-front');
+ assert.ok(scene,'Services animated panel exists');
+ assert.equal(scene.querySelector('strong')?.textContent,'US$500');
+ const css=await readFile('public/interior-opening.css','utf8');
+ assert.match(css,/\.interior-opening--services \.io-panel-front\{[^}]*overflow:hidden/);
+ assert.match(css,/\.interior-opening--services \.io-panel-front strong\{[^}]*max-width:100%/);
+ assert.match(css,/\.interior-opening--services \.io-panel-front strong\{[^}]*white-space:nowrap/);
+ assert.match(css,/io-service-front 6s/,'retain approved front panel animation');
+ assert.match(css,/io-service-back 7s/,'retain approved back panel animation');
+ const editorial=await readFile('public/services-editorial.css','utf8');
+ assert.match(editorial,/\.agency-interior \.service-questions \.faq summary\{color:#f3fafb\}/);
+ assert.match(editorial,/\.agency-interior \.service-questions \.faq details\[open\]\{background:#263b4c\}/);
+ assert.match(editorial,/\.agency-interior \.service-questions \.faq details p\{color:#d4e5eb\}/);
+ const sheets=[...doc.querySelectorAll('link[rel=stylesheet]')].map(n=>n.getAttribute('href'));
+ assert.ok(sheets.indexOf('/services-editorial.css')>sheets.indexOf('/agency-interiors.css'),'page-specific contrast CSS must override shared interior CSS');
+ assert.ok(doc.querySelectorAll('.service-questions summary').length>2,'full FAQ preserved');
+});
