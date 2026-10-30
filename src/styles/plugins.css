@@ -88,7 +88,10 @@
 .plugin-disclosures>div{border-color:#abbeae}.plugin-disclosures dt{color:#285744}
 .plugin-next{background:#102936;color:#cde5dc;max-width:none;width:100%;padding:75px max(24px,calc((100% - 1160px)/2));border:0}
 .plugin-next h2{color:white;font-size:clamp(2.3rem,3.7vw,3.8rem)}.plugin-next p{color:#c6d9d1}.plugin-next .button{background:#b3f4db;color:#153d33}
-.plugin-crosslinks{padding-top:40px}
+.plugin-crosslinks{padding-top:40px;border-top:1px solid #b9cec1}
+.plugins .plugin-crosslinks a{color:#145448;font-weight:750;text-decoration-color:#67bda1;text-decoration-thickness:1.5px;text-underline-offset:4px}
+.plugins .plugin-crosslinks a:hover{color:#08715b;text-decoration-color:#2ca882}
+.plugins .plugin-crosslinks a:focus-visible{outline:3px solid #147c65;outline-offset:4px}
 .plugins:has(.plugin-services-intro):before{height:560px}
 .plugins:has(.plugin-services-intro):after{height:540px}
 .plugin-services-intro{min-height:530px;padding-block:55px 92px;position:relative}
