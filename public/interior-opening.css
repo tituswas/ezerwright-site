@@ -1,0 +1,32 @@
+
+.interior-opening{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(circle at 75% 45%,#123b4c,#080f1c 65%);color:#eaf8f4}
+.interior-opening--living{background:radial-gradient(circle at 74% 45%,#155249,#080f1c 67%)}
+.interior-opening--approach{background:radial-gradient(circle at 75% 45%,#263a62,#080f1c 67%)}
+.interior-opening--contact{background:radial-gradient(circle at 75% 45%,#155264,#080f1c 67%)}
+.io-grid{position:absolute;inset:0;z-index:-1;opacity:.18;background-image:linear-gradient(90deg,#d1f6ec36 1px,transparent 1px),linear-gradient(#d1f6ec36 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(#000,transparent)}
+.io-inner{display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:25px;min-height:600px;padding-block:65px 60px}
+.io-label{font-size:11px;color:#a7f3da;font-weight:800;letter-spacing:.18em;margin-bottom:30px}
+.io-signal{display:inline-block;width:7px;height:7px;border-radius:50%;background:#b3f5db;box-shadow:0 0 12px #b3f5db;margin-right:12px}
+.interior-opening h1{font-size:clamp(3.3rem,6.1vw,6.1rem);line-height:1.03;letter-spacing:-.08em;color:white;max-width:850px;margin:0 0 27px}
+.interior-opening h1 em{font-style:normal;background:linear-gradient(110deg,#bcffe5,#a3bffa);background-clip:text;-webkit-background-clip:text;color:transparent}
+.io-desc{max-width:520px;color:#c2d8d9;font-size:18px;line-height:1.75}
+.io-explore{display:inline-flex;gap:40px;align-items:center;color:#a8f1d7;text-decoration:none;font-size:11px;font-weight:800;letter-spacing:.12em;border-bottom:1px solid #79bda789;padding:11px 0}
+.io-scene{position:relative;height:455px;perspective:900px}
+.io-halo{position:absolute;inset:13%;background:#6beacc50;filter:blur(75px);border-radius:50%}
+.io-orbit{position:absolute;inset:4%;border-radius:50%;border:1px solid #a1f5dc70;transform:rotateX(64deg) rotateZ(26deg)}
+.io-orbit-b{inset:16%;transform:rotateX(56deg) rotateZ(-30deg);opacity:.5}
+.io-panel{position:absolute;border:1px solid #b2fff16f;border-radius:11px;box-shadow:0 30px 70px #0008}
+.io-panel-back{width:68%;height:65%;left:12%;top:7%;background:linear-gradient(135deg,#1e4a5c,#102231);transform:rotateY(-18deg) rotateX(6deg);padding:18px;opacity:.75;animation:io-drift-back 9s ease-in-out infinite alternate}
+.io-panel-back>span{font-size:9px;letter-spacing:.1em;color:#c5e9e5}
+.io-panel-back i{display:block;height:12px;width:65%;margin-top:26px;background:#ffffff1f;border-radius:3px}
+.io-panel-back i:nth-of-type(2){width:83%}.io-panel-back i:nth-of-type(3){width:40%}
+.io-panel-front{width:72%;min-height:69%;right:4%;top:21%;display:flex;flex-direction:column;background:linear-gradient(145deg,#e9f7eb,#accdc9);transform:rotateY(-13deg) rotateX(5deg);padding:24px;color:#173d34;animation:io-drift-front 8s ease-in-out infinite alternate}
+.io-panel-head{display:flex;justify-content:space-between;font-size:11px;font-weight:800;letter-spacing:.14em}.io-panel-head span:last-child{font-size:23px}
+.io-panel-front strong{font:800 clamp(4.6rem,7vw,7.8rem)/1 Manrope,sans-serif;letter-spacing:-.1em;margin:auto 0}
+.io-panel-front small{font-size:10px;letter-spacing:.12em;font-weight:800}.io-panel-line{height:3px;background:#16433822;margin-top:20px}.io-panel-line span{display:block;width:64%;height:100%;background:#175f51}
+.io-float{position:absolute;background:#0f3040e9;border:1px solid #a4ebdb6b;padding:10px 13px;color:#d9fff4;font-size:10px;letter-spacing:.12em;border-radius:4px}.io-float-a{bottom:5%;left:2%}.io-float-b{top:7%;right:-3%}
+.io-foot{border-top:1px solid #b1d7d03b;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:18px 23px;color:#9bb6bc;font-size:9px;letter-spacing:.14em;font-weight:700}
+@keyframes io-drift-front{to{transform:translateY(-15px) rotateY(-10deg) rotateX(4deg)}}@keyframes io-drift-back{to{transform:translate(-9px,11px) rotateY(-18deg) rotateX(6deg)}}
+@media(max-width:920px){.io-inner{grid-template-columns:1fr;padding-block:66px 12px}.io-scene{width:min(540px,100%);margin:auto}.interior-opening h1{font-size:clamp(3.2rem,8vw,5.5rem)}}
+@media(max-width:620px){.io-inner{padding-top:54px}.interior-opening h1{font-size:clamp(3rem,11vw,4.6rem)}.io-desc{font-size:16px}.io-scene{height:295px;width:145%;transform:scale(.73);transform-origin:0 0;margin:10px 0 -65px}.io-foot{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.io-panel{animation:none!important}}
