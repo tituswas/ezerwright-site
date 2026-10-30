@@ -3,10 +3,24 @@ import assert from 'node:assert/strict';
 import {readFile,readdir,stat} from 'node:fs/promises';
 import {join} from 'node:path';
 import {JSDOM} from 'jsdom';
+import {gzipSync} from 'node:zlib';
 import axe from 'axe-core';
 import {site} from '../src/config/site.mjs';
 import {pluginRoutes} from '../src/config/plugins.mjs';
-const routes=[...site.pages.map(p=>p.slug),...pluginRoutes(site)];
+const routes=[...site.pages.map(p=>p.slug),...pluginRoutes(site),...(site.template==='client'?[]:['showcase/exterior','showcase/pool','showcase/landscape'])];
 test('all configured routes pass axe structural accessibility checks',async()=>{for(const route of routes){const html=await readFile(`dist/${route?route+'/':''}index.html`,'utf8');const dom=new JSDOM(html,{runScripts:'outside-only',pretendToBeVisual:true,url:`https://example.test/${route}`});dom.window.eval(axe.source);const result=await dom.window.axe.run(dom.window.document,{rules:{'color-contrast':{enabled:false}}});assert.equal(result.violations.length,0,JSON.stringify({route,violations:Array.from(result.violations,v=>({id:v.id,nodes:v.nodes.map(n=>n.target)}))}));dom.window.close();}});
-test('local links and assets exist and sizes stay within deterministic budgets',async()=>{const files=[];async function walk(dir){for(const e of await readdir(dir,{withFileTypes:true})){const file=join(dir,e.name);if(e.isDirectory())await walk(file);else files.push(file);}}await walk('dist');const existing=new Set(files);for(const route of routes){const html=await readFile(`dist/${route?route+'/':''}index.html`,'utf8');const d=new JSDOM(html).window.document;for(const element of d.querySelectorAll('[href],[src]')){const ref=element.getAttribute('href')||element.getAttribute('src');if(!ref.startsWith('/')||ref.startsWith('//'))continue;const path=ref.split(/[?#]/)[0];const file='dist'+path+(path.endsWith('/')?'index.html':'');assert.ok(existing.has(file),`missing local target ${file}`);}}const total=async ext=>(await Promise.all(files.filter(f=>f.endsWith(ext)).map(f=>stat(f)))).reduce((s,v)=>s+v.size,0);assert.ok(await total('.js')<20*1024);assert.ok(await total('.css')<30*1024);assert.ok(await total('.woff')<100*1024);});
+test('local links and assets exist and sizes stay within deterministic budgets',async()=>{const files=[];async function walk(dir){for(const e of await readdir(dir,{withFileTypes:true})){const file=join(dir,e.name);if(e.isDirectory())await walk(file);else files.push(file);}}await walk('dist');const existing=new Set(files);for(const route of routes){const html=await readFile(`dist/${route?route+'/':''}index.html`,'utf8');const d=new JSDOM(html).window.document;for(const element of d.querySelectorAll('[href],[src]')){const ref=element.getAttribute('href')||element.getAttribute('src');if(!ref.startsWith('/')||ref.startsWith('//'))continue;const path=ref.split(/[?#]/)[0];const file='dist'+path+(path.endsWith('/')?'index.html':'');assert.ok(existing.has(file),`missing local target ${file}`);}}const total=async ext=>(await Promise.all(files.filter(f=>f.endsWith(ext)).map(f=>stat(f)))).reduce((s,v)=>s+v.size,0);assert.ok(await total('.js')<20*1024);// The original aggregate CSS cap predated route-specific showcases. Preserve a
+// stricter per-visitor payload cap and a separate total-project growth cap.
+for(const route of routes){
+ const html=await readFile('dist/'+(route?route+'/':'')+'index.html','utf8');
+ const d=new JSDOM(html).window.document;
+ const styles=[...d.querySelectorAll('link[rel="stylesheet"][href]')]
+  .map(x=>x.getAttribute('href').split(/[?#]/)[0]).filter(x=>x.startsWith('/'));
+ assert.ok(styles.length>0,'missing linked CSS on /'+route);
+ const size=(await Promise.all(styles.map(x=>stat('dist'+x)))).reduce((sum,item)=>sum+item.size,0);
+ assert.ok(size<36*1024,'uncompressed route CSS exceeds 36 KiB on /'+route+': '+size);
+ const compressed=gzipSync(Buffer.concat(await Promise.all(styles.map(x=>readFile('dist'+x)))));
+ assert.ok(compressed.byteLength<12*1024,'compressed route CSS exceeds 12 KiB on /'+route+': '+compressed.byteLength);
+}
+assert.ok(await total('.css')<64*1024,'total CSS for all independently loaded routes exceeds 64 KiB');assert.ok(await total('.woff')<100*1024);});
 test('CSS preserves mobile reflow, focus and reduced-motion safeguards',async()=>{const css=await readFile('src/styles/site.css','utf8');assert.match(css,/@media\(max-width:680px\)/);assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);assert.match(css,/:focus-visible/);assert.match(css,/\.js-menu #main-navigation:not\(\.is-open\)/);assert.doesNotMatch(css,/overflow-x:hidden/);});

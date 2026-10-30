@@ -14,6 +14,14 @@ WRANGLER_SEND_METRICS=false npx wrangler deploy --config wrangler.contact.jsonc 
 
 The tests include a temporary production fixture using a synthetic Turnstile key. They never send real mail or deploy. `npm run demo` serves the built site on loopback and captures synthetic enquiries locally; `npm run dev` is the Astro layout editor without a contact API. These local tools must not be exposed publicly.
 
+## Cloudflare cinematic preview builds
+
+The Cloudflare Pages **non-main branch** preview is intentionally separate from the production release. Cloudflare supplies `CF_PAGES=1`, `CF_PAGES_BRANCH` and `CF_PAGES_URL`. A verified preview URL under `*.ezerwright-site.pages.dev` loads the agency's production *public copy* but forces **demo/noindex mode**, disables all contact form submission, and provides a prominent review-only notice and a link to the live contact page. Neither a Turnstile credential nor an email provider is used for these preview builds. The preview never enables unattended outreach or updates the production website.
+
+A Pages deployment of `main` **still requires** the approved production configuration, actual Turnstile site key and existing privacy gate. Missing/foreign preview URLs and missing branch identity fail closed. Run `npm run qa` before merging; the regression suite builds an isolated simulated Pages preview to verify no contact form and enforce the production gate.
+
+**Privacy:** Cloudflare Pages preview URLs may be public by default. Enable Cloudflare Access for preview deployments in the project settings before using internal or non-public material. No passwords, prospect data or client-only assets belong in these showcases.
+
 ## Production configuration
 
 `src/config/production.json` has the actual origin `https://ezerwright.com`, contact `hello@ezerwright.com`, public copy, and a privacy notice awaiting owner review. Set Pages build variables `SITE_CONFIG=src/config/production.json`, a real `TURNSTILE_SITE_KEY`, and `PRIVACY_APPROVED=true` only after that review. Keep `npm run build` and output `dist`. Without these values the production build stops. Cloudflare Pages also refuses a demo-mode build, so missing release settings cannot silently republish the demonstration. The local default remains available for synthetic QA.

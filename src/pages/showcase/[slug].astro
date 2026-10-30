@@ -1,0 +1,65 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import {site} from '../../config/site.mjs';
+const concepts = {
+ exterior:{name:'Rinse & Rise',brand:'VOLT / WASH',kind:'Exterior cleaning',tag:'ENERGY IN EVERY DETAIL',title:'Pure impact. No compromise.',description:'For beautiful homes and the spaces that surround them.',services:['House exteriors','Driveways and patios','Commercial cleaning'],color:'exterior'},
+ pool:{name:'Blue Hour',brand:'LUMA / POOLS',kind:'Pool care',tag:'THE ART OF CLEAR WATER',title:'A little more blue.',description:'Your pool, beautifully cared for. Every single week.',services:['Weekly pool care','Water testing','Seasonal service'],color:'pool'},
+ landscape:{name:'Stone & Stream',brand:'FORM / FIELD',kind:'Landscaping',tag:'MADE FOR THE WAY YOU LIVE',title:'Grounded in growth.',description:'Outdoor spaces that feel like they have always belonged.',services:['Landscape design','Planting and upkeep','Outdoor improvements'],color:'landscape'}
+};
+export function getStaticPaths(){
+  if(site.template==='client')return [];
+  return ['exterior','pool','landscape'].map(slug=>({params:{slug}}));
+}
+const {slug}=Astro.params;
+const concept=concepts[slug];
+const page={slug:'showcase/'+slug,title:concept.name+' | EZERWRIGHT fictional design concept',description:'Interactive fictional '+concept.kind+' website study created by EZERWRIGHT. Not commissioned client work.'};
+---
+<Layout page={page}>
+  <div class:list={['concept','concept--'+slug]}>
+    <div class="demo-ribbon"><div class="container"><span>EZERWRIGHT ORIGINAL DESIGN STUDY</span><strong>FICTIONAL BUSINESS — NOT CLIENT WORK</strong><a href="/#cinema-work">← All concepts</a></div></div>
+    <div class="concept-dark">
+      <div class="container">
+        <div class="concept-nav"><strong>{concept.brand}</strong><span>SERVICES / ABOUT / CONTACT</span><a href="#example-enquiry">START AN ENQUIRY ↗</a></div>
+        <div class="concept-hero">
+          <div class="concept-intro">
+            <p class="concept-kicker">01 / {concept.tag}</p>
+            <h1>{concept.title}</h1>
+            <p>{concept.description}</p>
+            <a href="#example-enquiry" class="concept-btn">Explore services <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="concept-art" aria-hidden="true"><div class="concept-orbit orbit-a"></div><div class="concept-orbit orbit-b"></div><div class="concept-orbit orbit-c"></div><div class="concept-disc"></div><span class="concept-art-label">MOTION / MATERIAL / MEANING</span></div>
+        </div>
+        <div class="concept-bottom"><span>{concept.kind.toUpperCase()}</span><span>SCROLL TO EXPLORE ↓</span></div>
+      </div>
+    </div>
+    <section class="concept-services" aria-labelledby="concept-services-heading">
+      <div class="container"><p class="concept-section-label">01 / THE SERVICE</p><div class="services-head"><h2 id="concept-services-heading">Beautifully simple.<br/><em>Built around people.</em></h2><p>Not simply a striking first screen. A useful service website should help someone understand the work, find the right service, and take the next step.</p></div>
+        <div class="concept-cards">{concept.services.map((item,i)=><div class="concept-card"><span>0{i+1}</span><h3>{item}</h3><p>{i===0?'Understand the service at a glance.':i===1?'See the options without unnecessary friction.':'Make it easy to get in touch.'}</p></div>)}</div>
+      </div>
+    </section>
+    <section class="concept-journey" id="example-enquiry" aria-labelledby="concept-journey-heading"><div class="container journey-grid"><div><p class="concept-section-label">02 / INTERACTIVE EXAMPLE</p><h2 id="concept-journey-heading">An enquiry with a little more intention.</h2><p>Choose a service to explore a sample customer journey. This does not quote prices, collect personal information or send an enquiry.</p></div>
+      <div class="journey-panel" data-demo-estimator><span class="journey-label">FICTIONAL / INTERACTIVE EXAMPLE</span><h3>What are you looking for?</h3><div class="demo-buttons" role="group" aria-label="Choose an example service">{concept.services.map((service,i)=><button type="button" data-option={service} aria-pressed={i===0?'true':'false'}><span>{service}</span><span aria-hidden="true">↗</span></button>)}</div><div class="journey-answer"><small>SELECTED SERVICE</small><output data-selected-service>{concept.services[0]}</output><p>For a real project, the next step could be a short, privacy-conscious request form.</p></div><small>DEMO ONLY — NO DATA TRANSMITTED</small></div>
+    </div></section>
+    <section class="concept-final"><div class="container"><p>DESIGNED BY EZERWRIGHT</p><h2>Imagine what we could make for your business.</h2><p>This is an original fictional concept, not a client commission. Our standard five-page website is US$500; enhanced motion and custom interactions may require separate scope.</p><div class="final-actions"><a href="/contact/?service=website" class="concept-btn">Discuss your website ↗</a><a href="/services/">See the package →</a></div></div></section>
+  </div>
+</Layout>
+<script>
+document.querySelectorAll('[data-demo-estimator]').forEach(panel=>{
+ const output=panel.querySelector('[data-selected-service]');
+ const buttons=panel.querySelectorAll('button[data-option]');
+ buttons.forEach(button=>button.addEventListener('click',()=>{
+  buttons.forEach(other=>other.setAttribute('aria-pressed',String(other===button)));
+  if(output)output.textContent=button.dataset.option||'';
+ }));
+});
+</script>
+<style is:global>
+.concept{--hl:#d8ff62;--bg:#101e3d;--paper:#f4f3e8;color:#23473a}.concept--pool{--hl:#a8f4e9;--bg:#063c50;--paper:#e9f6f1}.concept--landscape{--hl:#e6c48d;--bg:#244234;--paper:#eee9d8}
+.demo-ribbon{background:#e8efe8;font:700 9px Inter,sans-serif;letter-spacing:.08em}.demo-ribbon>.container{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:12px 0}.demo-ribbon a{color:#356452}
+.concept-dark{background:radial-gradient(circle at 77% 40%,#ffffff20,transparent 40%),var(--bg);color:white;overflow:hidden}.concept-nav,.concept-bottom{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:22px 0}.concept-nav{min-height:88px}.concept-nav strong{font:800 23px Manrope,sans-serif;letter-spacing:-.05em}.concept-nav span,.concept-bottom{font-size:10px;letter-spacing:.12em}.concept-nav a{color:white;border:1px solid #ffffff80;padding:12px;font-size:10px;text-decoration:none}
+.concept-hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:20px;min-height:550px}.concept-kicker,.concept-section-label{font-size:10px;letter-spacing:.18em;font-weight:800;color:var(--hl)}.concept-intro h1{color:white;letter-spacing:-.085em;font-size:clamp(3.5rem,7vw,7.2rem);line-height:.98}.concept-intro>p:nth-of-type(2){color:#d6e6df;max-width:420px}.concept-btn{display:inline-flex;gap:28px;padding:16px 20px;background:var(--hl);color:#123427;font-weight:800;text-decoration:none;border-radius:4px}.concept-art{height:480px;position:relative}.concept-art:before{content:"";position:absolute;inset:15%;background:var(--hl);opacity:.3;filter:blur(65px);border-radius:50%}.concept-orbit{position:absolute;inset:14%;border:1px solid var(--hl);border-radius:50%;transform:rotateX(65deg)}.orbit-b{inset:3%;opacity:.5;transform:rotateX(68deg) rotateZ(38deg)}.orbit-c{inset:24%;opacity:.6;transform:rotateX(55deg)}.concept-disc{position:absolute;width:210px;height:210px;left:calc(50% - 105px);top:calc(50% - 105px);border:32px solid var(--hl);border-radius:50%;box-shadow:0 0 75px #ffffff44;animation:float-disc 6s ease-in-out infinite alternate}.concept-art-label{position:absolute;bottom:6%;right:0;color:#e6f5ea;font-size:9px;letter-spacing:.15em}.concept-bottom{border-top:1px solid #ffffff59;color:#b5d3ce}
+.concept-services{padding:85px 0;background:var(--paper)}.concept-services .concept-section-label,.concept-journey .concept-section-label{color:#487860}.services-head,.journey-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}.concept h2{color:#214936;letter-spacing:-.07em;font-size:clamp(2.6rem,5vw,4.5rem)}.services-head h2 em{font:italic 500 1em Georgia,serif;color:#5b967d}.services-head p,.journey-grid p{color:#587567;font-size:15px}.concept-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;border-top:1px solid #a5bdae;margin-top:35px}.concept-card{padding:20px 0}.concept-card>span{color:#688f79;font-size:11px}.concept-card h3{color:#264b3a;margin-top:30px}.concept-card p{font-size:14px;color:#587567}
+.concept-journey{padding:85px 0;background:#dcebe2}.journey-panel{background:white;padding:27px;border-radius:7px;box-shadow:0 20px 55px #23453125}.journey-label,.journey-panel>small{font-size:10px;color:#668471;letter-spacing:.1em}.journey-panel h3{color:#234936}.demo-buttons{display:grid;gap:9px}.demo-buttons button{display:flex;justify-content:space-between;gap:10px;text-align:left;background:#f3f8f4;border:1px solid #c8dacf;padding:13px;color:#244738}.demo-buttons button[aria-pressed=true]{border:2px solid #2c7454;background:#def4e4;font-weight:800}.journey-answer{border-top:1px solid #c9dccc;margin-top:22px;padding-top:16px}.journey-answer small{color:#63816d}.journey-answer output{display:block;font:800 22px Manrope,sans-serif;color:#2d6349;margin:10px 0}.journey-answer p{font-size:12px}
+.concept-final{background:#0b2027;color:#c6e0d4;text-align:center;padding:85px 0}.concept-final h2{color:white;max-width:790px;margin:20px auto}.concept-final p{max-width:650px;margin:20px auto}.final-actions{display:flex;justify-content:center;align-items:center;gap:25px;flex-wrap:wrap}.final-actions a:last-child{color:white}
+@keyframes float-disc{to{transform:translateY(-17px)}}@media(max-width:800px){.concept-hero,.services-head,.journey-grid{grid-template-columns:1fr}.concept-art{height:330px}.concept-nav>span{display:none}}@media(max-width:620px){.concept-intro h1{font-size:clamp(3.2rem,11vw,5rem)}.concept-art{height:250px}.concept-services,.concept-journey,.concept-final{padding:65px 0}.concept-cards{grid-template-columns:1fr}.concept-card h3{margin-top:13px}}@media(prefers-reduced-motion:reduce){.concept-disc{animation:none!important}}
+</style>

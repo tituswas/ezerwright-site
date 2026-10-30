@@ -1,0 +1,32 @@
+---
+const {eyebrow='THE EXPERIENCE',first,accent,description,variant='services'}=Astro.props;
+const spec={
+  services:['01','THE OFFER','US$500','FIVE PAGES / DEFINED SCOPE'],
+  approach:['02','THE PROCESS','01—04','FROM BRIEF TO HANDOVER'],
+  living:['03','THE FUTURE','∞','MADE FOR WHAT COMES NEXT'],
+  contact:['04','GET STARTED','↗','YOUR IDEA / OUR NEXT STEP'],
+  privacy:['05','TRUST & CLARITY','✓','DESIGN WITH INTENTION']
+}[variant]||['01','THE EXPERIENCE','↗','MADE TO MATTER'];
+---
+<section class:list={['interior-opening','interior-opening--'+variant]} aria-labelledby="interior-title">
+  <div class="io-grid" aria-hidden="true"></div>
+  <div class="container io-inner">
+    <div class="io-copy">
+      <p class="io-label"><span class="io-signal" aria-hidden="true"></span>{eyebrow}</p>
+      <h1 id="interior-title">{first}<br/><em>{accent}</em></h1>
+      <p class="io-desc">{description}</p>
+      <a class="io-explore" href="#interior-content">EXPLORE THE DETAILS <span aria-hidden="true">↓</span></a>
+    </div>
+    <div class="io-scene" aria-hidden="true">
+      <div class="io-halo"></div>
+      <div class="io-orbit io-orbit-a"></div>
+      <div class="io-orbit io-orbit-b"></div>
+      <div class="io-panel io-panel-back"><span>EZERWRIGHT / EXPERIENCE DESIGN</span><i></i><i></i><i></i></div>
+      <div class="io-panel io-panel-front"><div class="io-panel-head"><span>{spec[1]}</span><span>✳</span></div><strong>{spec[2]}</strong><small>{spec[3]}</small><div class="io-panel-line"><span></span></div></div>
+      <span class="io-float io-float-a">{spec[0]} / 05</span>
+      <span class="io-float io-float-b">FORM ↔ FUNCTION</span>
+    </div>
+  </div>
+  <div class="container io-foot"><span>EZERWRIGHT — DIGITAL EXPERIENCES</span><span>DESIGN THAT HOLDS YOUR ATTENTION</span></div>
+</section>
+<div id="interior-content" aria-hidden="true"></div>
