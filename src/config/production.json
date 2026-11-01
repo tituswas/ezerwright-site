@@ -29,13 +29,13 @@
       "id": "updates",
       "title": "Website updates",
       "summary": "Keep services, offers and business details current as your business grows.",
-      "detail": "Content updates and maintenance are separately scoped and priced. They are not included in the initial $500 website package."
+      "detail": "Content updates and maintenance are separately scoped and priced. They are not included in the five-page website package."
     },
     {
       "id": "improvements",
       "title": "Website improvements",
       "summary": "Make the next step easier with clearer content and thoughtful interactions.",
-      "detail": "Changes beyond the agreed website scope are discussed separately. AI, custom applications and business automation are not included in the initial $500 package."
+      "detail": "Changes beyond the agreed website scope are discussed separately. AI, custom applications and business automation are not included in the five-page website package."
     }
   ],
   "approach": {
@@ -62,12 +62,12 @@
   },
   "faq": [
     {
-      "question": "What is included in the $500 website?",
+      "question": "What is included in the five-page website?",
       "answer": "Up to five marketing pages, one form with up to six fields, basic on-page SEO, two revision rounds and portable handover. A short client-approved privacy utility page is included beyond the marketing pages."
     },
     {
       "question": "When is payment due?",
-      "answer": "$250 after written scope approval to begin. $250 after explicit final staging acceptance, before handover or deployment. Silence is not acceptance."
+      "answer": "For projects accepted under the introductory launch offer: $150 after written scope approval to begin, and $149 after explicit final staging acceptance, before handover or deployment. Silence is not acceptance."
     },
     {
       "question": "Can the site change after launch?",
@@ -91,7 +91,7 @@
     {
       "slug": "services",
       "title": "EZERWRIGHT | Website services and scope",
-      "description": "The $500 business website package: up to five marketing pages, a contact form, basic SEO, two revision rounds and portable handover."
+      "description": "The introductory $299 website launch offer: up to five marketing pages, a contact form, basic SEO, two revision rounds and portable handover."
     },
     {
       "slug": "approach",
