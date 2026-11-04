@@ -35,7 +35,8 @@ test('Cloudflare branch preview is noindex, non-submitting and cannot impersonat
   const robots=await readFile(join(target,'dist/robots.txt'),'utf8');
   assert.match(robots,/Disallow: \//);
   const sitemap=await readFile(join(target,'dist/sitemap.xml'),'utf8');
-  assert.match(sitemap,/https:\/\/review-abc\.ezerwright-site\.pages\.dev\/showcase\/pool\//);
+  assert.match(sitemap,/https:\/\/review-abc\.ezerwright-site\.pages\.dev\/services\//);
+  assert.doesNotMatch(sitemap,/\/showcase\//);
 
   // The preview branch must not be allowed to claim an arbitrary destination.
   const foreign=run({...preview,CF_PAGES_URL:'https://ezerwright.com'});
