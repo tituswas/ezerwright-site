@@ -1,4 +1,5 @@
 ---
+import ProjectBrief from './ProjectBrief.astro';
 import {site} from '../config/site.mjs';
 const isDemo=site.mode==='demo';
 ---
@@ -9,37 +10,15 @@ const isDemo=site.mode==='demo';
   <div class="container cinema-main">
     <div class="cinema-content">
       <p class="cinema-overline"><span class="signal"></span> EZERWRIGHT / DIGITAL EXPERIENCES</p>
-      <h1 id="cinema-heading">Your business deserves a website that <em>feels ahead.</em></h1>
+      <h1 id="cinema-heading">A website that <em>feels ahead.</em><span class="brief-hero-close">A next step that feels simple.</span></h1>
       <p class="cinema-lead">Distinctive design. Thoughtful interactions. A clear next step for your customers. Built for real service businesses—not another forgettable template.</p>
       <div class="cinema-actions">
-        <a class="cinema-primary" href="#cinema-work">Explore the experiences <span aria-hidden="true">↗</span></a>
-        <a class="cinema-secondary" href="/contact/">Start a project <span aria-hidden="true">↗</span></a>
+        <a class="cinema-primary" href="#project-brief">Build my project brief <span aria-hidden="true">↗</span></a>
+        <a class="cinema-secondary" href="#cinema-work">Explore the concepts <span aria-hidden="true">↗</span></a>
       </div>
       <p class="cinema-offer"><strong>US$500</strong> for a defined five-page website <span aria-hidden="true">·</span> $250 to start after written approval <span aria-hidden="true">·</span> Client-owned files</p>
     </div>
-    <div class="cinema-stage" role="img" aria-label="Original animated concept: layers of a traditional website unfold into a refined service-business website with enquiry actions.">
-      <div class="stage-ring ring-one"></div><div class="stage-ring ring-two"></div>
-      <div class="stage-glow"></div>
-      <div class="website-layer layer-back">
-        <div class="layer-top"><i></i><i></i><i></i><b>BEFORE / STRUCTURE</b></div>
-        <div class="wireframe-lines"><span></span><span></span><span></span></div>
-        <div class="wireframe-cols"><span></span><span></span><span></span></div>
-      </div>
-      <div class="website-layer layer-mid">
-        <div class="layer-tag">02 / INTERACTION</div>
-        <div class="interaction-ring"><span>+</span></div>
-        <div class="layer-progress"><span></span></div>
-        <p>From browsing<br/>to an enquiry.</p>
-      </div>
-      <div class="website-layer layer-front">
-        <div class="front-top"><span class="front-brand">FIELDNOTES <i>—</i></span><span class="front-nav">SERVICES&nbsp;&nbsp; WORK&nbsp;&nbsp; CONTACT</span></div>
-        <div class="front-image"><span class="image-horizon"></span><div class="front-arc arc-one"></div><div class="front-arc arc-two"></div><div class="front-sun"></div><span class="front-image-note">A BETTER FIRST IMPRESSION</span></div>
-        <div class="front-copy"><span class="front-kicker">CONCEPT / SERVICE BUSINESS</span><strong>Make every first impression count.</strong><span class="front-cta">Request an estimate <b aria-hidden="true">↗</b></span></div>
-      </div>
-      <div class="float-note note-one"><span class="float-dot"></span> Motion with meaning</div>
-      <div class="float-note note-two">01 — 03 <span>✧</span></div>
-      <span class="stage-caption">CONCEPT VISUALIZATION / NO CLIENT WORK SHOWN</span>
-    </div>
+    <ProjectBrief/>
   </div>
   <div class="container cinema-bottom"><span>DESIGN THAT EARNS ATTENTION</span><span>BUILT FOR CLARITY, NOT JUST THE SCREENSHOT</span><a href="#cinema-work">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div>
 </section>

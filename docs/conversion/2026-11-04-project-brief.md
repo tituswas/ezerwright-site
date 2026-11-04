@@ -1,0 +1,7 @@
+# Enquiry activation: project brief
+
+User requests a bold live-site improvement. Inspected https://ezerwright.com/ and /contact/ before editing. Production baseline a5178bc37c7c94c2569c29445c764e9d693a5f83 on tituswas/ezerwright-site main; original Cloudflare Pages hosting and contact Worker retained. Rollback by reverting this change onto current main, preserving later work. Full Git history remains recoverable.
+
+Replace abstract animated browser-stack illustration with a live project brief in the existing navy/mint cinematic hero. The visitor chooses new website, improvements or updates plus a goal, sees honest scope/payment terms, then continues to the original contact form with an editable starter message. No personal data in query strings, storage, tracking, hidden subscription or automatic submission. Enum-only values mapped to fixed text; unknown parameters ignored; existing filled text never overwritten. No-JS contact fallback retained. Three fictional concepts remain labeled and reachable; no fabricated results. Existing $500/$250+$250 contract preserved; other work separately scoped. Homepage CTA prioritizes the brief rather than passive gallery browsing.
+
+No backend, Cloudflare settings, secrets, Turnstile, form action/validation, privacy controls, email recipients, plugins or outreach changes. Production safeguards remain enforced. No conversion-rate increase claimed without measurement. Reuse established Manrope, navy, mint and paper surfaces; native controls, keyboard focus, live status and reduced-motion support.
