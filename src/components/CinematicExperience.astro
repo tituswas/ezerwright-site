@@ -1,6 +1,11 @@
 ---
 import ProjectBrief from './ProjectBrief.astro';
 import {site} from '../config/site.mjs';
+import {foundingLaunch} from '../config/founding-launch.mjs';
+const showLaunch = site.mode === 'production' || site.preview === true;
+const webPrice = showLaunch ? foundingLaunch.totalUSD : 500;
+const webDeposit = showLaunch ? foundingLaunch.depositUSD : 250;
+const webBalance = showLaunch ? foundingLaunch.balanceUSD : 250;
 const isDemo=site.mode==='demo';
 ---
 <section class="cinema" aria-labelledby="cinema-heading">
@@ -16,7 +21,7 @@ const isDemo=site.mode==='demo';
         <a class="cinema-primary" href="#project-brief">Build my project brief <span aria-hidden="true">↗</span></a>
         <a class="cinema-secondary" href="#cinema-work">Explore the concepts <span aria-hidden="true">↗</span></a>
       </div>
-      <p class="cinema-offer"><strong>US$500</strong> for a defined five-page website <span aria-hidden="true">·</span> $250 to start after written approval <span aria-hidden="true">·</span> Client-owned files</p>
+      <p class="cinema-offer">{showLaunch && <span>FOUNDING CLIENT LAUNCH · </span>}<strong>US${webPrice}</strong> for a defined five-page website <span aria-hidden="true">·</span> ${webDeposit} to start after written approval <span aria-hidden="true">·</span> Client-owned files</p>
     </div>
     <ProjectBrief/>
   </div>
@@ -45,7 +50,7 @@ const isDemo=site.mode==='demo';
         <span class="concept-note">FICTIONAL INTERACTIVE CONCEPT</span>
       </a>
     </div>
-    <div class="work-end"><span>Built as concept experiences. No borrowed testimonials, client claims or fabricated results.</span><a href="/services/">View the complete $500 website scope <span aria-hidden="true">↗</span></a></div>
+    <div class="work-end"><span>Built as concept experiences. No borrowed testimonials, client claims or fabricated results.</span><a href="/services/">View the complete five-page website scope <span aria-hidden="true">↗</span></a></div>
   </div>
 </section>
 <section class="cinema-closing" aria-labelledby="cinema-closing-heading">
@@ -55,7 +60,7 @@ const isDemo=site.mode==='demo';
     <p>Five marketing pages, a real enquiry route, responsive layouts, basic on-page SEO, two consolidated revision rounds and portable source. No mandatory hosting contract and no promises of guaranteed sales.</p>
     <div class="closing-steps"><span>01 <b>Define</b></span><span>02 <b>Build</b></span><span>03 <b>Review</b></span><span>04 <b>Hand over</b></span></div>
     <a href="/contact/?service=website" class="cinema-primary">Discuss your website <span aria-hidden="true">↗</span></a>
-    <p class="closing-small">US$250 after approved scope · US$250 after accepted staging · Optional future work quoted separately</p>
+    <p class="closing-small">{showLaunch ? foundingLaunch.name + ' · ' : ''}US${webDeposit} after approved scope · US${webBalance} after accepted staging · Optional future work quoted separately</p>
   </div>
 </section>
 
