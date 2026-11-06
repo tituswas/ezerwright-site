@@ -1,8 +1,8 @@
 /* Premium agency interiors. Scoped to the agency-only page frame so the client starter keeps its original theme. */
 .agency-interior{background:#f4f5ee;color:#203f37;overflow:clip}
-.agency-interior .eyebrow{color:#31826d;letter-spacing:.16em}
-.agency-interior :is(h2,h3){color:#203d36;letter-spacing:-.06em;text-wrap:balance}
-.agency-interior h2{font-size:clamp(2.35rem,4.1vw,4rem);line-height:1.07}
+.agency-interior .eyebrow{color:#31826d;letter-spacing:.1em}
+.agency-interior :is(h2,h3){color:#203d36;letter-spacing:var(--tracking-display);text-wrap:balance}
+.agency-interior h2{font-size:var(--type-section);line-height:1.2}
 .agency-interior p{line-height:1.8}
 .agency-interior>.offer-grid{padding-block:104px 112px;gap:65px}
 .agency-interior .offer-card{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(circle at 95% 10%,#19736580,transparent 50%),linear-gradient(150deg,#173b41,#091c2e);border:1px solid #66b5a464;border-radius:12px;padding:44px;box-shadow:0 30px 80px #123e3a26}
@@ -21,14 +21,14 @@
 .agency-interior .text-link{color:#195d4e}
 .agency-interior>.section{padding-block:105px}
 .agency-interior .section-heading{align-items:end}
-.agency-interior .section-heading h2{font-size:clamp(2.6rem,4.5vw,4.4rem)}
+.agency-interior .section-heading h2{font-size:var(--type-section)}
 .agency-interior .section-heading>p{color:#65786f}
 .agency-interior .card-grid{gap:15px}
 .agency-interior .card{background:#e4eae0;border:1px solid #b2c6bb;border-radius:9px;padding:36px;position:relative;transition:transform .2s,background .2s;overflow:hidden}
 .agency-interior .card:before{content:"";position:absolute;width:120px;height:120px;border:1px solid #a0c3b4;border-radius:50%;right:-70px;top:-70px}
 .agency-interior .card:hover{transform:translateY(-4px);background:#ecf4ea}
 .agency-interior .card-number{font-size:12px;color:#337f65}
-.agency-interior .card h3{font-size:clamp(1.4rem,2vw,1.9rem);line-height:1.12}
+.agency-interior .card h3{font-size:clamp(1.4rem,2vw,1.9rem);line-height:1.2}
 .agency-interior .card p{color:#5a7367;font-size:15px}
 .agency-interior .surface-section{background:radial-gradient(circle at 80% 10%,#165f596b,transparent 38%),#0c2230;color:#c7e1da;padding-block:110px}
 .agency-interior .surface-section :is(h2,h3){color:#f4fff7}
@@ -43,8 +43,8 @@
 .agency-interior .ownership-panel .check-list li:before{color:#baf4d9}
 .agency-interior .process-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .agency-interior .process-grid .card{min-height:250px;background:#e1e9df;padding:42px}
-.agency-interior .process-grid .card-number{font-size:15px;letter-spacing:.16em;margin-bottom:55px}
-.agency-interior .process-grid .card h3{font-size:2rem}
+.agency-interior .process-grid .card-number{font-size:15px;letter-spacing:.1em;margin-bottom:55px}
+.agency-interior .process-grid .card h3{font-size:1.75rem}
 .agency-interior .section.narrow{max-width:850px}
 .agency-interior .section.narrow h2:not(:first-child){padding-top:22px;border-top:1px solid #b5c9ba;margin-top:42px}
 .agency-interior .faq{border-top:1px solid #9fbaa8}
