@@ -18,7 +18,7 @@ const projects=[
   <div class="work-rail"><h2 id="work-title">Selected directions</h2><span>ORIGINAL CONCEPTS / NOT CLIENT COMMISSIONS</span></div>
   <div class="work-art" aria-hidden="true"><img src="/art/glass-fold.webp" width="1536" height="1024" loading="lazy" alt=""/><span class="work-art-rule"></span></div>
   <div class="work-panels">{projects.map(p=><a class={`work-panel work-${p.id}`} data-work-panel={p.id} href={`/showcase/${p.id}/`}><span class="work-count">{p.number} / DESIGN EXPLORATION</span><h3>{p.name}<span aria-hidden="true">↗</span></h3><p class="work-tagline">{p.line}</p><p class="work-description">{p.description}</p><span class="work-category">{p.category}</span><span class="work-disclosure">FICTIONAL INTERACTIVE CONCEPT</span></a>)}</div>
-  <div class="work-controls" role="group" aria-label="Choose a design direction">{projects.map((p,i)=><button type="button" data-work-select={p.id} aria-pressed={i===0?'true':'false'}><span>{p.number}</span>{p.name}</button>)}</div>
+  <div class="work-controls" role="group" aria-label="Choose a design direction">{projects.map((p,i)=><button type="button" data-work-select={p.id} aria-pressed={i===0?'true':'false'}><span>{p.number}</span> {p.name}</button>)}</div>
   <p class="work-status sr-only" aria-live="polite" data-work-status>Rinse &amp; Rise concept selected.</p>
   <div class="work-stage-bottom"><span>SCROLL TO EXPLORE · SELECT TO OPEN</span><span data-work-position>01 / 03</span></div>
  </div>
