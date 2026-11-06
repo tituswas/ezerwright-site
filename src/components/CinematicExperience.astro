@@ -1,70 +1,29 @@
 ---
 import ProjectBrief from './ProjectBrief.astro';
-import JourneyStudio from './JourneyStudio.astro';
+const projects=[
+ {id:'exterior',name:'Rinse & Rise',line:'Make an entrance.',category:'Exterior care / Confident & kinetic',number:'01',description:'A bold first impression. A direct route from the service to the enquiry.'},
+ {id:'pool',name:'Blue Hour',line:'Find your quiet.',category:'Pool care / Calm & considered',number:'02',description:'Space to breathe. A clear service story, with the next step always in reach.'},
+ {id:'landscape',name:'Stone & Stream',line:'Room for possibility.',category:'Landscaping / Natural & editorial',number:'03',description:'An editorial approach to outdoor spaces. Grounded, purposeful and made to explore.'}
+];
 ---
-<section class="atelier-hero" aria-labelledby="cinema-heading" data-world="websites">
-  <div class="atelier-grain" aria-hidden="true"></div>
-  <div class="container atelier-hero-inner">
-    <div class="atelier-hero-top"><p class="atelier-kicker">INDEPENDENT DIGITAL STUDIO</p><span class="atelier-edition">DESIGN WITH INTENTION / BUILT TO LAST</span></div>
-    <div class="atelier-hero-grid">
-      <div class="atelier-copy">
-        <p class="atelier-index"><span></span> DISTINCTIVE BY DESIGN</p>
-        <h1 id="cinema-heading">A website that <em>feels ahead.</em></h1>
-        <p class="atelier-lead">For businesses ready to look as good<br class="desktop-break"/> as the work they do.</p>
-        <div class="atelier-actions"><a class="atelier-button" href="#project-brief">Make your next move <span aria-hidden="true">↗</span></a><a class="atelier-text-link" href="#cinema-work">Explore the work <span aria-hidden="true">↓</span></a></div>
-        <p class="atelier-quiet">Thoughtful websites. Clear scope. Yours to own.</p>
-      </div>
-      <div class="atelier-art" data-tilt>
-        <div class="atelier-orbit" aria-hidden="true"><span class="orbit-node"></span></div>
-        <svg class="atelier-sculpture" viewBox="0 0 700 700" fill="none" aria-hidden="true" focusable="false">
-          <defs>
-            <linearGradient id="metal" x1="95" y1="70" x2="615" y2="640" gradientUnits="userSpaceOnUse"><stop stop-color="#6c5540"/><stop offset=".19" stop-color="#e8d6ac"/><stop offset=".32" stop-color="#fff5dc"/><stop offset=".45" stop-color="#9f7e54"/><stop offset=".61" stop-color="#2b2420"/><stop offset=".77" stop-color="#bda27b"/><stop offset="1" stop-color="#f1e0bf"/></linearGradient>
-            <linearGradient id="rim" x1="165" y1="130" x2="550" y2="560" gradientUnits="userSpaceOnUse"><stop stop-color="#f8e8c5"/><stop offset=".48" stop-color="#8e6f49"/><stop offset=".8" stop-color="#191a18"/><stop offset="1" stop-color="#d5b68b"/></linearGradient>
-            <radialGradient id="well"><stop stop-color="#0b1011"/><stop offset=".65" stop-color="#101719"/><stop offset="1" stop-color="#594a38"/></radialGradient>
-            <filter id="soft-shadow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="20"/></filter>
-          </defs>
-          <ellipse cx="360" cy="580" rx="210" ry="36" fill="#000" opacity=".5" filter="url(#soft-shadow)"/>
-          <g transform="rotate(-30 350 350)">
-            <ellipse cx="365" cy="367" rx="208" ry="269" fill="#342c23"/>
-            <ellipse cx="350" cy="350" rx="210" ry="270" fill="url(#metal)"/>
-            <ellipse cx="350" cy="350" rx="151" ry="211" fill="url(#well)" stroke="url(#rim)" stroke-width="3"/>
-            <ellipse cx="350" cy="350" rx="204" ry="264" stroke="#f8e7c5" stroke-opacity=".45"/>
-            <ellipse cx="350" cy="350" rx="160" ry="220" stroke="#e4cfa7" stroke-opacity=".25"/>
-            <path d="M230 142C293 91 386 86 455 145" stroke="#fff4dc" stroke-width="3" stroke-linecap="round" opacity=".6"/>
-          </g>
-          <path d="M111 445C-18 284 266 114 517 181C764 246 592 551 290 561" stroke="url(#rim)" stroke-width="1"/>
-          <circle cx="578" cy="285" r="7" fill="#ead5ae"/><circle cx="150" cy="483" r="4" fill="#ead5ae"/>
-        </svg>
-        <div class="atelier-art-label" aria-hidden="true"><span>FORM</span><span>MEETS FUNCTION</span></div>
-        <div class="atelier-preview atelier-preview-web" data-world-panel="websites">
-          <div class="preview-browser"><span><i></i><i></i><i></i></span><span>DESIGN DIRECTION / 01</span><span>↗</span></div>
-          <div class="preview-web-inner"><p>STONE &amp; STREAM</p><div class="preview-arch" aria-hidden="true"></div><h2>Room<br/>to <em>grow.</em></h2><span class="preview-caption">A LANDSCAPING WEBSITE CONCEPT</span></div>
-          <div class="preview-foot"><span>Illustrative concept</span><span>BUILT AROUND YOUR BUSINESS</span></div>
-        </div>
-        <div class="atelier-preview atelier-preview-audit" data-world-panel="audits" hidden>
-          <div class="preview-browser"><span><i></i><i></i><i></i></span><span>REVIEW DIRECTION / 02</span><span>↗</span></div>
-          <div class="preview-audit-inner"><span class="atelier-badge">COMING SOON</span><h2>Look beyond<br/><em>the interface.</em></h2><div class="audit-outline"><span>01 / Scope &amp; permissions</span><span>02 / Source-code review</span><span>03 / Evidence &amp; next steps</span></div></div>
-          <div class="preview-foot"><span>Illustrative report structure</span><span>NOT A COMPLETED AUDIT</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="atelier-hero-bottom"><div class="atelier-worlds" role="group" aria-label="Explore our two directions"><button type="button" data-world-select="websites" aria-pressed="true"><span>01</span> Website design <i aria-hidden="true">↗</i></button><button type="button" data-world-select="audits" aria-pressed="false"><span>02</span> AI-app reviews <small>COMING SOON</small></button></div><span class="atelier-scroll">SCROLL TO DISCOVER <span aria-hidden="true">↓</span></span></div>
-    <p class="sr-only" data-world-status aria-live="polite">Website design concept selected.</p>
-  </div>
+<div class="new-studio">
+<section class="studio-hero" aria-labelledby="cinema-heading">
+ <div class="studio-art" data-tilt aria-hidden="true"><img src="/art/glass-fold.webp" width="1536" height="1024" fetchpriority="high" alt=""/></div>
+ <div class="studio-hero-top"><span>INDEPENDENT DIGITAL STUDIO</span><span>PUNE, INDIA / WORKING EVERYWHERE</span></div>
+ <div class="studio-hero-copy"><p class="studio-overline">DESIGN. BUILD. MAKE IT MATTER.</p><h1 id="cinema-heading">A website that<br/> <span>feels ahead.</span></h1><p>For businesses with something<br/>worth putting into the world.</p><a class="studio-link" href="#cinema-work">Enter the work <span aria-hidden="true">↘</span></a></div>
+ <div class="studio-hero-bottom"><span>SCROLL TO EXPLORE</span><p>Distinctive by design.<br/>Simple where it matters.</p><span>01 — 03</span></div>
 </section>
-<section class="atelier-manifesto container" data-reveal><p class="atelier-kicker">GOOD DESIGN IS NOT DECORATION.</p><h2>It’s the difference between<br/><span>being seen</span> and <em>being remembered.</em></h2><p>We turn what makes your business distinctive into a digital experience with presence. Beautiful to explore. Simple to use. Built around a clear next step.</p></section>
-<JourneyStudio/>
-<section class="atelier-work" id="cinema-work" aria-labelledby="cinema-work-heading"><div class="container">
-  <div class="atelier-section-head" data-reveal><div><p class="atelier-kicker">01 / SELECTED DIRECTIONS</p><h2 id="cinema-work-heading">Different businesses.<br/><em>Distinctive worlds.</em></h2></div><p>Three interactive concepts. Three very different personalities. A glimpse of what a considered website can feel like.</p></div>
-  <div class="atelier-work-grid">
-    <a class="atelier-work-card concept-wash" href="/showcase/exterior/" data-reveal><div class="concept-art"><div class="concept-top"><span>RINSE &amp; RISE</span><span aria-hidden="true">↗</span></div><div class="wash-rings" aria-hidden="true"></div><strong>Pure<br/><em>impact.</em></strong><span class="concept-art-caption">A FRESH PERSPECTIVE ON EXTERIOR CARE</span></div><div class="concept-meta"><div><h3>Rinse &amp; Rise</h3><p>Exterior cleaning / Confident &amp; kinetic</p></div><span class="concept-arrow" aria-hidden="true">↗</span></div><span class="concept-disclosure">FICTIONAL INTERACTIVE CONCEPT</span></a>
-    <a class="atelier-work-card concept-pool" href="/showcase/pool/" data-reveal><div class="concept-art"><div class="concept-top"><span>BLUE HOUR</span><span aria-hidden="true">↗</span></div><div class="pool-steps" aria-hidden="true"></div><strong>Beyond<br/><em>the blue.</em></strong><span class="concept-art-caption">A CALMER KIND OF POOL CARE</span></div><div class="concept-meta"><div><h3>Blue Hour</h3><p>Pool care / Calm &amp; considered</p></div><span class="concept-arrow" aria-hidden="true">↗</span></div><span class="concept-disclosure">FICTIONAL INTERACTIVE CONCEPT</span></a>
-    <a class="atelier-work-card concept-land" href="/showcase/landscape/" data-reveal><div class="concept-art"><div class="concept-top"><span>STONE &amp; STREAM</span><span aria-hidden="true">↗</span></div><div class="land-arch" aria-hidden="true"></div><strong>Ground<br/><em>work.</em></strong><span class="concept-art-caption">SPACES WITH ROOM TO BREATHE</span></div><div class="concept-meta"><div><h3>Stone &amp; Stream</h3><p>Landscaping / Natural &amp; editorial</p></div><span class="concept-arrow" aria-hidden="true">↗</span></div><span class="concept-disclosure">FICTIONAL INTERACTIVE CONCEPT</span></a>
-  </div><p class="atelier-work-note">Original agency-made concepts, not commissioned client projects. No borrowed testimonials or invented results.</p>
-</div></section>
-<section class="atelier-two-worlds container" aria-labelledby="two-worlds-heading"><div class="atelier-section-head" data-reveal><div><p class="atelier-kicker">02 / FORM. FUNCTION. A LITTLE FURTHER.</p><h2 id="two-worlds-heading">Beautiful outside.<br/><em>Considered within.</em></h2></div><p>Website design is where we begin. Source-code security reviews are the next direction we’re preparing.</p></div><div class="atelier-service-grid">
-  <article class="atelier-service" data-reveal><span class="atelier-service-number">01</span><p class="atelier-kicker">AVAILABLE NOW</p><h3>A better<br/><em>digital presence.</em></h3><p>A defined five-page website. Responsive design, a working enquiry route and source files you own.</p><div class="atelier-service-tail"><span>US$500 <small>DEFINED WEBSITE BUILD</small></span><button class="atelier-detail-button" data-dialog-open="website-details" aria-haspopup="dialog" hidden>View scope <span aria-hidden="true">↗</span></button><a class="atelier-text-link" href="/services/">Full website scope ↗</a></div></article>
-  <article class="atelier-service atelier-service-future" data-reveal><span class="atelier-service-number">02</span><p class="atelier-kicker"><span class="atelier-badge">COMING SOON</span></p><h3>A closer look<br/><em>under the surface.</em></h3><p>Planned AI-app security reviews, grounded in authorized source-code access, evidence and practical next steps.</p><div class="atelier-service-tail"><span>In preparation <small>NO AUDIT BOOKINGS YET</small></span><a class="atelier-text-link" href="/audits/">Explore the direction ↗</a></div></article>
-</div></section>
-<section class="atelier-brief-section" aria-labelledby="atelier-brief-heading"><div class="container atelier-brief-grid"><div data-reveal><p class="atelier-kicker">03 / YOUR NEXT CHAPTER</p><h2 id="atelier-brief-heading">Let’s make<br/><em>something matter.</em></h2><p class="atelier-brief-lead">A next step that feels simple.</p><p>Tell us where you want to go. We’ll start with an email conversation, a clear scope and an intentional direction.</p><div class="atelier-process"><span><b>01</b> Define</span><span><b>02</b> Build</span><span><b>03</b> Refine</span><span><b>04</b> Own</span></div><p class="atelier-terms"><strong>US$500</strong> for a defined five-page website.<br/>$250 to start after written approval. $250 after accepted staging. Two consolidated revision rounds.</p><a class="atelier-text-link" href="/approach/">A clear process, from day one ↗</a></div><ProjectBrief/></div></section>
-<dialog class="atelier-dialog" id="website-details" aria-labelledby="website-details-title"><div class="atelier-dialog-inner"><form method="dialog"><button class="atelier-dialog-close" aria-label="Close website scope">×</button></form><p class="atelier-kicker">THE SIGNATURE WEBSITE</p><h2 id="website-details-title">A clear scope.<br/><em>A considered result.</em></h2><p>US$500 for up to five marketing pages, a scoped enquiry form, basic on-page SEO, two consolidated revision rounds and portable source handover.</p><p>US$250 after written scope approval. US$250 after explicit staging acceptance. Final balance clears before handover or deployment.</p><p>Domain, hosting and third-party services are agreed separately. Custom apps, ecommerce, ongoing SEO and AI-app audits are not included.</p><a class="atelier-button" href="/services/">Read the complete terms <span aria-hidden="true">↗</span></a></div></dialog>
+<section class="selected-work" id="cinema-work" aria-labelledby="work-title">
+ <div class="work-stage">
+  <div class="work-rail"><h2 id="work-title">Selected directions</h2><span>ORIGINAL CONCEPTS / NOT CLIENT COMMISSIONS</span></div>
+  <div class="work-art" aria-hidden="true"><img data-work-art="exterior" src="/art/titanium-fins.webp" width="1536" height="1024" loading="lazy" alt=""/><img data-work-art="pool" src="/art/glass-fold.webp" width="1536" height="1024" loading="lazy" alt="" hidden/><img data-work-art="landscape" src="/art/basalt-study.webp" width="1536" height="1024" loading="lazy" alt="" hidden/><span class="work-art-rule"></span></div>
+  <div class="work-panels">{projects.map(p=><a class={`work-panel work-${p.id}`} data-work-panel={p.id} href={`/showcase/${p.id}/`}><span class="work-count">{p.number} / DESIGN EXPLORATION</span><h3>{p.name}<span aria-hidden="true">↗</span></h3><p class="work-tagline">{p.line}</p><p class="work-description">{p.description}</p><span class="work-category">{p.category}</span><span class="work-disclosure">FICTIONAL INTERACTIVE CONCEPT</span></a>)}</div>
+  <div class="work-controls" role="group" aria-label="Choose a design direction">{projects.map((p,i)=><button type="button" data-work-select={p.id} aria-pressed={i===0?'true':'false'}><span>{p.number}</span> {p.name}</button>)}</div>
+  <p class="work-status sr-only" aria-live="polite" data-work-status>Rinse &amp; Rise concept selected.</p>
+  <div class="work-stage-bottom"><span>SCROLL TO EXPLORE · SELECT TO OPEN</span><span data-work-position>01 / 03</span></div>
+ </div>
+</section>
+<section class="studio-statement" aria-labelledby="studio-title"><div class="studio-section-line"><span>EZERWRIGHT / THE STUDIO</span><span>02</span></div><div class="studio-statement-grid"><h2 id="studio-title" data-reveal>From a good business<br/>to an <em>unmistakable presence.</em></h2><div><p>We bring design and development together to make websites with a point of view—and a practical next step.</p><a href="/approach/">A little about our process <span aria-hidden="true">↗</span></a></div></div><div class="studio-principles"><article><span>01 / STRATEGY</span><h3>Know the next move.</h3><p>Understand the business, the customer and the action that matters.</p></article><article><span>02 / DESIGN</span><h3>Give it a presence.</h3><p>A distinct visual direction, considered details and room to breathe.</p></article><article><span>03 / BUILD</span><h3>Make it work.</h3><p>Responsive pages, a real enquiry route and portable source you own.</p></article></div></section>
+<section class="studio-offering" aria-labelledby="studio-offer-title"><div class="studio-section-line"><span>A CLEAR STARTING POINT</span><span>03</span></div><div class="studio-offer-grid"><div><h2 id="studio-offer-title">Considered design.<br/><span>Clearly defined.</span></h2><p>A five-page website for your business. A real scope, a working enquiry route and a handover that keeps you in control.</p><a class="studio-link" href="/services/">Explore the full scope <span aria-hidden="true">↗</span></a></div><div class="studio-price"><span>THE DEFINED WEBSITE BUILD</span><p>US$<strong>500</strong></p><span>$250 to start after written approval.<br/>$250 after accepted staging.</span><ul><li>Up to five marketing pages</li><li>Two consolidated revision rounds</li><li>Client-owned, portable source</li></ul></div></div><div class="studio-future"><span>IN DEVELOPMENT</span><p>Looking beyond the interface.<br/><strong>AI-app source-code security reviews.</strong></p><a href="/audits/">Explore the direction <span aria-hidden="true">↗</span></a><span>COMING SOON · NO AUDIT BOOKINGS YET</span></div></section>
+<section class="studio-enquiry" aria-labelledby="studio-enquiry-title"><div><p class="studio-overline">SOMETHING IN MIND?</p><h2 id="studio-enquiry-title">Let’s give<br/>it <em>form.</em></h2><p>A new website, a clearer experience,<br/>or a considered next chapter.</p><a class="studio-link" href="/contact/">Start a conversation <span aria-hidden="true">↗</span></a><p class="studio-enquiry-note">Start by email. No call required.</p></div><ProjectBrief/></section>
+</div>
