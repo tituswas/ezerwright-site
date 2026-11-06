@@ -33,7 +33,7 @@ const structuredData=JSON.stringify(schema).replace(/</g,'\\u003c');
   <meta property="og:image:alt" content={site.name}/>
   <meta property="og:image" content={new URL('/og-card.svg',site.origin).href}/>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
-  {agency&&page.slug===''&&<><link rel="stylesheet" href="/cinematic-home.css?v=director-20261106"/><script src="/work-gallery.js?v=director-20261106" defer></script><link rel="stylesheet" href="/project-room.css?v=director-20261106"/><script src="/project-room.js?v=director-20261106" defer></script></>}
+  {agency&&page.slug===''&&<><link rel="stylesheet" href="/cinematic-home.css?v=director-20261106-r2"/><script src="/work-gallery.js?v=director-20261106" defer></script><link rel="stylesheet" href="/project-room.css?v=director-20261106"/><script src="/project-room.js?v=director-20261106" defer></script></>}
   {agency&&['services','approach','living','privacy'].includes(page.slug)&&<>
     <link rel="stylesheet" href="/interior-opening.css"/>
     <link rel="stylesheet" href="/agency-interiors.css"/>
@@ -48,11 +48,11 @@ const structuredData=JSON.stringify(schema).replace(/</g,'\\u003c');
   </>}
   {agency&&<>
     <link rel="stylesheet" href="/agency-refresh.css?v=director-20261106"/>
-    {page.slug.startsWith('plugins')&&<link rel="stylesheet" href="/plugin-refinements.css"/>}
+    {page.slug.startsWith('plugins')&&<link rel="stylesheet" href="/plugin-refinements.css?v=director-20261106-r2"/>}
     <script src="/agency-motion.js" defer></script>
   </>}
   {agency&&page.slug==='contact'&&<link rel="stylesheet" href="/contact-desk.css"/>}
-  {agency&&<link rel="stylesheet" href="/director.css?v=20261106"/>}
+  {agency&&<link rel="stylesheet" href="/director.css?v=20261106-r2"/>}
   {site.mode==='production'&&<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
 </head>
 <body class:list={[agency?'agency-experience':undefined,agency&&page.slug===''?'agency-home':undefined]}>

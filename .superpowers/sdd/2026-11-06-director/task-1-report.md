@@ -11,3 +11,9 @@ Validation: `npm run build` passed; `npm test` passed all 97 tests (including ax
 Updated PRODUCT.md, DESIGN.md and .impeccable/design.json to the approved Director identity. Existing tests changed only for obsolete aesthetic contracts or the intentional accessible filmstrip behavior.
 
 Hosted visual review and publication are handled by the parent agent after this implementation commit. Structural axe checks do not measure rendered contrast or clipping; hosted browser review remains necessary before publication. Rollback baseline: 380af4b.
+
+## Hosted-review corrections
+
+Fixed the plugin refinement foregrounds that incorrectly consumed the dark `--paper` surface token. Plugin disclosures and principle copy now explicitly use light text; former green/gold surfaces, decorative glow and rounded action are reconciled to charcoal, white and vermilion. Added a dark upper architecture scrim to protect white navigation over the bright concrete; the preview/demo banner remains in normal document flow with its own stacking level above the overlay header. Tightened the desktop headline compression from .58 to .55 to give its final period clear right-hand breathing room. Cache-busted all three affected stylesheets.
+
+Validation for this correction: `npm run build` passed; focused cinematic, gallery, plugin and accessibility/budget tests passed all 23 cases. `git diff --check` passed. No backend, configuration, content, dependency or budget changes. Parent handles final hosted screenshot verification.
