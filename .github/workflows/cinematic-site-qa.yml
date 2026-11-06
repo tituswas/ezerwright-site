@@ -19,3 +19,21 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Build and run existing + cinematic regression tests
         run: npm run qa || { find dist -type f -name '*.css' -print0 | xargs -0 wc -c; exit 1; }
+      - name: Preserve public site build for visual review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-visual-review
+          retention-days: 3
+          path: |
+            dist/
+            src/
+            public/
+            test/
+            scripts/
+            lib/
+            examples/
+            worker/
+            package.json
+            astro.config.mjs
+          if-no-files-found: warn
