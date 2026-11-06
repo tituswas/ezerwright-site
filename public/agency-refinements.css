@@ -1,9 +1,0 @@
-.agency-experience .atelier-audit-content>h2{font-family:var(--serif);font-weight:400;font-size:clamp(36px,4vw,52px)}
-.agency-experience .project-brief .brief-heading h2,.agency-experience .project-brief .brief-receipt h3{color:var(--paper)}
-.agency-experience .project-brief .brief-heading h2 em{color:var(--gold)}
-.agency-experience .cta-section{background:#e1c89e;border-color:#e1c89e}
-.agency-experience .cta-section :is(h2,p,.eyebrow){color:#20312b}
-.agency-experience .cta-section h2{font-family:var(--serif);font-weight:400}
-.agency-experience .cta-section .button{background:#17251e;color:#f3e6ce;border-radius:30px}
-.agency-experience .contact-aside .contact-detail a{color:var(--gold)}
-.agency-experience .agency-header .menu-toggle:not([hidden]){background:transparent;color:var(--paper);border-color:#c7ae8266}

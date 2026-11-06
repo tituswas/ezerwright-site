@@ -23,7 +23,7 @@ test('Cloudflare branch preview is noindex, non-submitting and cannot impersonat
   assert.equal(home.querySelector('meta[name="robots"]')?.getAttribute('content'),'noindex, nofollow');
   assert.equal(home.querySelector('link[rel="canonical"]')?.getAttribute('href'),'https://review-abc.ezerwright-site.pages.dev/');
   assert.match(home.body.textContent,/Design preview.*Forms disabled/);
-  assert.match(home.querySelector('h1')?.textContent||'',/website that feels ahead/i);
+  assert.match(home.querySelector('h1')?.textContent||'',/Good businesses.*deserve.*extraordinary.*websites/i);
   const contact=new JSDOM(await readFile(join(target,'dist/contact/index.html'),'utf8')).window.document;
   assert.equal(contact.querySelectorAll('form').length,0,'preview must never capture enquiries');
   assert.equal(contact.querySelectorAll('script[src*="turnstile"]').length,0);

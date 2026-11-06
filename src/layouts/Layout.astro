@@ -19,7 +19,7 @@ const structuredData=JSON.stringify(schema).replace(/</g,'\\u003c');
   <title>{title}</title>
   <meta name="description" content={description}/>
   <meta name="robots" content={robots}/>
-  <meta name="color-scheme" content={agency?'dark':'light'}/>
+  <meta name="color-scheme" content="light"/>
   <link rel="canonical" href={canonical}/>
   <meta property="og:type" content="website"/>
   <meta property="og:title" content={title}/>
@@ -33,7 +33,7 @@ const structuredData=JSON.stringify(schema).replace(/</g,'\\u003c');
   <meta property="og:image:alt" content={site.name}/>
   <meta property="og:image" content={new URL('/og-card.svg',site.origin).href}/>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
-  {agency&&page.slug===''&&<><link rel="stylesheet" href="/cinematic-home.css?v=glass-20261106"/><script src="/work-gallery.js" defer></script><link rel="stylesheet" href="/project-room.css"/><script src="/project-room.js" defer></script></>}
+  {agency&&page.slug===''&&<><link rel="stylesheet" href="/cinematic-home.css?v=living-20261106"/><script src="/work-gallery.js?v=living-20261106" defer></script><link rel="stylesheet" href="/project-room.css?v=living-20261106"/><script src="/project-room.js?v=living-20261106" defer></script></>}
   {agency&&['services','approach','living','privacy'].includes(page.slug)&&<>
     <link rel="stylesheet" href="/interior-opening.css"/>
     <link rel="stylesheet" href="/agency-interiors.css"/>
@@ -43,16 +43,16 @@ const structuredData=JSON.stringify(schema).replace(/</g,'\\u003c');
   <script type="application/ld+json" set:html={structuredData}></script>
   <script src="/ui.js" defer></script>
   {agency&&['','contact'].includes(page.slug)&&<>
-    <link rel="stylesheet" href="/project-brief.css"/>
+    <link rel="stylesheet" href="/project-brief.css?v=living-20261106"/>
     <script src="/project-brief.js?v=room-20261106" defer></script>
   </>}
   {agency&&<>
-    <link rel="stylesheet" href="/agency-refresh.css"/>
-    <link rel="stylesheet" href="/agency-refinements.css"/>
+    <link rel="stylesheet" href="/agency-refresh.css?v=living-20261106"/>
     {page.slug.startsWith('plugins')&&<link rel="stylesheet" href="/plugin-refinements.css"/>}
     <script src="/agency-motion.js" defer></script>
   </>}
   {agency&&page.slug==='contact'&&<link rel="stylesheet" href="/contact-desk.css"/>}
+  {agency&&<link rel="stylesheet" href="/living-studio.css?v=20261106"/>}
   {site.mode==='production'&&<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
 </head>
 <body class={agency?'agency-experience':undefined}>
