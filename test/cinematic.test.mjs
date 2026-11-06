@@ -70,8 +70,8 @@ test('Services has a distinctive editorial progression, not a repeated stock-car
  if(site.template==='client')return;
  const home=new JSDOM(await readFile('dist/index.html','utf8')).window.document;
  const services=new JSDOM(await readFile('dist/services/index.html','utf8')).window.document;
- assert.ok(home.querySelector('link[href="/cinematic-home.css"]'),'homepage loads its own visual CSS');
- assert.equal(services.querySelectorAll('link[href="/cinematic-home.css"]').length,0,'interior route must not load homepage art');
+ assert.ok(home.querySelector('link[href^="/cinematic-home.css"]'),'homepage loads its own visual CSS');
+ assert.equal(services.querySelectorAll('link[href^="/cinematic-home.css"]').length,0,'interior route must not load homepage art');
  assert.ok(services.querySelector('link[href="/services-editorial.css"]'));
  assert.equal(services.querySelectorAll('h1').length,1);
  for(const selector of ['.service-offer','.service-price-pane','.service-spec','.service-ledger','.service-questions','.faq']){
