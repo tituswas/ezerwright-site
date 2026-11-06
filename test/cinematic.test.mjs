@@ -44,7 +44,7 @@ test('all agency interior routes sustain the cinematic visual system without cha
   ['services','A website with'],
   ['approach','Clear process'],
   ['living','Made to work'],
-  ['contact','You have the idea'],
+  ['contact','Good things start with a conversation'],
   ['privacy','Built with care']
  ];
  for(const [route,heading] of matrix){
@@ -52,6 +52,14 @@ test('all agency interior routes sustain the cinematic visual system without cha
   const d=new JSDOM(html).window.document;
   assert.equal(d.querySelectorAll('h1').length,1,'one main heading: '+route);
   assert.match(d.querySelector('h1').textContent, new RegExp(heading,'i'));
+  if(route==='contact'){
+   assert.ok(d.querySelector('.enquiry-desk'),'contact extends the glass-gallery identity');
+   assert.ok(d.querySelector('.desk-paper form[action="/api/contact"]'),'the real enquiry route is inside the project desk');
+   assert.ok(d.querySelector('.desk-art[src="/art/glass-fold.webp"]'));
+   assert.ok(d.querySelector('link[href="/contact-desk.css"]'));
+   assert.equal(d.querySelectorAll('.interior-opening,link[href="/interior-opening.css"]').length,0,'contact must not restore the oversized decorative hero');
+   continue;
+  }
   assert.ok(d.querySelector('.interior-opening'),'cinematic opening: '+route);
   assert.ok(d.querySelector('.agency-interior'),'agency-only frame: '+route);
   assert.ok(d.querySelector('link[href="/agency-interiors.css"]'));

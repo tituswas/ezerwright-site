@@ -1,0 +1,29 @@
+---
+import {site} from '../config/site.mjs';
+import {offer} from '../config/offer.mjs';
+import ContactForm from './ContactForm.astro';
+---
+<section class="enquiry-desk" aria-labelledby="desk-title">
+  <div class="desk-introduction">
+    <h1 id="desk-title">Good things start with <span>a conversation.</span></h1>
+    <p class="desk-lead">A new website. A sharper experience. An idea that deserves to happen. Tell us what you have in mind.</p>
+    <a class="desk-email" href={`mailto:${site.email}`}>{site.email}<svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 19 19 5M5 5h14v14"/></svg></a>
+    <img class="desk-art" src="/art/glass-fold.webp" alt="" width="1536" height="1024" decoding="async"/>
+    <p class="desk-caption">Distinctive by design. Clear from the first conversation.</p>
+  </div>
+  <section class="desk-paper" aria-labelledby="desk-form-title">
+    {site.preview ? <div class="desk-preview"><h2 id="desk-form-title">Enquiries are disabled on this preview.</h2><p>No visitor details are collected here. Explore the design, then use the live website to discuss a project.</p><a href="https://ezerwright.com/contact/">Visit the live contact page</a></div> : <>
+      <header class="desk-form-heading"><h2 id="desk-form-title">What’s on your mind?</h2><p>A few sentences are enough. Start by email. No call required.</p></header>
+      <ContactForm/>
+    </>}
+  </section>
+  <section class="desk-next" aria-labelledby="desk-next-title">
+    <h2 id="desk-next-title">A conversation first.<br/>A clear plan next.</h2>
+    <ol><li><strong>Share the idea</strong><p>Tell us about your business and what you want your website to do.</p></li><li><strong>Agree the scope</strong><p>We discuss the work, boundaries and price by email before you decide.</p></li><li><strong>Begin with clarity</strong><p>Work starts after written scope approval and the agreed deposit.</p></li></ol>
+  </section>
+  <section class="desk-scope" aria-label="Website package and enquiry guidance">
+    <p><strong>A defined starting point: US${offer.totalUSD}.</strong> Up to five marketing pages, two consolidated revision rounds and portable source you own. $250 after written scope approval; $250 after accepted staging.</p>
+    <p>Updates, improvements and other projects are quoted separately. <a href="/services/">See the scope and exclusions</a>.</p>
+    <p class="desk-sensitive">Please do not include passwords, financial details or private customer information.</p>
+  </section>
+</section>
