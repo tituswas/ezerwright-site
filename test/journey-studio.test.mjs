@@ -28,7 +28,7 @@ test('wheel is local, releases both boundaries, supports immediate reversal and 
  assert.equal(wheel(80,deck,{ctrlKey:true}).defaultPrevented,false,'browser zoom stays native');
  assert.equal(wheel(80).defaultPrevented,true);assert.equal(selected().dataset.workPanel,'pool');
  wheel(80);assert.equal(selected().dataset.workPanel,'pool','one gesture does not race through slides');
- wheel(-80);assert.equal(selected().dataset.workPanel,'landscape','reverse direction responds during cooldown');
+ wheel(-80);assert.equal(selected().dataset.workPanel,'landscape','reverse direction responds within the same gesture');
  tick();for(let i=0;i<8;i++){tick(20);wheel(5);}assert.equal(selected().dataset.workPanel,'pool','small trackpad events accumulate');
  tick();wheel(80);assert.equal(selected().dataset.workPanel,'exterior');assert.equal(wheel(80).defaultPrevented,false,'last design releases downward');
  assert.equal(d.querySelectorAll('[data-work-panel]:not([hidden])').length,1);assert.equal(d.querySelectorAll('[data-work-panel][inert]').length,2);
@@ -52,4 +52,27 @@ test('horizontal swipe selects a design while vertical touch remains native',asy
  touch('touchstart',200,200);touch('touchend',190,70);assert.equal(selected().dataset.workPanel,'landscape');
  touch('touchstart',200,200);touch('touchend',100,190);assert.equal(selected().dataset.workPanel,'pool');
  touch('touchstart',100,200);touch('touchend',210,190);assert.equal(selected().dataset.workPanel,'landscape');dom.window.close();
+});
+
+test('long trackpad momentum advances once until a fresh gesture, with immediate reversal',async()=>{
+ const {dom,wheel,tick,selected}=await setup();
+ wheel(80);assert.equal(selected().dataset.workPanel,'pool');
+ for(let i=0;i<30;i++){tick(60);assert.equal(wheel(12).defaultPrevented,true);}
+ assert.equal(selected().dataset.workPanel,'pool','continuous momentum lasting beyond 420ms must not advance twice');
+ tick(181);wheel(80);assert.equal(selected().dataset.workPanel,'exterior','a quiet interval starts the next gesture');
+ assert.equal(wheel(12).defaultPrevented,false,'momentum releases at the final design');
+ wheel(-80);assert.equal(selected().dataset.workPanel,'pool','reversal bypasses the previous gesture latch');
+ for(let i=0;i<8;i++){tick(50);wheel(-12);}assert.equal(selected().dataset.workPanel,'pool');
+ tick(181);wheel(-80);assert.equal(selected().dataset.workPanel,'landscape');assert.equal(wheel(-12).defaultPrevented,false);dom.window.close();
+});
+test('switching while a concept link has focus moves focus before hiding its panel',async()=>{
+ const {dom,d,deck,selected,wheel,tick}=await setup();
+ const old=selected(),link=old.querySelector('a');link.focus();assert.equal(d.activeElement,link);
+ const hide=old.toggleAttribute.bind(old);old.toggleAttribute=(name,force)=>{if(name==='inert'&&force)assert.equal(d.activeElement,deck,'focus leaves before the outgoing panel becomes inert');return hide(name,force);};
+ wheel(80);assert.equal(old.hidden,true);assert.equal(d.activeElement,deck);
+ const active=selected().querySelector('a');active.focus();tick();d.querySelector('[data-work-next]').click();assert.equal(d.activeElement,deck);assert.equal(selected().contains(d.activeElement),false);dom.window.close();
+});
+test('photo-backed website headings retain a white foreground above agency heading defaults',async()=>{
+ const css=await readFile('public/living-studio.css','utf8');
+ assert.match(css,/\.agency-experience \.website-copy h2\{color:#fff\}/);
 });
