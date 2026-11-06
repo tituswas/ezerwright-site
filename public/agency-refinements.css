@@ -1,0 +1,18 @@
+/* Keep legacy plugin surfaces within the same dark editorial palette. */
+.agency-experience .plugins:before{background:radial-gradient(ellipse at 78% 37%,#67543335,transparent 55%),#0a1012}
+.agency-experience .plugins:after{opacity:.07}
+.agency-experience .plugins :is(.plugin-catalog,.surface-section){background:#11191a}
+.agency-experience .plugins :is(.plugin-empty,.plugin-principle,.plugin-list article,.plugin-next){background:#182321;border-color:#445044;box-shadow:none}
+.agency-experience .plugins :is(.plugin-hero,.plugin-services-intro) h1 span{background:none;color:var(--gold)}
+.agency-experience .plugins :is(.plugin-lead,.plugin-status,.plugin-empty p,.plugin-principle small,.plugin-next p,.small-copy){color:#b8c0b6}
+.agency-experience .plugins :is(.plugin-disclosures dt,.plugin-principle p){color:var(--paper)}
+.agency-experience .plugins :is(.plugin-crosslinks a,.text-link,.plugin-principle svg){color:var(--gold);text-decoration-color:#b5a483}
+.agency-experience .plugins .button{background:var(--gold);color:#17251e;border-radius:30px}
+.agency-experience .plugins .plugin-principle:before{border-color:#cbb28a66;box-shadow:0 0 0 35px #d6ba8410,0 0 0 70px #d6ba8409}
+.agency-experience .atelier-audit-content>h2{font-family:var(--serif);font-weight:400;font-size:clamp(36px,4vw,52px)}
+.agency-experience .project-brief .brief-heading h2,.agency-experience .project-brief .brief-receipt h3{color:var(--paper)}
+.agency-experience .project-brief .brief-heading h2 em{color:var(--gold)}
+.agency-experience .cta-section{background:#e1c89e;border-color:#e1c89e}
+.agency-experience .cta-section :is(h2,p,.eyebrow){color:#20312b}
+.agency-experience .cta-section h2{font-family:var(--serif);font-weight:400}
+.agency-experience .cta-section .button{background:#17251e;color:#f3e6ce;border-radius:30px}
