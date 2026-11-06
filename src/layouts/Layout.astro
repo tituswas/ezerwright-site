@@ -34,7 +34,7 @@ const structuredData=JSON.stringify(schema).replace(/</g,'\\u003c');
   <meta property="og:image" content={new URL('/og-card.svg',site.origin).href}/>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
   {agency&&page.slug===''&&<><link rel="stylesheet" href="/cinematic-home.css?v=glass-20261106"/><script src="/work-gallery.js" defer></script><link rel="stylesheet" href="/project-room.css"/><script src="/project-room.js" defer></script></>}
-  {agency&&['services','approach','living','contact','privacy'].includes(page.slug)&&<>
+  {agency&&['services','approach','living','privacy'].includes(page.slug)&&<>
     <link rel="stylesheet" href="/interior-opening.css"/>
     <link rel="stylesheet" href="/agency-interiors.css"/>
   </>}
@@ -52,6 +52,7 @@ const structuredData=JSON.stringify(schema).replace(/</g,'\\u003c');
     {page.slug.startsWith('plugins')&&<link rel="stylesheet" href="/plugin-refinements.css"/>}
     <script src="/agency-motion.js" defer></script>
   </>}
+  {agency&&page.slug==='contact'&&<link rel="stylesheet" href="/contact-desk.css"/>}
   {site.mode==='production'&&<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
 </head>
 <body class={agency?'agency-experience':undefined}>
