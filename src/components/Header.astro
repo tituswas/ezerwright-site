@@ -2,7 +2,7 @@
 import {site} from '../config/site.mjs';
 const {current}=Astro.props;
 const links=site.pages.filter(p=>p.slug&&p.slug!=='privacy').map(p=>[p.slug,p.navLabel||p.slug.charAt(0).toUpperCase()+p.slug.slice(1)]);
-if(site.template!=='client')links.splice(links.length-1,0,['plugins','Plugins']);
+if(site.template!=='client')links.splice(links.length-1,0,['plugins','Plugins'],['audits','Audits']);
 ---
 <a class="skip-link" href="#main">Skip to content</a>
 {site.mode==='demo' && <div class="demo-banner" role="region" aria-label="Demonstration notice">{site.preview?'Design preview · Not the live site · Forms disabled':'Private demonstration · EZERWRIGHT launch candidate · Sample information only'}</div>}
