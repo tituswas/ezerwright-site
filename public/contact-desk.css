@@ -1,5 +1,5 @@
 /* The existing glass-gallery identity, carried through the real enquiry route. */
-.enquiry-desk{--desk-paper:#e9f2f5;--desk-ink:#172d38;--desk-muted:#465d68;--desk-line:#a7bcc5;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);gap:64px 7%;max-width:1440px;margin:auto;padding:66px 4% 80px;background:#080f13;color:#e9f2f5}
+.enquiry-desk{--desk-paper:#e9f2f5;--desk-ink:#172d38;--desk-muted:#465d68;--desk-line:#6d8793;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);gap:64px 7%;max-width:1440px;margin:auto;padding:66px 4% 80px;background:#080f13;color:#e9f2f5}
 .enquiry-desk .desk-introduction{min-width:0}
 .enquiry-desk h1{color:#edf4f5;font-family:Manrope,sans-serif;font-weight:400;font-size:clamp(48px,5.6vw,78px);letter-spacing:-.04em;line-height:1.06;margin:0 0 25px;max-width:10ch;text-wrap:balance}
 .enquiry-desk h1 span{color:#a7c4d1}
@@ -18,7 +18,7 @@
 .enquiry-desk .contact-form label span{font-size:13px;color:var(--desk-muted)}
 .enquiry-desk .contact-form :is(input,textarea,select){background:#f7fbfc;border:1px solid var(--desk-line);color:var(--desk-ink);border-radius:3px;min-height:48px;font-size:16px;padding:11px;margin-bottom:21px;caret-color:#235569}
 .enquiry-desk .contact-form textarea{min-height:132px;line-height:1.6}
-.enquiry-desk .contact-form :is(input,textarea,select):focus-visible{outline:2px solid #235569;outline-offset:3px}
+.enquiry-desk .desk-paper :is(a,button,input,textarea,select):focus-visible{outline:2px solid #235569;outline-offset:3px}
 .enquiry-desk .contact-form [aria-invalid=true]{border-color:#9a2c20}
 .enquiry-desk .contact-form .field-error{color:#8b271c;font-size:14px;line-height:1.5}
 .enquiry-desk .contact-form .form-disclosure{color:var(--desk-muted);font-size:14px;line-height:1.6;margin:0 0 17px}
