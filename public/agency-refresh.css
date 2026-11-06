@@ -1,0 +1,102 @@
+/* Agency-wide identity, accessibility and prelaunch audit page. */
+.agency-experience{--ink:#f1ede5;--text:#e8e3da;--muted:#b1b0a9;--surface:#141b1c;--accent:#e1c89e;--border:#38403f;--focus:#f2d8aa;--paper:#f1ede5;--gold:#e1c89e;--night:#0a1012;--line:#d8c39d30;--serif:Georgia,"Times New Roman",serif;background:var(--night);color:var(--text);font-size:16px}
+.agency-experience .container{width:min(1320px,calc(100% - 96px));margin-inline:auto}
+.agency-experience h1,.agency-experience h2,.agency-experience h3{color:var(--paper)}
+.agency-experience a{color:var(--gold)}
+.agency-experience :is(a,button,input,textarea,select,summary):focus-visible{outline:2px solid var(--gold);outline-offset:6px}
+.agency-experience .demo-banner{background:#1a201e;color:#dcc9a6;border-color:var(--line);font-size:11px}
+.agency-experience .site-header{position:sticky;top:0;z-index:30;background:#0a1012ed;border-bottom:1px solid var(--line);backdrop-filter:blur(18px)}
+.agency-experience .header-inner{min-height:86px;gap:30px}
+.agency-experience .site-header .identity,.agency-experience .site-footer .identity{color:var(--paper);font-size:14px;letter-spacing:.16em;font-weight:600;gap:12px}
+.agency-experience .site-header .identity-symbol{background:transparent;border:1px solid #c8ad7d66;border-radius:50%;width:32px;height:32px;padding:5px}
+.agency-experience .site-header .identity-symbol img{filter:grayscale(1) brightness(2);width:22px;height:22px}
+.agency-experience .site-header ul{gap:25px;align-items:center}
+.agency-experience .site-header nav a{color:#c9c7bf;font-size:12px;letter-spacing:.025em;font-weight:400}
+.agency-experience .site-header nav a:hover,.agency-experience .site-header nav a[aria-current]{color:var(--gold);text-decoration:none}
+.agency-experience .site-header nav a[aria-current]:after{content:"";width:4px;height:4px;border-radius:50%;background:var(--gold);margin-left:6px}
+.agency-experience .site-header nav a[href="/contact/"]{padding:8px 17px;border:1px solid #c7ae8266;border-radius:30px;color:var(--gold)}
+.agency-experience .menu-toggle{color:var(--paper);background:transparent;border-color:var(--line);border-radius:30px}
+.agency-experience .site-footer{background:#080d0e;border-top:1px solid var(--line);padding-block:60px 24px}
+.agency-experience .site-footer :is(p,.footer-note){color:var(--muted)}
+.agency-experience .footer-main{gap:48px}
+.agency-experience .footer-main nav{gap:20px}
+.agency-experience .footer-main nav a{color:#ddd4c4}
+.agency-experience .footer-note{border-color:var(--line);margin-top:32px}
+.atelier-footer-wordmark{font-family:var(--serif);font-size:clamp(50px,12.5vw,180px);letter-spacing:-.065em;line-height:1.15;color:#d9c7a8;margin:42px 0 26px;overflow-wrap:anywhere}
+.atelier-motion-toggle{background:transparent;color:var(--gold);border:1px solid var(--line);border-radius:24px;font-size:11px;padding:10px 16px;min-height:44px}
+.atelier-motion-toggle:disabled{opacity:.75;cursor:default}
+.atelier-kicker{font-family:Inter,system-ui,sans-serif;font-size:10px!important;font-weight:500;letter-spacing:.18em;line-height:1.6;color:var(--gold)!important;margin:0 0 24px;text-transform:uppercase}
+.atelier-lead{font-size:16px;line-height:1.7;color:#c9c9c2;max-width:340px;margin:0 0 28px}
+.atelier-actions{display:flex;flex-wrap:wrap;align-items:center;gap:25px}
+.atelier-button{display:inline-flex;align-items:center;justify-content:space-between;gap:24px;min-height:50px;padding:14px 22px;border:1px solid var(--gold);border-radius:50px;background:var(--gold);color:#18201e!important;text-decoration:none;font-size:12px;font-weight:600;box-shadow:0 10px 30px #0002;transition:transform .25s,background .25s,box-shadow .25s}
+.atelier-button:hover{background:#f0dcbc;transform:translateY(-3px);box-shadow:0 12px 32px #d7bb8620}
+.atelier-button span{font-size:21px;font-weight:400}
+.atelier-text-link{display:inline-flex;align-items:center;min-height:44px;gap:13px;color:var(--gold)!important;font-size:12px;text-decoration:none;border-bottom:1px solid transparent}
+.atelier-text-link:hover{border-color:var(--gold)}
+.atelier-text-link>span{font-size:18px}
+.atelier-badge{display:inline-flex;align-items:center;border:1px solid #cbb28a77;border-radius:20px;padding:5px 9px;font-size:8px;letter-spacing:.12em;color:var(--gold);font-style:normal}
+.agency-experience .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.atelier-detail-button{border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--gold);min-height:44px;font-size:12px;padding:0}
+.atelier-detail-button>span{padding-left:15px}
+.agency-experience .agency-interior{background:var(--night);color:var(--text)}
+.agency-experience .interior-opening{background:radial-gradient(ellipse at 75% 40%,#69543425,transparent 65%),var(--night);border-color:var(--line)}
+.agency-experience .io-copy h1{font-family:var(--serif);font-size:clamp(52px,6.5vw,90px);font-weight:400;letter-spacing:-.055em;line-height:1.06;color:var(--paper)}
+.agency-experience .io-copy h1 em{color:var(--gold)}
+.agency-experience :is(.io-label,.io-explore,.io-foot,.eyebrow){color:var(--gold)}
+.agency-experience .io-desc{color:#b8bcb3}
+.agency-experience .io-grid{opacity:.12}
+.agency-experience .io-scene{filter:sepia(.65) saturate(.65)}
+.agency-experience .io-signal{background:var(--gold);box-shadow:0 0 18px #e1c89e50}
+.agency-experience .agency-interior :is(.surface-section,.service-offer,.service-spec,.service-questions){background:#11191a;color:var(--text);border-color:var(--line)}
+.agency-experience .agency-interior .service-spec{background:#0c1314}
+.agency-experience .agency-interior :is(h2,h3){color:var(--paper)}
+.agency-experience .agency-interior h2{font-family:var(--serif);font-weight:400;letter-spacing:-.04em}
+.agency-experience .agency-interior h2 em{color:var(--gold)}
+.agency-experience .agency-interior :is(p,.service-ledger-note,.service-limit,.panel-label){color:#b8bcb3}
+.agency-experience .agency-interior :is(.service-eyebrow,.service-rail,.service-text-link,.service-ledger-number,.service-ledger-arrow,.service-offer-tail,.service-spec-note span,.card-number,.text-link){color:var(--gold)}
+.agency-experience .agency-interior :is(.service-price-pane,.card,.ownership-panel,.living-panel,.service-spec-note){background:#182321;color:var(--paper);border-color:#445044}
+.agency-experience .agency-interior :is(.service-price,.service-price strong,.service-price-head,.service-payment strong){color:var(--gold)}
+.agency-experience .agency-interior :is(.service-price-action,.button){background:var(--gold);color:#15211c;border-radius:30px}
+.agency-experience .agency-interior :is(.service-ledger-item,.service-payment,.service-rail,.service-offer-tail,.service-price-head,.service-questions details){border-color:var(--line)}
+.agency-experience .agency-interior .faq summary{color:var(--paper)}
+.agency-experience .agency-interior .faq details[open]{background:#182321}
+.agency-experience .agency-interior .faq details p{color:#bdc7bc}
+.agency-experience .agency-interior :is(.living-panel li,.check-list li){color:#d5dacd}
+.agency-experience .agency-interior .living-panel li>span{color:var(--gold);background:#2b382b}
+.agency-experience .contact-form{background:#16201e;border-color:#445044;color:var(--paper);box-shadow:none}
+.agency-experience .contact-form :is(input,select,textarea){background:#0c1513;border-color:#697161;color:var(--paper);border-radius:5px}
+.agency-experience .contact-form label{color:#e0dfd2}
+.agency-experience .contact-form .button{background:var(--gold);color:#122119;border-radius:30px}
+.agency-experience .contact-form .field-error{color:#ffbdb1}
+.agency-experience .contact-form .form-errors{color:#61170d;background:#ffe6df;border-color:#ca4e36}
+.agency-experience .contact-form .form-errors :is(p,li){color:#61170d}
+.agency-experience .contact-form .form-status:not(:empty){color:#d7f1ce;background:#213d28;border-color:#8cad7c}
+.agency-experience .preview-privacy-content a{color:var(--gold)}
+.agency-experience .plugins{--ink:#eee6d5;--text:#eee6d5;--surface:#16211f;--muted:#b8c0b6;--accent:#e1c89e;--border:#445044;background:var(--night);color:var(--text)}
+.agency-experience .plugins :is(h1,h2,h3){color:var(--paper)}
+.agency-experience .plugins h1{font-family:var(--serif);font-weight:400}
+.atelier-audit-hero{position:relative;overflow:hidden;padding:100px 0 110px;border-bottom:1px solid var(--line);background:radial-gradient(ellipse at 90% 20%,#66754e24,transparent 60%)}
+.atelier-audit-hero .container{position:relative;z-index:2}
+.agency-experience .atelier-audit-hero h1{font-family:var(--serif);font-size:clamp(55px,7.5vw,106px);font-weight:400;line-height:1.03;letter-spacing:-.06em;max-width:850px;margin:30px 0}
+.atelier-audit-hero h1 em{color:var(--gold)}
+.atelier-audit-hero .atelier-lead{max-width:530px}
+.audit-hero-rings{position:absolute;right:-140px;top:60px;width:560px;height:560px;border:60px solid #d0b88912;border-radius:50%;box-shadow:0 0 0 30px #d0b8890b,0 0 0 70px #d0b88908;transform:rotate(-25deg) scaleX(.7);pointer-events:none}
+.atelier-audit-content{padding-block:90px}
+.atelier-audit-content>p{max-width:760px;color:var(--muted);font-size:15px;line-height:1.9}
+.atelier-audit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:35px;margin:55px 0 60px}
+.atelier-audit-grid article{padding:30px 0;border-top:1px solid var(--line)}
+.atelier-audit-grid article>span{color:var(--gold);font-size:10px;letter-spacing:.15em}
+.agency-experience .atelier-audit-grid h3{font-family:var(--serif);font-size:29px;font-weight:400;line-height:1.15;margin:25px 0 18px}
+.atelier-audit-grid p{font-size:13px;color:var(--muted);line-height:1.9}
+.atelier-audit-boundary{padding:36px;border:1px solid var(--line);border-radius:10px;background:#151e1b}
+.agency-experience .atelier-audit-boundary h2{font-family:var(--serif);font-weight:400;font-size:33px}
+.atelier-audit-boundary p{font-size:14px;color:var(--muted);max-width:900px}
+@keyframes editorial-reveal{from{transform:translateY(24px);opacity:.4}to{transform:translateY(0);opacity:1}}
+@media (prefers-reduced-motion:no-preference){html[data-motion="running"] .is-revealed{animation:editorial-reveal .8s cubic-bezier(.2,.7,.2,1) both}}
+html[data-motion="paused"] .agency-experience *,html[data-motion="paused"] .agency-experience *:before,html[data-motion="paused"] .agency-experience *:after,html[data-visibility="hidden"] .agency-experience *{animation-play-state:paused!important}
+html[data-motion="paused"] .agency-experience [data-tilt]{transform:none!important}
+html[data-motion="paused"] .agency-experience [data-reveal]{animation:none!important;opacity:1!important;transform:none!important}
+@media (max-width:1100px){.agency-experience .container{width:calc(100% - 64px)}}
+@media (max-width:920px){.agency-experience .site-header .header-inner{flex-wrap:wrap;padding-block:16px;min-height:78px;gap:0}.agency-experience .agency-header .menu-toggle:not([hidden]){display:inline-flex;margin-left:auto;align-items:center;gap:12px}.agency-experience .site-header nav{width:100%;margin-top:16px}.agency-experience .site-header ul{flex-wrap:wrap;gap:10px 24px}.agency-experience .js-menu #main-navigation:not(.is-open){display:none}.atelier-edition{font-size:7px}}
+@media (max-width:680px){.agency-experience .container{width:calc(100% - 40px)}.agency-experience .site-header .identity,.agency-experience .site-footer .identity{font-size:12px;letter-spacing:.1em}.agency-experience .header-inner{min-height:72px!important}.atelier-edition{display:none}.atelier-lead{font-size:14px;max-width:340px;line-height:1.8}.atelier-actions{gap:18px}.atelier-button{font-size:11px;padding:13px 18px;gap:20px;min-height:48px}.atelier-text-link{font-size:11px}.agency-experience .site-footer{padding-block:45px 22px}.agency-experience .footer-main{display:block}.agency-experience .footer-main nav{gap:10px 23px}.atelier-footer-wordmark{font-size:12.5vw;margin:35px 0 22px}.agency-experience .io-copy h1{font-size:clamp(43px,11vw,64px)}.agency-experience .agency-interior h2{font-size:34px}.atelier-audit-hero{padding:65px 0 75px}.agency-experience .atelier-audit-hero h1{font-size:clamp(48px,11.8vw,76px)}.audit-hero-rings{opacity:.5;right:-350px}.atelier-audit-content{padding-block:65px}.atelier-audit-grid{grid-template-columns:1fr;gap:0;margin:30px 0}.atelier-audit-boundary{padding:26px}.agency-experience .atelier-audit-boundary h2{font-size:30px}}
+@media (prefers-reduced-motion:reduce){.agency-experience *,.agency-experience *:before,.agency-experience *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.agency-experience [data-tilt]{transform:none!important}}

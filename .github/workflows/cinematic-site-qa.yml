@@ -19,3 +19,41 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Build and run existing + cinematic regression tests
         run: npm run qa || { find dist -type f -name '*.css' -print0 | xargs -0 wc -c; exit 1; }
+      - name: Preserve public site build for visual review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-visual-review
+          retention-days: 3
+          path: |
+            dist/
+            src/
+            public/
+            test/
+            scripts/
+            lib/
+            examples/
+            worker/
+            package.json
+            astro.config.mjs
+          if-no-files-found: warn
+  reference-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Inspect owner-supplied public design reference without submitting forms
+        shell: bash
+        run: |
+          mkdir -p reference-preview
+          curl -IL --connect-timeout 8 --max-time 25 https://astraeatravel.com/ > reference-preview/headers.txt 2>&1 || true
+          curl -L --connect-timeout 8 --max-time 25 https://astraeatravel.com/ > reference-preview/astraea.html 2> reference-preview/fetch-error.txt || true
+          CHROME=$(command -v google-chrome || command -v chromium || true)
+          if [ -n "$CHROME" ]; then
+            timeout 45s "$CHROME" --headless=new --no-sandbox --disable-dev-shm-usage --hide-scrollbars --window-size=1440,1000 --virtual-time-budget=12000 --screenshot="$PWD/reference-preview/astraea-desktop.png" https://astraeatravel.com/ > reference-preview/browser-log.txt 2>&1 || true
+            timeout 45s "$CHROME" --headless=new --no-sandbox --disable-dev-shm-usage --dump-dom --virtual-time-budget=12000 https://astraeatravel.com/ > reference-preview/rendered-dom.html 2> reference-preview/dom-log.txt || true
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: design-reference-inspection
+          path: reference-preview/
+          retention-days: 1
