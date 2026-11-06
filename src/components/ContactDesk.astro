@@ -14,7 +14,7 @@ import ContactForm from './ContactForm.astro';
   <section class="desk-paper" aria-labelledby="desk-form-title">
     {site.preview ? <div class="desk-preview"><h2 id="desk-form-title">Enquiries are disabled on this preview.</h2><p>No visitor details are collected here. Explore the design, then use the live website to discuss a project.</p><a href="https://ezerwright.com/contact/">Visit the live contact page</a></div> : <>
       <header class="desk-form-heading"><h2 id="desk-form-title">What’s on your mind?</h2><p>A few sentences are enough. Start by email. No call required.</p></header>
-      <ContactForm/>
+      <ContactForm serviceLabels={{website:'New website',updates:'Website updates',improvements:'Website improvements'}}/>
     </>}
   </section>
   <section class="desk-next" aria-labelledby="desk-next-title">
