@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-06T13:46:13.227337+00:00",
+  "title": "Design System: EZERWRIGHT Living Studio",
+  "extensions": {
+    "shadows": [
+      {
+        "name": "photographic-sheet",
+        "value": "6px 16px 22px #443e372a",
+        "purpose": "Soft offset depth beneath the natural photographic study."
+      }
+    ],
+    "motion": [
+      {
+        "name": "website-turn",
+        "value": ".65s cubic-bezier(.2,.7,.2,1)",
+        "purpose": "User-triggered perspective turn; disabled by reduced motion and pause."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "hero-stack",
+        "value": "760px"
+      },
+      {
+        "name": "small-shell",
+        "value": "680px"
+      },
+      {
+        "name": "navigation-collapse",
+        "value": "920px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "description": "Extracted from the implemented Living Studio agency interface.",
+      "html": "<a class=\"ds-primary\" href=\"/contact/\">Build my website</a>",
+      "css": ".ds-primary{display:inline-flex;background:#284b39;color:#f5f1e8;padding:17px 24px;font:700 16px Inter,sans-serif;text-decoration:none;border:1px solid #284b39}.ds-primary:hover{background:#162e25}.ds-primary:focus-visible{outline:2px solid #3c664a;outline-offset:5px}",
+      "refersTo": "button-primary"
+    },
+    {
+      "name": "Text action",
+      "kind": "button",
+      "description": "Extracted from the implemented Living Studio agency interface.",
+      "html": "<a class=\"ds-link\" href=\"/approach/\">Explore the studio</a>",
+      "css": ".ds-link{display:inline-flex;align-items:center;min-height:44px;color:#2c503c;font:14px Inter,sans-serif;text-underline-offset:5px}.ds-link:hover{color:#234c34}.ds-link:focus-visible{outline:2px solid #3c664a;outline-offset:5px}"
+    },
+    {
+      "name": "Enquiry field",
+      "kind": "input",
+      "description": "Extracted from the implemented Living Studio agency interface.",
+      "html": "<label class=\"ds-label\" for=\"ds-email\">Email</label><input class=\"ds-field\" id=\"ds-email\" type=\"email\"/>",
+      "css": ".ds-label{display:block;color:#273d2d;font:600 15px Inter,sans-serif;margin-bottom:7px}.ds-field{background:#faf8f1;color:#273d2d;border:1px solid #718068;border-radius:0;min-height:48px;padding:11px;font:16px Inter,sans-serif}.ds-field:hover{border-color:#3c664a}.ds-field:focus-visible{outline:2px solid #3c664a;outline-offset:5px}",
+      "refersTo": "field"
+    },
+    {
+      "name": "Agency navigation",
+      "kind": "nav",
+      "description": "Extracted from the implemented Living Studio agency interface.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Example navigation\"><a href=\"/services/\">Services</a><a href=\"/approach/\">Approach</a><a href=\"/contact/\">Contact</a></nav>",
+      "css": ".ds-nav{display:flex;gap:25px;background:#f5f1e8}.ds-nav a{display:inline-flex;align-items:center;min-height:44px;font:12px Inter,sans-serif;color:#46523e;text-decoration:none}.ds-nav a:hover{color:#234c34}.ds-nav a:focus-visible{outline:2px solid #3c664a;outline-offset:5px}"
+    },
+    {
+      "name": "Service surface",
+      "kind": "card",
+      "description": "Extracted from the implemented Living Studio agency interface.",
+      "html": "<article class=\"ds-surface\"><h3>A clear starting point.</h3><p>A defined website, with source you own.</p><a href=\"/services/\">Explore the scope</a></article>",
+      "css": ".ds-surface{background:#edeade;border:1px solid #bdc0ac;padding:32px;color:#27352a;font:15px/1.8 Inter,sans-serif}.ds-surface h3{font:650 24px Manrope,sans-serif;color:#27352a}.ds-surface a{color:#2c503c;text-underline-offset:4px}.ds-surface a:hover{color:#234c34}.ds-surface a:focus-visible{outline:2px solid #3c664a;outline-offset:5px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Living Studio",
+    "overview": "The user-approved world combines warm paper, charcoal type, deep forest green, restrained antique brass and natural photography. The agency feels like a working editorial studio: bold and composed, with tangible sheets, photographic studies and real website content.",
+    "keyCharacteristics": [
+      "Strong sans-serif headlines with occasional italic serif emphasis.",
+      "Warm ivory space, forest actions and restrained brass details.",
+      "Natural garden, pool and residential exterior photography.",
+      "Layered editorial studies with useful, accessible interaction."
+    ],
+    "rules": [
+      {
+        "name": "The Photo Foreground Rule",
+        "body": "Headings over photographic concepts use the white photo-text token explicitly, with a dark image overlay. Agency-wide charcoal heading defaults must not override them.",
+        "section": "colors"
+      }
+    ],
+    "dos": [
+      "Do preserve warm ivory, charcoal, forest and restrained brass as the approved agency palette.",
+      "Do keep photographic text explicitly white and verify the actual CSS cascade.",
+      "Do build website studies as real content with working routes and native controls.",
+      "Do label fictional concepts clearly and preserve preview form disabling and noindex."
+    ],
+    "donts": [
+      "Don't restore the rejected glass-art or abstract-ring identity.",
+      "Don't ship the approved concept screenshot as the whole website.",
+      "Don't let wheel gestures trap page scrolling or hide focused content.",
+      "Don't apply agency-specific appearance rules to independent client templates."
+    ]
+  }
+}

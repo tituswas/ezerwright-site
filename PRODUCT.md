@@ -13,10 +13,10 @@ Existing Astro application at ezerwright.com, built and deployed through GitHub 
 The verified agency offer is US$500 for up to five marketing pages with two consolidated revision rounds and client-owned portable source. US$250 follows written scope approval; US$250 follows accepted staging. Updates and improvements are separately scoped. Security audits are coming soon and are not bookable.
 
 ## Brand Commitments
-The user rejected a generic AI-made appearance and asked for original imagery, using an immersive studio reference as inspiration without copying its images. The current original glass, titanium and stone artwork is the incumbent visual authority for extensions.
+The approved visual authority is Living Studio: warm ivory, charcoal, deep forest green, restrained antique brass and natural photographic imagery. The user rejected the previous glass-art website entirely. Preserve the approved editorial composition with bold typography and native, layered website studies; the foreground landscape panel opens with “Thoughtful landscapes for everyday living.” The panel changes designs through bounded scroll gestures, reverses upward and releases native page scrolling at its ends or outside it.
 
 ## Evidence on Hand
-Original generated imagery in public/art, provenance recorded in docs/glass-gallery-2026-11-06.md. Showcase sites are explicitly fictional concepts, not client commissions or testimonials. There is no measured conversion evidence supporting an uplift claim.
+Original garden, pool and home-exterior photographic imagery in public/art/living-*.webp, with exact generation prompts and rollback recorded in docs/living-studio-assets-2026-11-06.md. The previous glass-gallery assets are historical evidence, not the design authority. Showcase sites are explicitly fictional concepts, not client commissions or testimonials. There is no measured conversion evidence supporting an uplift claim.
 
 ## Accessibility & Inclusion
-Preserve native form semantics, keyboard navigation, clear error and success states, mobile reflow and reduced-motion support.
+Preserve native form semantics, keyboard navigation, clear error and success states, mobile reflow and reduced-motion support. Showcase alternatives include visible previous/next buttons, focused arrow/Home/End keys and horizontal swipe; vertical touch scrolling remains native. Moving away from a focused concept returns focus to the showcase before hiding the outgoing content.

@@ -9,7 +9,7 @@ test('motion is optional and a real button pauses animation',()=>{
  const doc=new JSDOM(readFileSync('dist/index.html','utf8')).window.document;
  assert.ok(doc.querySelector('button[data-motion-toggle][aria-pressed]'),'accessible motion control');
  assert.ok(doc.querySelector('[data-reveal]'),'progressive enhancement reveal targets');
- assert.ok(doc.querySelector('[data-tilt]'),'pointer-responsive hero composition');
+ assert.ok(doc.querySelector('[data-showcase]'),'interactive native website composition');
  assert.ok(doc.querySelector('script[src="/agency-motion.js"]'));
  assert.equal(doc.querySelectorAll('[data-reveal][hidden]').length,0,'content must work before JavaScript');
 });

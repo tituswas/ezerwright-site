@@ -31,7 +31,7 @@ test('both agency navigation landmarks link to the audit business',()=>{
  assert.ok(doc.querySelector('footer a[href="/audits/"]'));
  assert.ok(doc.querySelector('main a[href="/audits/"]'));
  assert.ok(doc.querySelector('#project-brief'),'existing interactive project brief retained');
- assert.equal(doc.querySelectorAll('a[href^="/showcase/"]').length,3);
+ assert.equal(doc.querySelectorAll('.website-panel a[href^="/showcase/"]').length,3);
 });
 
 test('refresh stylesheet is agency-only and includes accessible motion and focus rules',()=>{
@@ -41,7 +41,7 @@ test('refresh stylesheet is agency-only and includes accessible motion and focus
  assert.match(css,/:focus-visible/);
  assert.match(css,/@media/);
  const doc=new JSDOM(read('dist/index.html')).window.document;
- assert.equal(Boolean(doc.querySelector('link[href="/agency-refresh.css"]')),site.template!=='client');
+ assert.equal(Boolean(doc.querySelector('link[href^="/agency-refresh.css"]')),site.template!=='client');
 });
 
 test('audit page has canonical metadata and is included in agency sitemap',()=>{
