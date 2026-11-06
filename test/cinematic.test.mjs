@@ -56,14 +56,14 @@ test('all agency interior routes sustain Director without changing existing work
    assert.ok(d.querySelector('.enquiry-desk'),'contact retains the enquiry desk');
    assert.ok(d.querySelector('.desk-paper form[action="/api/contact"]'),'the real enquiry route is inside the project desk');
    assert.ok(d.querySelector('.desk-art[src="/art/director-architecture.webp"]'));
-   assert.ok(d.querySelector('link[href="/contact-desk.css"]'));
-   assert.equal(d.querySelectorAll('.interior-opening,link[href="/interior-opening.css"]').length,0,'contact must not restore the oversized decorative hero');
+   assert.ok(d.querySelector('link[href^="/contact-desk.css"]'));
+   assert.equal(d.querySelectorAll('.interior-opening,link[href^="/interior-opening.css"]').length,0,'contact must not restore the oversized decorative hero');
    continue;
   }
   assert.ok(d.querySelector('.interior-opening'),'cinematic opening: '+route);
   assert.ok(d.querySelector('.agency-interior'),'agency-only frame: '+route);
-  assert.ok(d.querySelector('link[href="/agency-interiors.css"]'));
-  assert.ok(d.querySelector('link[href="/interior-opening.css"]'));
+  assert.ok(d.querySelector('link[href^="/agency-interiors.css"]'));
+  assert.ok(d.querySelector('link[href^="/interior-opening.css"]'));
   assert.ok(d.querySelector('#interior-content'));
  }
  const contact=new JSDOM(await readFile('dist/contact/index.html','utf8')).window.document;
@@ -71,7 +71,7 @@ test('all agency interior routes sustain Director without changing existing work
  const plugins=new JSDOM(await readFile('dist/plugins/index.html','utf8')).window.document;
  assert.ok(plugins.querySelector('.plugin-hero'),'plugin route retained');
  assert.ok(plugins.querySelector('.cinematic-site-header'),'plugin route retains agency navigation');
- assert.equal(plugins.querySelectorAll('link[href="/agency-interiors.css"],link[href="/interior-opening.css"]').length,0,'Plugins must not load unrelated interior animation CSS');
+ assert.equal(plugins.querySelectorAll('link[href^="/agency-interiors.css"],link[href^="/interior-opening.css"]').length,0,'Plugins must not load unrelated interior animation CSS');
 });
 
 test('Services has a distinctive editorial progression, not a repeated stock-card grid',async()=>{
@@ -80,7 +80,7 @@ test('Services has a distinctive editorial progression, not a repeated stock-car
  const services=new JSDOM(await readFile('dist/services/index.html','utf8')).window.document;
  assert.ok(home.querySelector('link[href^="/cinematic-home.css"]'),'homepage loads its own visual CSS');
  assert.equal(services.querySelectorAll('link[href^="/cinematic-home.css"]').length,0,'interior route must not load homepage art');
- assert.ok(services.querySelector('link[href="/services-editorial.css"]'));
+ assert.ok(services.querySelector('link[href^="/services-editorial.css"]'));
  assert.equal(services.querySelectorAll('h1').length,1);
  for(const selector of ['.service-offer','.service-price-pane','.service-spec','.service-ledger','.service-questions','.faq']){
   assert.ok(services.querySelector(selector),'missing editorial section '+selector);
@@ -106,12 +106,12 @@ test('Services photographic opening keeps the price legible and charcoal FAQ rea
  assert.ok(doc.querySelector('.io-scene .io-photo[src="/art/director-architecture.webp"]'));
  assert.equal(doc.querySelectorAll('.io-orbit,.io-halo,.io-panel-back').length,0);
  const css=await readFile('public/director.css','utf8');
- assert.match(css,/white-space:nowrap;max-width:100%/);
+ assert.equal(scene.querySelector('.io-currency')?.textContent,'US$');
  assert.match(css,/\.service-questions \.faq summary\{color:#eee\}/);
  assert.match(css,/\.service-questions \.faq details\[open\]\{background:#242424\}/);
  assert.match(css,/\.service-questions \.faq details p\{color:#c8c8c8\}/);
  const sheets=[...doc.querySelectorAll('link[rel=stylesheet]')].map(n=>n.getAttribute('href'));
- assert.ok(sheets.findIndex(s=>s.startsWith('/director.css'))>sheets.indexOf('/services-editorial.css'));
+ assert.ok(sheets.findIndex(s=>s.startsWith('/director.css'))>sheets.findIndex(s=>s.startsWith('/services-editorial.css')));
  assert.ok(doc.querySelectorAll('.service-questions summary').length>2,'full FAQ preserved');
 });
 
