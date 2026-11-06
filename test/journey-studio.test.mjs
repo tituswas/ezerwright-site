@@ -9,7 +9,7 @@ async function setup(reduced=false){
  let clock=1000;Object.defineProperty(w.performance,'now',{value:()=>clock});
  w.eval(await readFile('public/work-gallery.js','utf8'));
  const d=w.document,deck=d.querySelector('[data-showcase]');
- const selected=()=>d.querySelector('[data-work-panel]:not([hidden])');
+ const selected=()=>d.querySelector('[data-work-panel].is-selected');
  const wheel=(deltaY,target=deck,options={})=>{const e=new w.WheelEvent('wheel',{deltaY,bubbles:true,cancelable:true,...options});target.dispatchEvent(e);return e;};
  return{dom,w,d,deck,selected,wheel,tick:(n=500)=>clock+=n};
 }
@@ -31,7 +31,7 @@ test('wheel is local, releases both boundaries, supports immediate reversal and 
  wheel(-80);assert.equal(selected().dataset.workPanel,'landscape','reverse direction responds within the same gesture');
  tick();for(let i=0;i<8;i++){tick(20);wheel(5);}assert.equal(selected().dataset.workPanel,'pool','small trackpad events accumulate');
  tick();wheel(80);assert.equal(selected().dataset.workPanel,'exterior');assert.equal(wheel(80).defaultPrevented,false,'last design releases downward');
- assert.equal(d.querySelectorAll('[data-work-panel]:not([hidden])').length,1);assert.equal(d.querySelectorAll('[data-work-panel][inert]').length,2);
+ assert.equal(d.querySelectorAll('[data-work-panel]:not([hidden])').length,3);assert.equal(d.querySelectorAll('[data-work-panel][inert]').length,0);assert.equal(d.querySelectorAll('[data-work-panel].is-selected').length,1);
  assert.equal(d.querySelectorAll('.project-brief').length,1);assert.equal(d.querySelectorAll('.contact-form').length,0);
  dom.window.close();
 });
@@ -65,14 +65,26 @@ test('long trackpad momentum advances once until a fresh gesture, with immediate
  for(let i=0;i<8;i++){tick(50);wheel(-12);}assert.equal(selected().dataset.workPanel,'pool');
  tick(181);wheel(-80);assert.equal(selected().dataset.workPanel,'landscape');assert.equal(wheel(-12).defaultPrevented,false);dom.window.close();
 });
-test('switching while a concept link has focus moves focus before hiding its panel',async()=>{
- const {dom,d,deck,selected,wheel,tick}=await setup();
+test('selection keeps all filmstrip links visible and preserves keyboard focus',async()=>{
+ const {dom,d,selected,wheel,tick}=await setup();
  const old=selected(),link=old.querySelector('a');link.focus();assert.equal(d.activeElement,link);
- const hide=old.toggleAttribute.bind(old);old.toggleAttribute=(name,force)=>{if(name==='inert'&&force)assert.equal(d.activeElement,deck,'focus leaves before the outgoing panel becomes inert');return hide(name,force);};
- wheel(80);assert.equal(old.hidden,true);assert.equal(d.activeElement,deck);
- const active=selected().querySelector('a');active.focus();tick();d.querySelector('[data-work-next]').click();assert.equal(d.activeElement,deck);assert.equal(selected().contains(d.activeElement),false);dom.window.close();
+ wheel(80);assert.equal(old.hidden,false);assert.equal(old.hasAttribute('inert'),false);assert.equal(d.activeElement,link);
+ tick();d.querySelector('[data-work-next]').click();assert.equal(d.activeElement,link);
+ assert.equal(d.querySelectorAll('[data-work-panel] a').length,3);assert.equal(d.querySelectorAll('[data-work-panel][hidden],[data-work-panel][inert]').length,0);dom.window.close();
 });
 test('photo-backed website headings retain a white foreground above agency heading defaults',async()=>{
- const css=await readFile('public/living-studio.css','utf8');
+ const css=await readFile('public/director.css','utf8');
  assert.match(css,/\.agency-experience \.website-copy h2\{color:#fff\}/);
+});
+
+test('a fully visible desktop filmstrip leaves wheel scrolling native',async()=>{
+ const {dom,deck,wheel,selected}=await setup();Object.defineProperties(deck,{clientWidth:{value:1200},scrollWidth:{value:1200}});
+ assert.equal(wheel(80).defaultPrevented,false);assert.equal(selected().dataset.workPanel,'landscape');dom.window.close();
+});
+test('native horizontal overflow synchronises selection without a second custom swipe',async()=>{
+ const {dom,w,d,deck,selected}=await setup();Object.defineProperties(deck,{clientWidth:{value:375},scrollWidth:{value:1125},offsetLeft:{value:0}});
+ [...d.querySelectorAll('[data-work-panel]')].forEach((panel,i)=>Object.defineProperty(panel,'offsetLeft',{value:i*375}));
+ const touch=(type,x)=>{const e=new w.Event(type,{bubbles:true});Object.defineProperty(e,type==='touchstart'?'touches':'changedTouches',{value:[{clientX:x,clientY:100}]});deck.dispatchEvent(e);};
+ touch('touchstart',300);deck.scrollLeft=750;touch('touchend',50);assert.equal(selected().dataset.workPanel,'landscape','native rail handles the movement');
+ deck.dispatchEvent(new w.Event('scroll'));await new Promise(resolve=>setTimeout(resolve,150));assert.equal(selected().dataset.workPanel,'exterior');assert.match(d.querySelector('[data-work-position]').textContent,/03 \/ 03/);dom.window.close();
 });

@@ -4,16 +4,16 @@ import {readFile} from 'node:fs/promises';
 import {JSDOM} from 'jsdom';
 import {site} from '../src/config/site.mjs';
 
-test('Living Studio homepage offers transparent commercial terms and real routes',async()=>{
+test('Director homepage offers transparent commercial terms and real routes',async()=>{
  if(site.template==='client')return;
  const html=await readFile('dist/index.html','utf8');
  const doc=new JSDOM(html).window.document;
- assert.match(doc.querySelector('h1')?.textContent||'',/Good businesses.*deserve.*extraordinary.*websites/i);
+ assert.match(doc.querySelector('h1')?.textContent||'',/Make an entrance\./i);
  assert.match(doc.body.textContent,/US\$500/);
  assert.match(doc.body.textContent,/\$250 to start/);
  assert.equal(doc.querySelectorAll('.website-panel a[href^="/showcase/"]').length,3);
  assert.ok(doc.querySelector('a[href="/contact/"]'));
- assert.match(html,/FICTIONAL INTERACTIVE CONCEPT/);
+ assert.match(html,/FICTIONAL CONCEPT/);
 });
 
 test('all three fictional concepts have one H1, usable service selectors, no capture form',async()=>{
@@ -38,7 +38,7 @@ test('animation sources explicitly respect reduced motion',async()=>{
  assert.match(demo,/prefers-reduced-motion:reduce/);
 });
 
-test('all agency interior routes sustain Living Studio without changing existing workflows',async()=>{
+test('all agency interior routes sustain Director without changing existing workflows',async()=>{
  if(site.template==='client')return;
  const matrix=[
   ['services','A website with'],
@@ -55,7 +55,7 @@ test('all agency interior routes sustain Living Studio without changing existing
   if(route==='contact'){
    assert.ok(d.querySelector('.enquiry-desk'),'contact retains the enquiry desk');
    assert.ok(d.querySelector('.desk-paper form[action="/api/contact"]'),'the real enquiry route is inside the project desk');
-   assert.ok(d.querySelector('.desk-art[src="/art/living-garden.webp"]'));
+   assert.ok(d.querySelector('.desk-art[src="/art/director-architecture.webp"]'));
    assert.ok(d.querySelector('link[href="/contact-desk.css"]'));
    assert.equal(d.querySelectorAll('.interior-opening,link[href="/interior-opening.css"]').length,0,'contact must not restore the oversized decorative hero');
    continue;
@@ -91,35 +91,35 @@ test('Services has a distinctive editorial progression, not a repeated stock-car
  assert.match(services.querySelector('.service-ledger-note').textContent,/separately scoped/i);
  assert.equal(services.querySelectorAll('section.service-spec .card').length,0,'no repeated stock cards');
  assert.ok(services.querySelector('a[href="/contact/?service=website"]'),'existing intake link');
- const css=await readFile('public/living-studio.css','utf8');
- assert.match(css,/background:#f5f1e8/);
- assert.match(css,/background:#233d2e/);
- assert.ok(services.querySelector('link[href^="/living-studio.css"]'));
+ const css=await readFile('public/director.css','utf8');
+ assert.match(css,/background:#101010/);
+ assert.match(css,/background:#191919/);
+ assert.ok(services.querySelector('link[href^="/director.css"]'));
 
 });
 
-test('Services photographic opening keeps the price legible and forest FAQ readable',async()=>{
+test('Services photographic opening keeps the price legible and charcoal FAQ readable',async()=>{
  if(site.template==='client')return;
  const doc=new JSDOM(await readFile('dist/services/index.html','utf8')).window.document;
  const scene=doc.querySelector('.interior-opening--services .io-panel-front');
  assert.equal(scene.querySelector('strong')?.textContent,'US$500');
- assert.ok(doc.querySelector('.io-scene .io-photo[src="/art/living-garden.webp"]'));
+ assert.ok(doc.querySelector('.io-scene .io-photo[src="/art/director-architecture.webp"]'));
  assert.equal(doc.querySelectorAll('.io-orbit,.io-halo,.io-panel-back').length,0);
- const css=await readFile('public/living-studio.css','utf8');
+ const css=await readFile('public/director.css','utf8');
  assert.match(css,/white-space:nowrap;max-width:100%/);
- assert.match(css,/\.service-questions \.faq summary\{color:#eeeede\}/);
- assert.match(css,/\.service-questions \.faq details\[open\]\{background:#2d4835\}/);
- assert.match(css,/\.service-questions \.faq details p\{color:#d1d9c3\}/);
+ assert.match(css,/\.service-questions \.faq summary\{color:#eee\}/);
+ assert.match(css,/\.service-questions \.faq details\[open\]\{background:#242424\}/);
+ assert.match(css,/\.service-questions \.faq details p\{color:#c8c8c8\}/);
  const sheets=[...doc.querySelectorAll('link[rel=stylesheet]')].map(n=>n.getAttribute('href'));
- assert.ok(sheets.findIndex(s=>s.startsWith('/living-studio.css'))>sheets.indexOf('/services-editorial.css'));
+ assert.ok(sheets.findIndex(s=>s.startsWith('/director.css'))>sheets.indexOf('/services-editorial.css'));
  assert.ok(doc.querySelectorAll('.service-questions summary').length>2,'full FAQ preserved');
 });
 
-test('privacy preview links use the shared forest palette and focus treatment',async()=>{
+test('privacy preview links use the shared vermilion palette and focus treatment',async()=>{
  const page=await readFile('src/pages/[...page].astro','utf8');
- const styles=await readFile('public/living-studio.css','utf8');
+ const styles=await readFile('public/director.css','utf8');
  assert.match(page,/preview-privacy-content/);
  assert.match(page,/live EZERWRIGHT contact page/);
- assert.match(styles,/preview-privacy-content a\{color:#28573a/);
- assert.match(styles,/:focus-visible\{outline:2px solid #3c664a/);
+ assert.match(styles,/preview-privacy-content a\{color:#ff866c/);
+ assert.match(styles,/:focus-visible\{outline:2px solid #ff866c/);
 });
