@@ -7,5 +7,53 @@ import '../styles/site.css';
 const {page}=Astro.props;
 const {title,description,canonical,robots,schema}=pageSeo(site,page);
 const theme=['ink','accent','surface','text'].map(k=>`--${k}:${site.theme[k]}`).join(';');
+const agency=site.template!=='client';
+const structuredData=JSON.stringify(schema).replace(/</g,'\\u003c');
 ---
-<!doctype html><html lang="en" style={theme}><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>{title}</title><meta name="description" content={description}/><meta name="robots" content={robots}/><meta name="color-scheme" content={site.template==='client'?'light':'dark'}/><link rel="canonical" href={canonical}/><meta property="og:type" content="website"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:site_name" content={site.name}/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/><meta name="twitter:image" content={new URL('/og-card.svg',site.origin).href}/><meta property="og:image:alt" content={site.name}/><meta property="og:image" content={new URL('/og-card.svg',site.origin).href}/><link rel="icon" href="/favicon.svg" type="image/svg+xml"/>{site.template!=='client'&&page.slug===''&&<link rel="stylesheet" href="/cinematic-home.css"/>}{site.template!=='client'&&['services','approach','living','contact','privacy'].includes(page.slug)&&<><link rel="stylesheet" href="/interior-opening.css"/><link rel="stylesheet" href="/agency-interiors.css"/></>}{site.template!=='client'&&page.slug==='services'&&<link rel="stylesheet" href="/services-editorial.css"/>}<link rel="preload" href="/fonts/manrope.woff" as="font" type="font/woff" crossorigin/><script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g,'\\u003c')}></script><script src="/ui.js" defer></script>{site.template!=='client'&&['','contact'].includes(page.slug)&&<><link rel="stylesheet" href="/project-brief.css"/><script src="/project-brief.js" defer></script></>}{site.template!=='client'&&<><link rel="stylesheet" href="/agency-refresh.css"/><script src="/agency-motion.js" defer></>}{site.mode==='production'&&<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}</head><body class={site.template!=='client'?'agency-experience':undefined}><Header current={page.slug}/><main id="main" tabindex="-1"><slot/></main><Footer/></body></html>
+<!doctype html>
+<html lang="en" style={theme}>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{title}</title>
+  <meta name="description" content={description}/>
+  <meta name="robots" content={robots}/>
+  <meta name="color-scheme" content={agency?'dark':'light'}/>
+  <link rel="canonical" href={canonical}/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content={title}/>
+  <meta property="og:description" content={description}/>
+  <meta property="og:url" content={canonical}/>
+  <meta property="og:site_name" content={site.name}/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content={title}/>
+  <meta name="twitter:description" content={description}/>
+  <meta name="twitter:image" content={new URL('/og-card.svg',site.origin).href}/>
+  <meta property="og:image:alt" content={site.name}/>
+  <meta property="og:image" content={new URL('/og-card.svg',site.origin).href}/>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+  {agency&&page.slug===''&&<link rel="stylesheet" href="/cinematic-home.css"/>}
+  {agency&&['services','approach','living','contact','privacy'].includes(page.slug)&&<>
+    <link rel="stylesheet" href="/interior-opening.css"/>
+    <link rel="stylesheet" href="/agency-interiors.css"/>
+  </>}
+  {agency&&page.slug==='services'&&<link rel="stylesheet" href="/services-editorial.css"/>}
+  <link rel="preload" href="/fonts/manrope.woff" as="font" type="font/woff" crossorigin/>
+  <script type="application/ld+json" set:html={structuredData}></script>
+  <script src="/ui.js" defer></script>
+  {agency&&['','contact'].includes(page.slug)&&<>
+    <link rel="stylesheet" href="/project-brief.css"/>
+    <script src="/project-brief.js" defer></script>
+  </>}
+  {agency&&<>
+    <link rel="stylesheet" href="/agency-refresh.css"/>
+    <script src="/agency-motion.js" defer></script>
+  </>}
+  {site.mode==='production'&&<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
+</head>
+<body class={agency?'agency-experience':undefined}>
+  <Header current={page.slug}/>
+  <main id="main" tabindex="-1"><slot/></main>
+  <Footer/>
+</body>
+</html>
