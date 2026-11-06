@@ -15,6 +15,7 @@
  const q=new URLSearchParams(location.search),key=q.get('brief'),goal=q.get('goal');
  if(!Object.hasOwn(projects,key))return;
  const message=form.querySelector('[name=message]');if(!message||message.value.trim())return;
- const p=projects[key];message.value=p.message+'\n\nMain priority: '+(Object.hasOwn(goals,goal)?goals[goal]:'To discuss by email')+'.\n\nBusiness website (if any):\nWhat should work better:\n';
+ const directions={bold:'Bold & expressive',calm:'Calm & considered',editorial:'Natural & editorial'},direction=q.get('direction');
+ const p=projects[key];message.value=p.message+'\n\nMain priority: '+(Object.hasOwn(goals,goal)?goals[goal]:'To discuss by email')+'.'+(Object.hasOwn(directions,direction)?'\nVisual direction: '+directions[direction]+'.':'')+'\n\nBusiness website (if any):\nWhat should work better:\n';
  const note=document.createElement('p');note.className='brief-handoff';note.textContent='Your starter brief is ready below. Edit it in your own words, then add your name and email. Nothing has been sent.';form.before(note);
 })();
