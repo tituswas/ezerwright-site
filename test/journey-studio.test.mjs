@@ -24,7 +24,7 @@ test('original website panels retain all three real concept routes before JavaSc
 test('wheel is local, releases both boundaries, supports immediate reversal and trackpad deltas',async()=>{
  const s=await setup(),{d,deck,selected,wheel,tick,dom}=s;
  assert.equal(selected().dataset.workPanel,'landscape');assert.equal(wheel(-80).defaultPrevented,false,'top boundary releases upward');
- assert.equal(wheel(80,d.querySelector('.studio-hero-copy')).defaultPrevented,false,'outside the panel stays native');
+ assert.equal(wheel(80,d.querySelector('.hero-top')).defaultPrevented,false,'outside the panel stays native');
  assert.equal(wheel(80,deck,{ctrlKey:true}).defaultPrevented,false,'browser zoom stays native');
  assert.equal(wheel(80).defaultPrevented,true);assert.equal(selected().dataset.workPanel,'pool');
  wheel(80);assert.equal(selected().dataset.workPanel,'pool','one gesture does not race through slides');
@@ -74,7 +74,7 @@ test('selection keeps all filmstrip links visible and preserves keyboard focus',
 });
 test('photo-backed website headings retain a white foreground above agency heading defaults',async()=>{
  const css=await readFile('public/director.css','utf8');
- assert.match(css,/\.agency-experience \.website-copy h2\{color:#fff\}/);
+ assert.match(css,/\.website-copy h2\{[^}]*color:#fff/);
 });
 
 test('a fully visible desktop filmstrip leaves wheel scrolling native',async()=>{

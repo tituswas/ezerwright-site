@@ -1,28 +1,40 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-06T20:34:00Z",
+  "generatedAt": "2026-11-08T06:09:22.376818+00:00",
   "title": "Design System: EZERWRIGHT \u2014 The Director",
   "extensions": {
     "shadows": [],
     "motion": [
       {
-        "name": "director-cut",
-        "value": ".45s ease",
-        "purpose": "A user-triggered fade and short vertical reveal on the selected filmstrip study, disabled by pause and reduced motion."
+        "name": "hero-action",
+        "value": "background .25s, transform .5s cubic-bezier(.16,1,.3,1)",
+        "purpose": "User-triggered hero action hover; disabled by pause and reduced motion."
       }
     ],
     "breakpoints": [
       {
-        "name": "hero-stack",
-        "value": "760px"
+        "name": "wide",
+        "value": "1600px"
       },
       {
-        "name": "small-shell",
-        "value": "680px"
+        "name": "compact-offer",
+        "value": "1000px"
       },
       {
         "name": "navigation-collapse",
         "value": "920px"
+      },
+      {
+        "name": "tablet",
+        "value": "800px"
+      },
+      {
+        "name": "service-mobile",
+        "value": "680px"
+      },
+      {
+        "name": "small-home",
+        "value": "500px"
       }
     ]
   },
@@ -30,49 +42,50 @@
     {
       "name": "Primary action",
       "kind": "button",
-      "description": "Extracted from the implemented Director agency interface.",
+      "description": "Extracted from the approved Director agency interface.",
       "html": "<a class=\"ds-primary\" href=\"/contact/\">Start your project</a>",
-      "css": ".ds-primary{display:inline-flex;background:#df2d08;color:#ffffff;padding:17px 24px;font:700 16px Inter,sans-serif;text-decoration:none;border:1px solid #df2d08}.ds-primary:hover{background:#b92508}.ds-primary:focus-visible{outline:2px solid #ff866c;outline-offset:5px}",
+      "css": ".ds-primary{display:inline-flex;background:#c82c19;color:#ffffff;padding:17px 22px;font:500 14px Manrope,Arial,sans-serif;text-decoration:none;border:1px solid #c82c19}.ds-primary:hover{background:#ac2516}.ds-primary:focus-visible{outline:2px solid #ff866c;outline-offset:5px}",
       "refersTo": "button-primary"
     },
     {
       "name": "Text action",
       "kind": "button",
-      "description": "Extracted from the implemented Director agency interface.",
+      "description": "Extracted from the approved Director agency interface.",
       "html": "<a class=\"ds-link\" href=\"/approach/\">Explore the studio</a>",
-      "css": ".ds-link{display:inline-flex;align-items:center;min-height:44px;color:#eeeeee;font:14px Inter,sans-serif;text-underline-offset:5px}.ds-link:hover{color:#ffffff}.ds-link:focus-visible{outline:2px solid #ff866c;outline-offset:5px}"
+      "css": ".ds-link{display:inline-flex;align-items:center;min-height:44px;color:#eeeeee;font:14px Manrope,Arial,sans-serif;text-underline-offset:5px}.ds-link:hover{color:#ffffff}.ds-link:focus-visible{outline:2px solid #ff866c;outline-offset:5px}"
     },
     {
       "name": "Enquiry field",
       "kind": "input",
-      "description": "Extracted from the implemented Director agency interface.",
+      "description": "Extracted from the approved Director agency interface.",
       "html": "<label class=\"ds-label\" for=\"ds-email\">Email</label><input class=\"ds-field\" id=\"ds-email\" type=\"email\"/>",
-      "css": ".ds-label{display:block;color:#ffffff;font:600 15px Inter,sans-serif;margin-bottom:7px}.ds-field{background:#121212;color:#ffffff;border:1px solid #888888;border-radius:0;min-height:48px;padding:11px;font:16px Inter,sans-serif}.ds-field:hover{border-color:#ff866c}.ds-field:focus-visible{outline:2px solid #ff866c;outline-offset:5px}",
+      "css": ".ds-label{display:block;color:#ffffff;font:600 15px Manrope,Arial,sans-serif;margin-bottom:7px}.ds-field{background:#111;color:#ffffff;border:1px solid #777;border-radius:0;min-height:48px;padding:11px;font:16px Manrope,Arial,sans-serif}.ds-field:hover{border-color:#ff866c}.ds-field:focus-visible{outline:2px solid #ff866c;outline-offset:5px}",
       "refersTo": "field"
     },
     {
       "name": "Agency navigation",
       "kind": "nav",
-      "description": "Extracted from the implemented Director agency interface.",
-      "html": "<nav class=\"ds-nav\" aria-label=\"Example navigation\"><a href=\"/services/\">Services</a><a href=\"/approach/\">Approach</a><a href=\"/contact/\">Contact</a></nav>",
-      "css": ".ds-nav{display:flex;gap:25px;background:#101010}.ds-nav a{display:inline-flex;align-items:center;min-height:44px;font:12px Inter,sans-serif;color:#eeeeee;text-decoration:none}.ds-nav a:hover{color:#ffffff}.ds-nav a:focus-visible{outline:2px solid #ff866c;outline-offset:5px}"
+      "description": "Agency links; actual responsive navigation collapses at 920px.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Example navigation\"><a href=\"/services/\">Services</a><a href=\"/approach/\">Approach</a><a href=\"/plugins/\">Plugins</a><a href=\"/audits/\">Audits</a><a href=\"/contact/\">Contact</a></nav>",
+      "css": ".ds-nav{display:flex;gap:26px;background:#111}.ds-nav a{display:inline-flex;align-items:center;min-height:44px;font:13px Manrope,Arial,sans-serif;color:#eeeeee;text-decoration:none}.ds-nav a:hover{color:#ffffff}.ds-nav a:focus-visible{outline:2px solid #ff866c;outline-offset:5px}"
     },
     {
       "name": "Service surface",
       "kind": "card",
-      "description": "Extracted from the implemented Director agency interface.",
+      "description": "Extracted from the approved Director agency interface.",
       "html": "<article class=\"ds-surface\"><h3>A clear starting point.</h3><p>A defined website, with source you own.</p><a href=\"/services/\">Explore the scope</a></article>",
-      "css": ".ds-surface{background:#1c1c1c;border:1px solid #555555;padding:32px;color:#ffffff;font:15px/1.8 Inter,sans-serif}.ds-surface h3{font:650 24px Manrope,sans-serif;color:#ffffff}.ds-surface a{color:#eeeeee;text-underline-offset:4px}.ds-surface a:hover{color:#ffffff}.ds-surface a:focus-visible{outline:2px solid #ff866c;outline-offset:5px}"
+      "css": ".ds-surface{background:#1c1c1c;border:1px solid #484848;padding:36px 38px;color:#ffffff;font:15px/1.8 Manrope,Arial,sans-serif}.ds-surface h3{font:500 24px Manrope,sans-serif;color:#ffffff}.ds-surface a{color:#eeeeee;text-underline-offset:4px}.ds-surface a:hover{color:#ffffff}.ds-surface a:focus-visible{outline:2px solid #ff866c;outline-offset:5px}"
     }
   ],
   "narrative": {
     "northStar": "The Director",
-    "overview": "Cinematic black-and-white monumental architecture, enormous condensed white typography, charcoal surfaces and restrained vermilion actions. Real fictional website studies form a horizontal filmstrip immediately beneath the hero.",
+    "overview": "Cinematic black-and-white architecture, split-line Manrope/Georgia hero, upright sans interior headings, neutral charcoal surfaces and restrained red actions. Full-width fictional website studies use the retained native horizontal gallery controller.",
     "keyCharacteristics": [
-      "Full-bleed architectural photography and a huge native headline.",
-      "Charcoal, white and vermilion throughout agency routes.",
-      "A horizontal filmstrip of real HTML fictional website studies.",
-      "Keyboard, swipe, wheel, reduced-motion and native scrolling safeguards."
+      "Split-line Manrope/Georgia native hero text.",
+      "Charcoal, white/gray and #c82c19 red across agency routes.",
+      "Full-width native horizontal fictional-study gallery.",
+      "Compact baseline-aligned pricing and preserved enquiry behavior.",
+      "Independent client templates and accessible motion/scrolling."
     ],
     "rules": [
       {
@@ -84,7 +97,7 @@
     "dos": [
       "Use real HTML text, controls and working routes.",
       "Label every fictional concept clearly.",
-      "Keep all filmstrip links accessible when selection changes.",
+      "Keep all gallery links accessible when selection changes.",
       "Preserve preview restrictions, enquiry values and independent client templates."
     ],
     "donts": [

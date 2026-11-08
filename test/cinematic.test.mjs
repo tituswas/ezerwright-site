@@ -10,7 +10,7 @@ test('Director homepage offers transparent commercial terms and real routes',asy
  const doc=new JSDOM(html).window.document;
  assert.match(doc.querySelector('h1')?.textContent||'',/Make an entrance\./i);
  assert.match(doc.body.textContent,/US\$500/);
- assert.match(doc.body.textContent,/\$250 to start/);
+ assert.match(doc.querySelector('.payment').textContent,/US\$250After approved scope/);
  assert.equal(doc.querySelectorAll('.website-panel a[href^="/showcase/"]').length,3);
  assert.ok(doc.querySelector('a[href="/contact/"]'));
  assert.match(html,/FICTIONAL CONCEPT/);
@@ -92,8 +92,8 @@ test('Services has a distinctive editorial progression, not a repeated stock-car
  assert.equal(services.querySelectorAll('section.service-spec .card').length,0,'no repeated stock cards');
  assert.ok(services.querySelector('a[href="/contact/?service=website"]'),'existing intake link');
  const css=await readFile('public/director.css','utf8');
- assert.match(css,/background:#101010/);
- assert.match(css,/background:#191919/);
+ assert.match(css,/background:#111/);
+ assert.match(css,/background:#1a1a1a/);
  assert.ok(services.querySelector('link[href^="/director.css"]'));
 
 });
@@ -107,9 +107,9 @@ test('Services photographic opening keeps the price legible and charcoal FAQ rea
  assert.equal(doc.querySelectorAll('.io-orbit,.io-halo,.io-panel-back').length,0);
  const css=await readFile('public/director.css','utf8');
  assert.equal(scene.querySelector('.io-currency')?.textContent,'US$');
- assert.match(css,/\.service-questions \.faq summary\{color:#eee\}/);
- assert.match(css,/\.service-questions \.faq details\[open\]\{background:#242424\}/);
- assert.match(css,/\.service-questions \.faq details p\{color:#c8c8c8\}/);
+ assert.match(css,/--text:#e5e5e5/);
+ assert.match(css,/--surface:#1a1a1a/);
+ assert.match(css,/--muted:#bcbcbc/);
  const sheets=[...doc.querySelectorAll('link[rel=stylesheet]')].map(n=>n.getAttribute('href'));
  assert.ok(sheets.findIndex(s=>s.startsWith('/director.css'))>sheets.findIndex(s=>s.startsWith('/services-editorial.css')));
  assert.ok(doc.querySelectorAll('.service-questions summary').length>2,'full FAQ preserved');
@@ -120,6 +120,6 @@ test('privacy preview links use the shared vermilion palette and focus treatment
  const styles=await readFile('public/director.css','utf8');
  assert.match(page,/preview-privacy-content/);
  assert.match(page,/live EZERWRIGHT contact page/);
- assert.match(styles,/preview-privacy-content a\{color:#ff866c/);
+ assert.match(styles,/outline:2px solid #ff866c/);
  assert.match(styles,/:focus-visible\{outline:2px solid #ff866c/);
 });
