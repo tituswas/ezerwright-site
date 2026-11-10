@@ -24,3 +24,13 @@ test('blank required fields never trigger a network submission and errors clear 
  assert.equal(d.querySelector('[name=name]').hasAttribute('aria-invalid'),false);assert.equal(d.querySelector('#error-name').hidden,true);
  dom.window.close();
 });
+
+test('changed copied assets have content-based URLs so returning visitors receive the release',async()=>{
+ const {createHash}=await import('node:crypto');
+ const d=new JSDOM(await readFile('dist/index.html','utf8')).window.document;
+ for(const name of ['project-brief.js','project-room.js','director.css']){
+  const expected=createHash('sha256').update(await readFile('public/'+name)).digest('hex').slice(0,12);
+  const el=d.querySelector(`[src^="/${name}"],[href^="/${name}"]`);
+  assert.equal(el.getAttribute('src')||el.getAttribute('href'),'/'+name+'?v='+expected,name);
+ }
+});
