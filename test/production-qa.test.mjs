@@ -34,3 +34,10 @@ test('changed copied assets have content-based URLs so returning visitors receiv
   assert.equal(el.getAttribute('src')||el.getAttribute('href'),'/'+name+'?v='+expected,name);
  }
 });
+
+test('production privacy describes the observed hosting-layer performance beacon',async()=>{
+ const c=JSON.parse(await readFile('src/config/production.json','utf8'));
+ const text=c.privacySections.map(s=>s.text).join(' ');
+ assert.match(text,/Cloudflare.*performance beacon/i);
+ assert.doesNotMatch(text,/no advertising pixels, session replay or analytics scripts/i);
+});
