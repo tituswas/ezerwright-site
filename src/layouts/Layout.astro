@@ -37,7 +37,7 @@ const structuredData=JSON.stringify(schema).replace(/</g,'\\u003c');
   <meta property="og:image:alt" content={site.name}/>
   <meta property="og:image" content={new URL('/og-card.svg',site.origin).href}/>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
-  {agency&&page.slug===''&&<><link rel="stylesheet" href="/cinematic-home.css?v=typography-20261106"/><script src="/work-gallery.js?v=director-20261106" defer></script><link rel="stylesheet" href="/project-room.css?v=typography-20261106"/><script src={versionedAsset('/project-room.js')} defer></script></>}
+  {agency&&page.slug===''&&<><link rel="stylesheet" href="/cinematic-home.css?v=typography-20261106"/><script src="/work-gallery.js?v=director-20261106" defer></script><link rel="stylesheet" href={versionedAsset('/project-room.css')}/><script src={versionedAsset('/project-room.js')} defer></script></>}
   {agency&&['services','approach','living','privacy'].includes(page.slug)&&<>
     <link rel="stylesheet" href="/interior-opening.css?v=typography-20261106"/>
     <link rel="stylesheet" href="/agency-interiors.css?v=typography-20261106"/>
