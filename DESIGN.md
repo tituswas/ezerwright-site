@@ -149,7 +149,7 @@ The existing tested native horizontal controller is retained. The flex deck has 
 
 ### Pricing
 
-The homepage panel uses a charcoal surface with 36px 38px padding; responsive padding is 28px at 1000px, 30px at 800px and 24px 20px at 500px. Its price is 60px, 52px at 1000px, 56px at 800px and 50px at 500px. Currency sits on the numeral baseline at 20px, then 17px. Homepage features are 15px / 14px mobile; two payment columns use 18px amounts and 13px / 12px captions. The service page likewise uses a compact 60px price, reducing to 50px at 680px, with 20px / 17px baseline currency. Service-page payment amounts are 22px. Preserve US$500 for up to five marketing pages, two consolidated revision rounds and portable client-owned source; US$250 follows approved scope and US$250 accepted staging. Updates and integrations remain separately scoped.
+The homepage panel uses a charcoal surface with 36px 38px padding; responsive padding is 28px at 1000px, 30px at 800px and 24px 20px at 500px. Its price is 60px, 52px at 1000px, 56px at 800px and 50px at 500px. Currency sits on the numeral baseline at 20px, then 17px. Homepage features are 15px / 14px mobile; two payment columns use 18px amounts and 13px / 12px captions. The service page likewise uses a compact 60px price, reducing to 50px at 680px, with 20px / 17px baseline currency. Service-page payment amounts are 22px. Show the current introductory US$299 five-page offer only with written eligibility and scope confirmation, US$179 after approved scope and US$120 after staging sign-off/before launch. Do not inherit historical contract limits. Domain, hosting and optional maintenance are separate. Existing signed agreements retain their terms. Updates and integrations remain separately scoped.
 
 ### Contact and Project Room
 
@@ -167,3 +167,7 @@ Reduced-motion preference and the explicit pause control remove animation and tr
 - **Do** keep full-width gallery links accessible and preserve its tested controller.
 - **Don't** restore cream/green brand surfaces, condensed display treatment or italic interior headings.
 - **Don't** invent client proof, conversion outcomes or audit availability.
+
+## Production QA inheritance — 10 November 2026
+
+Read the live Website Design Standards, Website Prompt Playbook and current SOP before revisions: https://docs.google.com/spreadsheets/d/1rNpX6f5Qp-ocfKqwrJhg9fgpGUYJO_uLg6M-WjNLLH0/edit . Apply AUDIT → FIX → RECHECK → DEPLOY → VERIFY LIVE. DES-02 bans cream, ivory, beige, warm off-white and yellow-tinted UI surfaces (photographic colours exempt). DES-12 prohibits new 3D experiments. Preserve the Director identity and independent niche demos. Scope white agency heading rules carefully: fictional showcase light sections require their own dark headings and dark button text. Closing red sections require white paragraph copy. Required fields must reject Unicode whitespace before network submission and clear field errors on edit.

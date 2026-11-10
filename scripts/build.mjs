@@ -1,4 +1,5 @@
 import {spawnSync} from 'node:child_process';
+import {transform} from 'esbuild';
 import {mkdir,writeFile,rm,readFile,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {site} from '../src/config/site.mjs';
@@ -17,6 +18,11 @@ if(process.env.CF_PAGES==='1'){
 await rm('dist',{recursive:true,force:true});
 const child=spawnSync(process.execPath,['node_modules/astro/bin/astro.mjs','build'],{stdio:'inherit',env:{...process.env,ASTRO_TELEMETRY_DISABLED:'1'}});
 if(child.status!==0)process.exit(child.status||1);
+// Ship compact copied scripts and styles while retaining readable source and the existing byte budget.
+for(const entry of await readdir('public'))if(/\.(?:js|css)$/.test(entry)){
+  const {code}=await transform(await readFile('public/'+entry,'utf8'),{minify:true,loader:entry.endsWith('.css')?'css':'js'});
+  await writeFile('dist/'+entry,code);
+}
 const escape=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
 await writeFile('dist/sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+[...site.pages,...pluginRoutes(site).map(slug=>({slug})),...(site.template==='client'?[]:['audits','showcase/exterior','showcase/pool','showcase/landscape'].map(slug=>({slug})))].filter(p=>isSearchPage(p.slug)).map(p=>`<url><loc>${escape(new URL(p.slug?`/${p.slug}/`:'/',site.origin).href)}</loc></url>`).join('')+'</urlset>\n');
 await writeFile('dist/robots.txt',site.mode==='demo'?'User-agent: *\nDisallow: /\n':`User-agent: *\nAllow: /\nSitemap: ${site.origin}/sitemap.xml\n`);

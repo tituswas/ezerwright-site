@@ -9,8 +9,8 @@ test('Director homepage offers transparent commercial terms and real routes',asy
  const html=await readFile('dist/index.html','utf8');
  const doc=new JSDOM(html).window.document;
  assert.match(doc.querySelector('h1')?.textContent||'',/Make an entrance\./i);
- assert.match(doc.body.textContent,/US\$500/);
- assert.match(doc.querySelector('.payment').textContent,/US\$250After approved scope/);
+ assert.match(doc.body.textContent,/US\$299/);
+ assert.match(doc.querySelector('.payment').textContent,/US\$179After approved scope/);
  assert.equal(doc.querySelectorAll('.website-panel a[href^="/showcase/"]').length,3);
  assert.ok(doc.querySelector('a[href="/contact/"]'));
  assert.match(html,/FICTIONAL CONCEPT/);
@@ -86,7 +86,7 @@ test('Services has a distinctive editorial progression, not a repeated stock-car
   assert.ok(services.querySelector(selector),'missing editorial section '+selector);
  }
  assert.equal(services.querySelectorAll('.service-offer .service-price strong').length,1);
- assert.match(services.querySelector('.service-price').textContent,/US\$\s*500/);
+ assert.match(services.querySelector('.service-price').textContent,/US\$\s*299/);
  assert.equal(services.querySelectorAll('.service-payment strong').length,2);
  assert.match(services.querySelector('.service-ledger-note').textContent,/separately scoped/i);
  assert.equal(services.querySelectorAll('section.service-spec .card').length,0,'no repeated stock cards');
@@ -102,7 +102,7 @@ test('Services photographic opening keeps the price legible and charcoal FAQ rea
  if(site.template==='client')return;
  const doc=new JSDOM(await readFile('dist/services/index.html','utf8')).window.document;
  const scene=doc.querySelector('.interior-opening--services .io-panel-front');
- assert.equal(scene.querySelector('strong')?.textContent,'US$500');
+ assert.equal(scene.querySelector('strong')?.textContent,'US$299');
  assert.ok(doc.querySelector('.io-scene .io-photo[src="/art/director-architecture.webp"]'));
  assert.equal(doc.querySelectorAll('.io-orbit,.io-halo,.io-panel-back').length,0);
  const css=await readFile('public/director.css','utf8');
