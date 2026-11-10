@@ -171,3 +171,5 @@ Reduced-motion preference and the explicit pause control remove animation and tr
 ## Production QA inheritance — 10 November 2026
 
 Read the live Website Design Standards, Website Prompt Playbook and current SOP before revisions: https://docs.google.com/spreadsheets/d/1rNpX6f5Qp-ocfKqwrJhg9fgpGUYJO_uLg6M-WjNLLH0/edit . Apply AUDIT → FIX → RECHECK → DEPLOY → VERIFY LIVE. DES-02 bans cream, ivory, beige, warm off-white and yellow-tinted UI surfaces (photographic colours exempt). DES-12 prohibits new 3D experiments. Preserve the Director identity and independent niche demos. Scope white agency heading rules carefully: fictional showcase light sections require their own dark headings and dark button text. Closing red sections require white paragraph copy. Required fields must reject Unicode whitespace before network submission and clear field errors on edit.
+
+Changed copied scripts/styles must use content-derived URLs. A dated query token that remains unchanged can let returning browsers retain old pricing or CSS after the HTML deploys. Verify the rendered interactive state in the existing browser session, not only fresh static HTML.
