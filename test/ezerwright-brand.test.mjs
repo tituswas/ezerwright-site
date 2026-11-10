@@ -16,10 +16,10 @@ test('private candidate cannot silently accept production inquiries',()=>{
  assert.equal(config.origin,'https://ezerwright.test');
  assert.doesNotThrow(()=>validateConfig(config));
 });
-test('starter commercial terms unchanged',()=>{
+test('current introductory commercial policy is qualified',()=>{
  const text=JSON.stringify(config);
- assert.match(text,/\$500/);
- assert.match(text,/\$250/);
- assert.match(text,/two revision rounds/i);
+ assert.match(text,/\$299/);
+ assert.match(text,/\$179/);
+ assert.match(text,/revisions agreed in writing/i);
  assert.equal(config.pages.length,6);
 });

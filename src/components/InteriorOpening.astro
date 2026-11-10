@@ -1,7 +1,7 @@
 ---
 const {eyebrow='THE EXPERIENCE',first,accent,description,variant='services'}=Astro.props;
 const spec={
-  services:['01','THE OFFER','US$500','FIVE PAGES / DEFINED SCOPE'],
+  services:['01','THE OFFER','US$299','FIVE PAGES / DEFINED SCOPE'],
   approach:['02','THE PROCESS','01—04','FROM BRIEF TO HANDOVER'],
   living:['03','THE FUTURE','∞','MADE FOR WHAT COMES NEXT'],
   contact:['04','GET STARTED','↗','YOUR IDEA / OUR NEXT STEP'],
@@ -19,7 +19,7 @@ const spec={
     </div>
     <div class="io-scene" aria-hidden="true">
       <img class="io-photo" src="/art/director-architecture.webp" width="1600" height="900" alt=""/>
-      <div class="io-panel io-panel-front"><div class="io-panel-head"><span>{spec[1]}</span><span>✳</span></div><strong>{variant==='services'?<><span class="io-currency">US$</span>500</>:spec[2]}</strong><small>{spec[3]}</small></div>
+      <div class="io-panel io-panel-front"><div class="io-panel-head"><span>{spec[1]}</span><span>✳</span></div><strong>{variant==='services'?<><span class="io-currency">US$</span>299</>:spec[2]}</strong><small>{spec[3]}</small></div>
     </div>
   </div>
   <div class="container io-foot"><span>EZERWRIGHT — DIGITAL EXPERIENCES</span><span>DESIGN THAT HOLDS YOUR ATTENTION</span></div>

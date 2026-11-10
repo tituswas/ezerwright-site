@@ -1,8 +1,8 @@
 // Public project preferences only: no personal data, storage, tracking or automatic submission.
 (()=>{'use strict';
  const projects={
-  website:{title:'A defined five-page website.',price:'US$500',scope:'Up to five marketing pages, a scoped enquiry form, two revision rounds and portable source files.',terms:'US$250 after approved scope · US$250 after accepted staging.',message:'I’m interested in the defined five-page website package.'},
-  improvements:{title:'A focused website improvement.',price:'Separately quoted',scope:'Start with what is getting in the way. We agree the changes, boundaries and price before work begins.',terms:'A separate scope. No automatic additions to the US$500 website package.',message:'I’d like to improve my existing website.'},
+  website:{title:'A defined five-page website.',price:'Ask about US$299',scope:'Up to five marketing pages, a scoped enquiry form, agreed revisions and portable source files.',terms:'US$179 after approved scope · US$120 after accepted staging. Eligibility and scope confirmed in writing; domain, hosting and optional maintenance separate.',message:'I’m interested in the defined five-page website package.'},
+  improvements:{title:'A focused website improvement.',price:'Separately quoted',scope:'Start with what is getting in the way. We agree the changes, boundaries and price before work begins.',terms:'A separate scope. No automatic additions to the US$299 website package.',message:'I’d like to improve my existing website.'},
   updates:{title:'A website that stays current.',price:'Separately quoted',scope:'Refresh the services, offers or business details that need attention, with a defined update scope.',terms:'Updates and maintenance are separately scoped and priced.',message:'I’d like to update my existing website.'}
  };
  const goals={clarity:'A clearer offer',enquiries:'An easier path to enquiries',mobile:'A stronger mobile experience'};

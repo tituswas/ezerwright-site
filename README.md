@@ -1,6 +1,6 @@
 # EZERWRIGHT website
 
-Astro marketing site: Home, Services, Approach, Living Websites, Contact and Privacy. The approved offer remains US$500, split $250/$250, with two consolidated revision rounds.
+Astro marketing site: Home, Services, Approach, Living Websites, Contact and Privacy. The current policy is the conditional US$299 introductory five-page offer, with US$179 at start and US$120 after staging sign-off/before launch. Eligibility, exact scope, revisions and timing are confirmed in writing. Domain, hosting and optional maintenance are separate. Existing signed agreements retain their original terms.
 
 ## Check the source
 
