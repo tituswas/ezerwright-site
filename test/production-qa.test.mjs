@@ -28,9 +28,16 @@ test('blank required fields never trigger a network submission and errors clear 
 test('changed copied assets have content-based URLs so returning visitors receive the release',async()=>{
  const {createHash}=await import('node:crypto');
  const d=new JSDOM(await readFile('dist/index.html','utf8')).window.document;
- for(const name of ['project-brief.js','project-room.js','director.css']){
+ for(const name of ['project-brief.js','project-room.js','director.css','ui.js']){
   const expected=createHash('sha256').update(await readFile('public/'+name)).digest('hex').slice(0,12);
   const el=d.querySelector(`[src^="/${name}"],[href^="/${name}"]`);
   assert.equal(el.getAttribute('src')||el.getAttribute('href'),'/'+name+'?v='+expected,name);
  }
+});
+
+test('production privacy describes the observed hosting-layer performance beacon',async()=>{
+ const c=JSON.parse(await readFile('src/config/production.json','utf8'));
+ const text=c.privacySections.map(s=>s.text).join(' ');
+ assert.match(text,/Cloudflare.*performance beacon/i);
+ assert.doesNotMatch(text,/no advertising pixels, session replay or analytics scripts/i);
 });

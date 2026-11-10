@@ -129,7 +129,7 @@
     },
     {
       "title": "How the information is processed",
-      "text": "Cloudflare hosts this website, checks form submissions for abuse using Turnstile, and routes email. Enquiries are delivered to the operator’s Gmail inbox, provided by Google. These providers may process information outside your country. This website includes no advertising pixels, session replay or analytics scripts. Application errors do not log enquiry message contents."
+      "text": "Cloudflare hosts this website, checks form submissions for abuse using Turnstile, and routes email. Enquiries are delivered to the operator’s Gmail inbox, provided by Google. These providers may process information outside your country. Cloudflare adds a Web Analytics performance beacon at the hosting layer to measure page loading and usage. The application does not add advertising pixels or session-replay scripts. Application errors do not log enquiry message contents."
     },
     {
       "title": "Retention and requests",

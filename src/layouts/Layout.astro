@@ -45,7 +45,7 @@ const structuredData=JSON.stringify(schema).replace(/</g,'\\u003c');
   {agency&&page.slug==='services'&&<link rel="stylesheet" href="/services-editorial.css?v=typography-20261106"/>}
   <link rel="preload" href="/fonts/manrope.woff" as="font" type="font/woff" crossorigin/>
   <script type="application/ld+json" set:html={structuredData}></script>
-  <script src="/ui.js" defer></script>
+  <script src={versionedAsset('/ui.js')} defer></script>
   {agency&&['','contact'].includes(page.slug)&&<>
     <link rel="stylesheet" href="/project-brief.css?v=typography-20261106"/>
     <script src={versionedAsset('/project-brief.js')} defer></script>
