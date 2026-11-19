@@ -116,6 +116,7 @@
       "heading": "How enquiry information is used."
     }
   ],
+  "optionalContactName": true,
   "privacyApproved": true,
   "turnstileSiteKey": "",
   "privacySections": [
@@ -125,7 +126,7 @@
     },
     {
       "title": "What we collect and why",
-      "text": "The contact form collects your name, email address, optional business name, service choice and message so we can respond to your enquiry and discuss your project. Enquiring does not subscribe you to a newsletter. Please do not send passwords, financial details or private customer information."
+      "text": "The contact form collects your email address, service choice and message. Your name and business name are optional. We use the details you provide to respond to your enquiry and discuss your project. Enquiring does not subscribe you to a newsletter. Please do not send passwords, financial details or private customer information."
     },
     {
       "title": "How the information is processed",

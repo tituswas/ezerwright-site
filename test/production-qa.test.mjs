@@ -25,6 +25,23 @@ test('blank required fields never trigger a network submission and errors clear 
  dom.window.close();
 });
 
+test('an optional enquiry name can be blank without blocking submission',async()=>{
+ const dom=new JSDOM(await readFile('dist/contact/index.html','utf8'),{url:'http://localhost/contact/',runScripts:'outside-only'});
+ const w=dom.window,d=w.document,form=d.querySelector('form'),name=form.elements.namedItem('name');
+ name.required=false;
+ name.value=' \u00a0';
+ form.elements.namedItem('email').value='test@example.test';
+ form.elements.namedItem('message').value='Please reply to this enquiry';
+ let calls=0;
+ w.fetch=async()=>{calls++;return {ok:true,json:async()=>({ok:true,message:'Received'})};};
+ w.eval(await readFile('public/ui.js','utf8'));
+ form.dispatchEvent(new w.Event('submit',{cancelable:true}));
+ await new Promise(resolve=>setTimeout(resolve,10));
+ assert.equal(calls,1);
+ assert.equal(d.querySelector('#form-status').textContent,'Received');
+ dom.window.close();
+});
+
 test('changed copied assets have content-based URLs so returning visitors receive the release',async()=>{
  const {createHash}=await import('node:crypto');
  const d=new JSDOM(await readFile('dist/index.html','utf8')).window.document;
