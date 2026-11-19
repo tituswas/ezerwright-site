@@ -12,7 +12,7 @@ export function createDemoServer({directory='dist',inbox='.runtime/inbox.jsonl'}
       const url=new URL(req.url,origin);
       if(url.pathname==='/api/contact'){
         const request=new Request(url,{method:req.method,headers:req.headers,...(!['GET','HEAD'].includes(req.method)?{body:req,duplex:'half'}:{})});
-        const result=await handleContact(request,{origin,mode:'demo',services:[...site.services.map(s=>s.id),'other']},{deliver:async data=>{await mkdir(resolve(inbox,'..'),{recursive:true,mode:0o700});await appendFile(inbox,JSON.stringify({...data,delivery:'local-capture'})+'\n',{mode:0o600});}});
+        const result=await handleContact(request,{origin,mode:'demo',optionalContactName:site.optionalContactName===true,services:[...site.services.map(s=>s.id),'other']},{deliver:async data=>{await mkdir(resolve(inbox,'..'),{recursive:true,mode:0o700});await appendFile(inbox,JSON.stringify({...data,delivery:'local-capture'})+'\n',{mode:0o600});}});
         res.writeHead(result.status,Object.fromEntries(result.headers));res.end(await result.text());return;
       }
       if(!['GET','HEAD'].includes(req.method)){res.writeHead(405);res.end('Method not allowed');return;}

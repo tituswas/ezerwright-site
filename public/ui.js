@@ -27,7 +27,10 @@
   form.addEventListener('submit',async event=>{
     event.preventDefault();if(form.dataset.sending)return;
     clearErrors();status.textContent='';
-    const blank={};for(const [name,label]of [['name','Name'],['message','Project message']])if(!form.elements.namedItem(name).value.trim())blank[name]=label+' is required.';
+    const blank={};for(const [name,label]of [['name','Name'],['message','Project message']]){
+      const field=form.elements.namedItem(name);
+      if(field.required&&!field.value.trim())blank[name]=label+' is required.';
+    }
     if(Object.keys(blank).length){showErrors('Please complete the required fields.',blank);form.elements.namedItem(Object.keys(blank)[0]).focus();return;}
     form.dataset.sending='true';button.disabled=true;button.textContent='Submitting…';
     try{

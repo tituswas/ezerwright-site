@@ -33,10 +33,27 @@ test('production build preserves SEO and CSP without unsupported host redirects'
    assert.doesNotMatch(html,/Private demonstration|example\.invalid|ezerwright\.test|synthetic test|Send test enquiry|Demo privacy|preparing practical/i);
    const d=new JSDOM(html).window.document;
    assert.equal(d.querySelectorAll('script[src*="challenges.cloudflare.com/turnstile"]').length, page.slug==='contact'?1:0);
-   if(page.slug==='privacy')assert.ok(d.getElementById('cookies'));
+   if(page.slug==='privacy'){
+    assert.ok(d.getElementById('cookies'));
+    assert.match(d.body.textContent,/Your name and business name are optional/);
+   }
+   if(page.slug==='contact'){
+    assert.equal(d.querySelector('input[name="name"]').required,false);
+    assert.match(d.querySelector('label[for="contact-name"]').textContent,/optional/);
+    assert.ok(d.querySelector('input[name="email"]').required);
+    assert.ok(d.querySelector('textarea[name="message"]').required);
+   }
    assert.ok(d.querySelector('footer a[href="/terms/"]'));
    assert.equal(d.title.split('EZERWRIGHT').length-1,1);assert.equal(d.querySelector('meta[name=robots]').content,'index, follow');
    for(const script of d.querySelectorAll('script:not([src])'))assert.ok(headers.includes(createHash('sha256').update(script.textContent).digest('base64')),'inline script missing from CSP');
+  }
+  const terms=new JSDOM(await readFile(join(target,'dist/terms/index.html'),'utf8')).window.document;
+  for(const [font,year] of [['Inter',2016],['Manrope',2019]]){
+   const name=font+'-OFL.txt';
+   assert.ok(terms.querySelector(`a[href="/fonts/${name}"]`));
+   const notice=await readFile(join(target,'dist/fonts',name),'utf8');
+   assert.ok(notice.includes(`Copyright ${year} The ${font} Project Authors`));
+   assert.ok(notice.endsWith(await readFile(join(target,'docs/licenses',name),'utf8')));
   }
   await assert.rejects(access(join(target,'dist/_redirects')),{code:'ENOENT'},'host redirects belong in Cloudflare account rules, never a global path fallback');
   assert.match(await readFile(join(target,'dist/robots.txt'),'utf8'),/Allow: \/\nSitemap: https:\/\/ezerwright.com\/sitemap.xml/);

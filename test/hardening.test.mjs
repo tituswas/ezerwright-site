@@ -37,3 +37,26 @@ test('unconfigured Worker preserves an accessible native form failure',async()=>
  const req=request();req.headers.set('Accept','text/html');const r=await adapter.createWorkerHandler(settings,{})(req,{});
  assert.equal(r.status,503);assert.match(r.headers.get('Content-Type'),/text\/html/);assert.equal(r.headers.get('X-Frame-Options'),'DENY');assert.match(await r.text(),/<main>.*contact service is not configured/);
 });
+
+test('production enquiries can omit a name and still require a valid challenge',async()=>{
+ const {productionSettings}=await import('../worker/production-settings.mjs');
+ for(const name of [undefined,'   ','José 王']) {
+  const data=new URLSearchParams({email:'qa@example.test',service:'website',message:'Please reply by email.','cf-turnstile-response':'qa-token'});
+  if(name!==undefined)data.set('name',name);
+  const makeRequest=()=>new Request(productionSettings.origin+'/api/contact',{method:'POST',headers:{Origin:productionSettings.origin,Accept:'application/json','CF-Connecting-IP':'192.0.2.1'},body:data});
+  const sent=[];
+  const handler=adapter.createWorkerHandler(productionSettings,{
+   fetch:async()=>Response.json({success:true,hostname:'ezerwright.com',action:'contact'}),
+   send:async(from,to,message)=>sent.push(message)
+  });
+  assert.equal((await handler(makeRequest(),env)).status,200);
+  assert.equal(sent.length,1);
+  const body=Buffer.from(sent[0].split('\r\n\r\n')[1],'base64').toString();
+  if(name?.trim())assert.match(body,/^Name: José 王\n/);
+  else assert.doesNotMatch(body,/^Name:/m);
+  assert.match(body,/^Email: qa@example.test$/m);
+  data.delete('cf-turnstile-response');
+  assert.equal((await handler(makeRequest(),env)).status,400);
+  assert.equal(sent.length,1);
+ }
+});
