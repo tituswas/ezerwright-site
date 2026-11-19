@@ -32,6 +32,9 @@ test('production build preserves SEO and CSP without unsupported host redirects'
    const html=await readFile(join(target,'dist',page.slug,'index.html'),'utf8');
    assert.doesNotMatch(html,/Private demonstration|example\.invalid|ezerwright\.test|synthetic test|Send test enquiry|Demo privacy|preparing practical/i);
    const d=new JSDOM(html).window.document;
+   assert.equal(d.querySelectorAll('script[src*="challenges.cloudflare.com/turnstile"]').length, page.slug==='contact'?1:0);
+   if(page.slug==='privacy')assert.ok(d.getElementById('cookies'));
+   assert.ok(d.querySelector('footer a[href="/terms/"]'));
    assert.equal(d.title.split('EZERWRIGHT').length-1,1);assert.equal(d.querySelector('meta[name=robots]').content,'index, follow');
    for(const script of d.querySelectorAll('script:not([src])'))assert.ok(headers.includes(createHash('sha256').update(script.textContent).digest('base64')),'inline script missing from CSP');
   }
