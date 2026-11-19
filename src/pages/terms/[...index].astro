@@ -1,0 +1,47 @@
+---
+import {site} from '../../config/site.mjs';
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths(){
+  return site.template === 'client' ? [] : [{params:{index:undefined}}];
+}
+
+const page={
+  slug:'terms',
+  title:'Website and project terms | EZERWRIGHT',
+  description:'Read how EZERWRIGHT enquiries, written project agreements, payments, cancellations and refund requests work.'
+};
+---
+<Layout page={page}>
+  <div class="terms-surface">
+  <article class="container project-terms">
+    <h1>Website and project terms</h1>
+    <p>Sending an enquiry starts an email conversation. You can explore our services and ask questions without making a purchase.</p>
+    <section>
+      <h2>Scope and payment</h2>
+      <p>Before work begins, we agree the deliverables, price, payment stages and timing in writing. Domain registration, hosting and optional maintenance are quoted separately. Your written project agreement sets out the terms for your order.</p>
+      <a href="/services/">View the website offer and payment stages</a>
+    </section>
+    <section id="cancellations">
+      <h2>Cancellations and refund requests</h2>
+      <p>To cancel agreed work or ask about a refund, reply to the project email with your project name and the change you want to make. You can also use our <a href="/contact/">contact page</a>. Please leave out card or bank details.</p>
+      <p>Refund eligibility, any amount due and timing depend on your written agreement and applicable law. If these points are unclear, ask for written clarification before paying a deposit.</p>
+    </section>
+    <section>
+      <h2>Who handles enquiries</h2>
+      <p>Visit our <a href="/privacy/">privacy notice</a> for the operator’s contact details, how we use enquiry information and how to request a correction or deletion.</p>
+    </section>
+  </article>
+  </div>
+</Layout>
+
+<style>
+  .terms-surface{background:#161719}
+  .project-terms{max-width:54rem;padding-block:clamp(5rem,9vw,9rem);color:#eee;background:transparent}
+  .project-terms h1,.project-terms h2{color:#fff}
+  .project-terms h1{font-size:clamp(2.5rem,6vw,4.75rem);line-height:1.06;max-width:15ch}
+  .project-terms h2{font-size:clamp(1.6rem,3vw,2.35rem);line-height:1.2}
+  .project-terms section{margin-top:2.75rem;scroll-margin-top:6rem}
+  .project-terms p{max-width:70ch}
+  .project-terms a{text-decoration:underline;text-underline-offset:.18em;color:inherit}
+</style>

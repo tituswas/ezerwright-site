@@ -9,9 +9,12 @@ const {serviceLabels={}}=Astro.props;
 <div class="form-row"><div><label for="contact-business">{copy.businessLabel||'Business name'} <span>(optional)</span></label><input id="contact-business" name="business" autocomplete="organization" maxlength="150"/><p class="field-error" id="error-business" hidden></p></div><div><label for="contact-service">{copy.serviceLabel||'What do you need?'}</label><select id="contact-service" name="service">{site.services.map(s=><option value={s.id}>{serviceLabels[s.id]||s.title}</option>)}<option value="other">Not sure yet</option></select><p class="field-error" id="error-service" hidden></p></div></div>
 <label for="contact-message">{copy.messageLabel||(site.template==='client'?'How can we help?':'A little about the project')} <span>(required)</span></label><textarea id="contact-message" name="message" rows="5" required maxlength="2000"></textarea><p class="field-error" id="error-message" hidden></p>
 <div class="honeypot" aria-hidden="true"><label for="contact-website">Leave this field empty</label><input id="contact-website" name="website" tabindex="-1" autocomplete="off"/></div>
-{site.mode==='production' && <div class="cf-turnstile" data-sitekey={site.turnstileSiteKey} data-action="contact"></div>}
+{site.mode==='production' && <>
+  <div class="cf-turnstile" data-sitekey={site.turnstileSiteKey} data-action="contact"></div>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</>}
 {site.mode==='production' && <noscript><p>JavaScript is needed for spam verification. Please <a href={`mailto:${site.email}`}>email {site.email}</a> to discuss your project.</p></noscript>}
-<p class="form-disclosure">We use these details to respond to your enquiry. <a href="/privacy/">Read the privacy notice.</a>{site.mode==='demo' && ' Use synthetic details only; this demonstration captures locally and sends no email.'}</p>
+<p class="form-disclosure">We use these details to respond to your enquiry. Sending this form does not sign you up for marketing. <a href="/privacy/">Read the privacy notice.</a>{site.mode==='demo' && ' Use synthetic details only; this demonstration captures locally and sends no email.'}</p>
 <button class="button" type="submit">{copy.submitLabel||(site.mode==='demo'?'Send test enquiry':'Send enquiry')} <span aria-hidden="true">↗</span></button>
 <p id="form-status" class="form-status" role="status" aria-live="polite" tabindex="-1"></p>
 </form>
