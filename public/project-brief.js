@@ -13,6 +13,11 @@
  }
  const form=document.querySelector('.contact-form');if(!form)return;
  const q=new URLSearchParams(location.search),key=q.get('brief'),goal=q.get('goal');
+ if(q.get('product')==='office-bid-studio'){
+  const message=form.querySelector('[name=message]');
+  if(message&&!message.value.trim())message.value="I'd like to buy Office Bid Studio for US$79. Please email me the payment and download details.";
+  return;
+ }
  if(!Object.hasOwn(projects,key))return;
  const message=form.querySelector('[name=message]');if(!message||message.value.trim())return;
  const directions={bold:'Bold & expressive',calm:'Calm & considered',editorial:'Natural & editorial'},direction=q.get('direction');
