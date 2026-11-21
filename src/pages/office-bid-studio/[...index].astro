@@ -1,0 +1,38 @@
+---
+import {site} from '../../config/site.mjs';
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return site.template === 'client' ? [] : [{params: {index: undefined}}];
+}
+const page = {
+  slug: 'office-bid-studio',
+  title: 'Office Bid Studio | Commercial Cleaning Bid Calculator',
+  description: 'Price recurring office cleaning, compare two weekly schedules and prepare a client proposal. Office Bid Studio is a US$79 one-time digital download.'
+};
+---
+<Layout page={page}>
+  <section class="bid-product">
+    <div class="bid-layout">
+      <div>
+        <p class="name">Office Bid Studio</p>
+        <h1>Know your margin before you quote.</h1>
+        <p class="lead">Walk the office, enter the minutes for each room and see what to charge per month. Compare two cleaning schedules and give your client a printable proposal.</p>
+        <p class="price">US$79 <span>one-time purchase</span></p>
+        <a class="order" href="/contact/?service=other&amp;product=office-bid-studio">Request to buy by email</a>
+        <p class="step">We’ll confirm payment and delivery details by email before you pay.</p>
+      </div>
+      <article aria-labelledby="bid-example">
+        <p class="name">Sample office walkthrough</p>
+        <h2 id="bid-example">Juniper Law Office</h2>
+        <p>Workstations · 60 labor minutes<br/>Restrooms · 30 labor minutes</p>
+        <dl><div><dt>3 visits per week</dt><dd>$848.00 / month</dd></div><div><dt>5 visits per week</dt><dd>$1,333.34 / month</dd></div></dl>
+        <details><summary>What if each visit runs 30 minutes over?</summary><p>On the three-visit schedule, projected monthly profit is $212. If both cleaners stay an extra half hour at $24 per cleaner-hour, the extra $312 in monthly labor turns that into a $100 loss.</p></details>
+      </article>
+    </div>
+    <div class="delivery"><h2>What you receive</h2><p>A downloadable HTML tool that runs offline in Chrome or Edge. Enter your labor, supplies, overhead and target margin. Save your current draft in the browser and use Print / Save PDF for a client copy showing prices, scope and exclusions. Wages and margins stay in your workspace.</p></div>
+  </section>
+</Layout>
+<style>
+.bid-product{background:#131d38;color:#f4f7fb;padding:clamp(4rem,8vw,8rem) max(6vw,1.3rem);font-family:system-ui,sans-serif}.bid-layout,.delivery{max-width:1150px;margin:auto}.bid-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2rem,6vw,6rem);align-items:center}.name{font-size:1rem;font-weight:700;letter-spacing:.045em}.bid-product h1{font-size:clamp(2.7rem,5.5vw,5.8rem);line-height:1.01;letter-spacing:-.055em;color:inherit;margin:1rem 0}.lead,.delivery p{font-size:1.12rem;line-height:1.55}.price{font-size:2rem;font-weight:700;margin:1.5rem 0 .8rem}.price span{font-size:1rem;font-weight:400}.order{background:#ffc20d;color:#131d38;padding:.85rem 1.2rem;display:inline-block;font-weight:700;border-radius:.45rem}.step{font-size:.93rem;color:#adc7e9;margin-top:.8rem}.bid-product article{background:#adc7e9;color:#131d38;border-radius:1rem;padding:clamp(1.25rem,3vw,3rem)}.bid-product h2{font-size:clamp(1.6rem,3vw,2.6rem);color:inherit;margin:.7rem 0}.bid-product article p{line-height:1.5}.bid-product dl div{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;border-top:1px solid #788da9;padding:.8rem 0}.bid-product dd{margin:0;font-weight:700}.bid-product summary{cursor:pointer;font-weight:700}.delivery{border-top:1px solid #536581;margin:3rem auto 0;padding-top:1.5rem}.delivery p{max-width:80ch}.bid-product :focus-visible{outline:3px solid currentColor;outline-offset:4px}@media(max-width:760px){.bid-layout{grid-template-columns:1fr}}
+</style>
