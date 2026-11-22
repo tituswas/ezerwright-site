@@ -3,6 +3,7 @@ import {site} from '../config/site.mjs';
 import {offer} from '../config/offer.mjs';
 import Layout from '../layouts/Layout.astro';
 import CinematicExperience from '../components/CinematicExperience.astro';
+import OfficeBidStudioFeature from '../components/OfficeBidStudioFeature.astro';
 import InteriorOpening from '../components/InteriorOpening.astro';
 import Card from '../components/Card.astro';
 import CTA from '../components/CTA.astro';
@@ -45,6 +46,7 @@ const {page}=Astro.props;
   <div class="service-offer-tail"><span>CLIENT-OWNED, PORTABLE SOURCE</span><span>REVISIONS AGREED IN WRITING</span><span>HOST WHERE YOU CHOOSE</span></div>
 </div>
 </section>
+<OfficeBidStudioFeature/>
 <section class="service-spec" aria-labelledby="service-spec-title">
  <div class="container service-spec-grid">
   <div class="service-spec-intro">

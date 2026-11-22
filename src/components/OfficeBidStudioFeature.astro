@@ -1,0 +1,43 @@
+<section class="studio-feature" aria-labelledby="studio-feature-title">
+  <div class="container studio-layout">
+    <div class="studio-copy">
+      <p class="studio-category">Digital tool for cleaning businesses</p>
+      <h2 id="studio-feature-title">Office Bid Studio</h2>
+      <p>Turn a room-by-room walkthrough into a monthly cleaning quote. Compare visit schedules, check your margin and print a proposal for your client.</p>
+      <p class="studio-price"><strong>US$79</strong> one-time purchase</p>
+      <a class="studio-link" href="/office-bid-studio/">View Office Bid Studio <span aria-hidden="true">→</span></a>
+      <p class="studio-delivery">Request by email. After payment verification, we email the private file. It works offline in Chrome or Edge.</p>
+    </div>
+    <figure class="studio-example">
+      <figcaption>Sample bid <span>Juniper Law Office</span></figcaption>
+      <table>
+        <thead><tr><th scope="col">Cleaning schedule</th><th scope="col">Monthly quote</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">3 visits per week</th><td>$848.00</td></tr>
+          <tr><th scope="row">5 visits per week</th><td>$1,333.34</td></tr>
+        </tbody>
+      </table>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .studio-feature { background: #131d38; color: #fff; padding-block: clamp(3rem, 7vw, 6rem); }
+  .studio-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(2rem, 7vw, 6rem); }
+  .studio-copy > p { max-width: 48ch; color: #d1ddf3; margin: 1rem 0; }
+  .studio-copy .studio-category { color: #adc7e9; margin: 0 0 .75rem; font-size: .875rem; }
+  .studio-copy h2 { color: #fff; margin: 0; line-height: 1.1; }
+  .studio-price strong { color: #fff; font-size: 1.5rem; margin-right: .3em; }
+  .studio-link { display: inline-flex; gap: 1.25rem; align-items: center; min-height: 44px; padding: .7rem 1.1rem; background: #ffc20d; color: #131d38; font-weight: 700; text-decoration: none; }
+  .studio-link:hover { background: #ffda69; color: #131d38; }
+  .studio-link:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+  .studio-copy .studio-delivery { font-size: .875rem; line-height: 1.6; margin-bottom: 0; }
+  .studio-example { margin: 0; border-top: 2px solid #adc7e9; padding-block: 1.3rem; }
+  .studio-example figcaption { color: #adc7e9; font-size: .875rem; }
+  .studio-example figcaption span { display: block; color: #fff; margin-top: .3rem; font-size: clamp(1.5rem, 3vw, 2.5rem); line-height: 1.2; }
+  .studio-example table { border-collapse: collapse; width: 100%; margin-top: 1.6rem; font-variant-numeric: tabular-nums; }
+  .studio-example th, .studio-example td { text-align: left; padding: .85rem 0; border-bottom: 1px solid #556583; font-weight: 500; }
+  .studio-example thead th { font-size: .8rem; color: #adc7e9; }
+  .studio-example tr > :last-child { text-align: right; padding-left: .6rem; }
+  @media (max-width: 800px) { .studio-layout { grid-template-columns: minmax(0, 1fr); } }
+</style>
