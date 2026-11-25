@@ -130,7 +130,7 @@
     },
     {
       "title": "How the information is processed",
-      "text": "Cloudflare hosts this website, checks form submissions for abuse using Turnstile, and routes email. Enquiries are delivered to the operator’s Gmail inbox, provided by Google. These providers may process information outside your country. Cloudflare Web Analytics can measure page loading and usage through a performance beacon supplied by the hosting service. The application does not add advertising pixels or session-replay scripts. Application errors do not log enquiry message contents."
+      "text": "Cloudflare hosts this website and routes email. Turnstile loads only after you choose to enable the spam verification needed to send an enquiry. Enquiries are delivered to the operator’s Gmail inbox, provided by Google. These providers may process information outside your country. Optional analytics, advertising pixels and session replay are disabled. A browser security policy blocks the Cloudflare performance beacon. Hosting and security systems still process requests needed to deliver and protect the service. Application errors do not log enquiry message contents."
     },
     {
       "title": "Retention and requests",

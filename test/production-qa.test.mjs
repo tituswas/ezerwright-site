@@ -52,9 +52,10 @@ test('changed copied assets have content-based URLs so returning visitors receiv
  }
 });
 
-test('production privacy describes the observed hosting-layer performance beacon',async()=>{
+test('production privacy describes blocked optional telemetry and necessary hosting separately',async()=>{
  const c=JSON.parse(await readFile('src/config/production.json','utf8'));
  const text=c.privacySections.map(s=>s.text).join(' ');
- assert.match(text,/Cloudflare.*performance beacon/i);
- assert.doesNotMatch(text,/no advertising pixels, session replay or analytics scripts/i);
+ assert.match(text,/blocks the Cloudflare performance beacon/i);
+ assert.match(text,/Optional analytics, advertising pixels and session replay are disabled/);
+ assert.match(text,/Hosting and security systems still process requests/);
 });

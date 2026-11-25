@@ -12,6 +12,43 @@
   const service=form.querySelector('[name=service]');const selected=new URLSearchParams(location.search).get('service');
   if(selected&&[...service.options].some(o=>o.value===selected))service.value=selected;
   const status=document.querySelector('#form-status');const errors=document.querySelector('#form-errors');const button=form.querySelector('button[type=submit]');const normalLabel=button.textContent;
+  const security=form.querySelector('[data-security-check]');
+  const enableSecurity=security?.querySelector('[data-enable-security]');
+  let challenge=null;
+  if(security&&enableSecurity){
+    const securityStatus=security.querySelector('[data-security-status]');
+    const container=security.querySelector('[data-turnstile-container]');
+    enableSecurity.addEventListener('click',async()=>{
+      if(enableSecurity.disabled||challenge!==null)return;
+      enableSecurity.disabled=true;securityStatus.textContent='Loading the spam check…';
+      let script;
+      try{
+        if(!window.turnstile){
+          await new Promise((resolve,reject)=>{
+            script=document.createElement('script');
+            script.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+            script.async=true;
+            const timeout=setTimeout(()=>reject(Error('Security check timed out')),15000);
+            script.onload=()=>{clearTimeout(timeout);resolve();};
+            script.onerror=()=>{clearTimeout(timeout);reject(Error('Security check unavailable'));};
+            document.head.append(script);
+          });
+        }
+        await new Promise(resolve=>window.turnstile.ready(resolve));
+        container.hidden=false;
+        challenge=window.turnstile.render(container,{
+          sitekey:security.dataset.sitekey,action:'contact',size:window.innerWidth<420?'compact':'normal',
+          callback:()=>{securityStatus.textContent='Spam verification complete. You can send your enquiry.';},
+          'expired-callback':()=>{securityStatus.textContent='Spam check expired. Please retry.';},
+          'error-callback':()=>{securityStatus.textContent='Spam check failed. Retry or email us.';}
+        });
+        enableSecurity.hidden=true;securityStatus.textContent='Complete the check, then send.';
+      }catch{
+        script?.remove();container.hidden=true;enableSecurity.disabled=false;
+        securityStatus.textContent='Spam check could not load. Retry or email us. Nothing was sent.';
+      }
+    });
+  }
   function clearErrors(){errors.replaceChildren();errors.hidden=true;for(const control of form.querySelectorAll('[aria-invalid]')){control.removeAttribute('aria-invalid');control.removeAttribute('aria-describedby');}for(const field of form.querySelectorAll('.field-error')){field.textContent='';field.hidden=true;}}
   function showErrors(message,fields={}){
     errors.hidden=false;const heading=document.createElement('p');heading.textContent=message;errors.append(heading);
@@ -32,6 +69,11 @@
       if(field.required&&!field.value.trim())blank[name]=label+' is required.';
     }
     if(Object.keys(blank).length){showErrors('Please complete the required fields.',blank);form.elements.namedItem(Object.keys(blank)[0]).focus();return;}
+    if(security&&(!form.elements.namedItem('cf-turnstile-response')?.value)){
+      showErrors('Enable spam verification before sending. Nothing was sent.');
+      if(!enableSecurity.hidden)enableSecurity.focus();
+      return;
+    }
     form.dataset.sending='true';button.disabled=true;button.textContent='Submitting…';
     try{
       const result=await fetch(form.action,{method:'POST',headers:{Accept:'application/json','Content-Type':'application/x-www-form-urlencoded'},credentials:'same-origin',body:new URLSearchParams(new FormData(form)),signal:AbortSignal.timeout(15000)});
