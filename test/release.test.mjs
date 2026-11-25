@@ -32,12 +32,14 @@ test('production build preserves SEO and CSP without unsupported host redirects'
    const html=await readFile(join(target,'dist',page.slug,'index.html'),'utf8');
    assert.doesNotMatch(html,/Private demonstration|example\.invalid|ezerwright\.test|synthetic test|Send test enquiry|Demo privacy|preparing practical/i);
    const d=new JSDOM(html).window.document;
-   assert.equal(d.querySelectorAll('script[src*="challenges.cloudflare.com/turnstile"]').length, page.slug==='contact'?1:0);
+   assert.equal(d.querySelectorAll('script[src*="challenges.cloudflare.com/turnstile"]').length,0);
+   assert.ok(d.querySelector('[data-cookie-panel]'));
    if(page.slug==='privacy'){
     assert.ok(d.getElementById('cookies'));
     assert.match(d.body.textContent,/Your name and business name are optional/);
    }
    if(page.slug==='contact'){
+    assert.ok(d.querySelector('[data-enable-security]'));
     assert.equal(d.querySelector('input[name="name"]').required,false);
     assert.match(d.querySelector('label[for="contact-name"]').textContent,/optional/);
     assert.ok(d.querySelector('input[name="email"]').required);

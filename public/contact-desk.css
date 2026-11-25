@@ -44,3 +44,9 @@
 @media(max-width:700px){.enquiry-desk{grid-template-columns:minmax(0,1fr);gap:32px;padding:36px 20px 50px}.enquiry-desk h1{max-width:14ch;font-size:clamp(2.5rem,10vw,3.5rem);margin-bottom:20px}.enquiry-desk .desk-lead{font-size:16px;max-width:40ch;margin-bottom:12px}.enquiry-desk .desk-art{display:none}.enquiry-desk .desk-caption{display:none}.enquiry-desk .desk-paper{padding:26px 22px}.enquiry-desk .contact-form .form-row{grid-template-columns:1fr}.enquiry-desk .desk-next{margin-top:12px}.enquiry-desk .desk-email{font-size:16px}.enquiry-desk .desk-form-heading h2{font-size:28px}}
 @media(max-width:360px){.enquiry-desk{padding-inline:16px}.enquiry-desk .desk-paper{padding:24px 16px}.enquiry-desk h1{font-size:2.5rem}}
 @media(prefers-reduced-motion:reduce){.enquiry-desk *{transition:none!important;scroll-behavior:auto!important}}
+
+.security-check{margin-block:1.25rem;padding:1rem;border:1px solid #767676}
+.security-check>p{font-size:.875rem;line-height:1.5}
+.security-check [data-enable-security]{min-height:44px;font:inherit;padding:.6rem .85rem;cursor:pointer}
+.security-check [data-turnstile-container]{margin-top:.75rem}
+.security-check [hidden]{display:none!important}
